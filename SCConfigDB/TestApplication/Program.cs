@@ -17,21 +17,31 @@ namespace Defter.StarCitizen.TestApplication
             ConfigDataLoader? configDataLoader = null;
             do
             {
-                Console.Write("Press to choose load data source [N - network / L - local]? ");
+                Console.Write("Press to choose load data source [N - network / L - local]: ");
                 var pressKey = Console.ReadKey();
                 Console.WriteLine("");
                 if (pressKey.KeyChar == 'n' || pressKey.KeyChar == 'N')
-                    configDataLoader = new NetworkConfigDataLoader(client, new GitSourceSettings());
+                    configDataLoader = new NetworkConfigDataLoader(client);
                 else if (pressKey.KeyChar == 'l' || pressKey.KeyChar == 'L')
-                    configDataLoader = new LocalConfigDataLoader(@"E:\Work\C-sharp\StarCitizenConfigDb");
+                    configDataLoader = new LocalConfigDataLoader(Environment.CurrentDirectory);
+                else
+                    Console.WriteLine("Invalid choice!");
             } while (configDataLoader == null);
 
             try
             {
                 configDataLoader.LoadDatabase();
-                configDataLoader.LoadTranslation("ua");
-                PrintConfigData(configDataLoader.BuildData("ua"));
-            } catch (Exception e)
+                Console.WriteLine($"---- Language [default] ----");
+                PrintConfigData(configDataLoader.BuildData());
+                foreach (var language in configDataLoader.GetSupportedLanguages())
+                {
+                    configDataLoader.LoadTranslation(language);
+                    Console.WriteLine(string.Empty);
+                    Console.WriteLine($"---- Language [{language}] ----");
+                    PrintConfigData(configDataLoader.BuildData(language));
+                }
+            }
+            catch (Exception e)
             {
                 Console.WriteLine("Error: " + e.Message);
             }
@@ -95,6 +105,15 @@ namespace Defter.StarCitizen.TestApplication
                 Console.WriteLine($"{ident}    Default:{integerParameter.DefaultValue}");
                 Console.WriteLine($"{ident}    Values:{string.Join(",", integerParameter.Values)}");
             }
+            else if (parameter is StringParameter stringParameter)
+            {
+                Console.WriteLine($"{ident}    Default:{stringParameter.DefaultValue}");
+                Console.WriteLine($"{ident}    Values:{string.Join(",", stringParameter.Values)}");
+            }
+            else
+            {
+                Console.WriteLine($"{ident}    Unknown:{parameter}");
+            }
         }
 
         private static void PrintSetting(BaseSetting setting, string ident)
@@ -112,11 +131,27 @@ namespace Defter.StarCitizen.TestApplication
             {
                 Console.WriteLine($"{ident}  Default:{integerSetting.DefaultValue}");
                 Console.WriteLine($"{ident}  Values:{string.Join(",", integerSetting.Values)}");
+                if (integerSetting.Range)
+                {
+                    Console.WriteLine($"{ident}  Range:{integerSetting.Range}");
+                    Console.WriteLine($"{ident}  Min:{integerSetting.MinValue}");
+                    Console.WriteLine($"{ident}  Max:{integerSetting.MaxValue}");
+                }
             }
             else if (setting is FloatSetting floatSetting)
             {
                 Console.WriteLine($"{ident}  Default:{floatSetting.DefaultValue}");
                 Console.WriteLine($"{ident}  Values:{string.Join(",", floatSetting.Values)}");
+                if (floatSetting.Range)
+                {
+                    Console.WriteLine($"{ident}  Range:{floatSetting.Range}");
+                    Console.WriteLine($"{ident}  Min:{floatSetting.MinValue}");
+                    Console.WriteLine($"{ident}  Max:{floatSetting.MaxValue}");
+                }
+            }
+            else
+            {
+                Console.WriteLine($"{ident}    Unknown:{setting}");
             }
         }
     }

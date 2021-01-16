@@ -1,4 +1,5 @@
 {
+	"languages": [ "uk" ],
 	"commands": {
 		"categories": [
 			{ "key":"console", "name":"Console" }
@@ -18,7 +19,7 @@
 								{ "value": "0", "name": "disabled" },
 								{ "value": "1", "name": "fps" },
 								{ "value": "2", "name": "basic" },
-								{ "value": "3", "name": "enhanced" },
+								{ "value": "3", "name": "enhanced" }
 							]
 						}
 					}
@@ -45,13 +46,13 @@
 				"name": "Display debug info",
 				"category": "render",
 				"values": {
-					"type": "range_int",
+					"type": "int",
 					"default": "0",
 					"list": [
 						{ "value": "0", "name": "disabled" },
 						{ "value": "1", "name": "fps" },
 						{ "value": "2", "name": "basic" },
-						{ "value": "3", "name": "enhanced" },
+						{ "value": "3", "name": "enhanced" }
 					]
 				}
 			}

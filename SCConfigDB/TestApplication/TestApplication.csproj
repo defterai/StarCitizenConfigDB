@@ -22,10 +22,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\SCConfigDB\SCConfigDB.csproj" />
   </ItemGroup>
 
@@ -33,4 +29,18 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ContentWithTargetPath Include="..\..\database\config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TargetPath>database\config.json</TargetPath>
+    </ContentWithTargetPath>
+    <ContentWithTargetPath Include="..\..\database\uk\config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TargetPath>database\uk\config.json</TargetPath>
+    </ContentWithTargetPath>
+  </ItemGroup>
 </Project>

@@ -11,9 +11,9 @@ namespace Defter.StarCitizen.ConfigDB
     {
         protected ConfigDataJsonNode? DatabaseJsonNode { get; set; }
         protected Dictionary<string, ConfigDataTranslateJsonNode> TranslateJsonNodes { get; } =
-            new Dictionary<string, ConfigDataTranslateJsonNode>();
+            new Dictionary<string, ConfigDataTranslateJsonNode>(StringComparer.OrdinalIgnoreCase);
 
-        public ConfigDataLoader() { }
+        public ICollection<string> LoadedLanguages => TranslateJsonNodes.Keys;
 
         public abstract Task LoadDatabaseAsync(bool forceReload = false);
 
@@ -25,20 +25,14 @@ namespace Defter.StarCitizen.ConfigDB
         public void LoadTranslation(string language, bool forceReload = false) =>
             LoadTranslationAsync(language, forceReload).GetAwaiter().GetResult();
 
-        public void LoadAll(string? language = null, bool forceReload = false)
+        public ISet<string> GetSupportedLanguages()
         {
-            if (language == null)
-            {
-                LoadDatabase(forceReload);
-                return;
-            }
-            Task[] tasks = new Task[2];
-            tasks[0] = LoadDatabaseAsync(forceReload);
-            tasks[1] = LoadTranslationAsync(language, forceReload);
-            Task.WaitAll(tasks);
+            if (DatabaseJsonNode == null)
+                throw new InvalidOperationException("database not loaded to get supported languages");
+            return DatabaseJsonNode.Languages;
         }
 
-        public ConfigData BuildData(string? language)
+        public ConfigData BuildData(string? language = null)
         {
             if (DatabaseJsonNode == null)
                 throw new InvalidOperationException("database not loaded to build config data");
@@ -82,6 +76,8 @@ namespace Defter.StarCitizen.ConfigDB
     {
         private readonly HttpClient _client;
         private readonly GitSourceSettings _sourceSettings;
+
+        public NetworkConfigDataLoader(HttpClient client) : this(client, new GitSourceSettings()) { }
 
         public NetworkConfigDataLoader(HttpClient client, GitSourceSettings sourceSettings)
         {

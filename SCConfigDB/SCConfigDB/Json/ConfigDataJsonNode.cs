@@ -1,9 +1,13 @@
+using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Defter.StarCitizen.ConfigDB.Json
 {
     public sealed class ConfigDataJsonNode
     {
+        [JsonProperty("languages")]
+        public ISet<string> Languages { get; } = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         [JsonProperty("commands", Required = Required.Always)]
         public CommandsJsonNode Commands { get; }
         [JsonProperty("settings", Required = Required.Always)]
