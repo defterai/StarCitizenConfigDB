@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>net45</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AssemblyTitle>Star Citizen : Config Database</AssemblyTitle>
+    <Description>Star Citizen : Config Database</Description>
+    <Authors>Defter</Authors>
+    <Copyright>Copyright (�) 2021 Defter</Copyright>
+    <AssemblyName>SCConfigDB</AssemblyName>
+    <RootNamespace>Defter.StarCitizen.ConfigDB</RootNamespace>
+    <LangVersion>8</LangVersion>
+    <NoWin32Manifest>true</NoWin32Manifest>
+    <Nullable>enable</Nullable>
+    <Version>0.1.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+
+</Project>

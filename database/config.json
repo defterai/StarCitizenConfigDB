@@ -1,0 +1,60 @@
+{
+	"commands": {
+		"categories": [
+			{ "key":"console", "name":"Console" }
+		],
+		"items": [
+			{
+				"key": "r_DisplayInfo",
+				"name": "Display debug info",
+				"category": "console",
+				"params": [
+					{
+						"name": "mode",
+						"values": {
+							"type": "int",
+							"default": "0",
+							"list": [
+								{ "value": "0", "name": "disabled" },
+								{ "value": "1", "name": "fps" },
+								{ "value": "2", "name": "basic" },
+								{ "value": "3", "name": "enhanced" },
+							]
+						}
+					}
+				]
+			}
+		]
+	},
+	"settings": {
+		"categories": [
+			{ "key":"render", "name":"Render" }
+		],
+		"items": [
+			{
+				"key": "r_Fullscreen",
+				"name": "Fullscreen mode",
+				"category": "render",
+				"values": {
+					"type": "bool",
+					"default": "false"
+				}
+			},
+			{
+				"key": "r_DisplayInfo",
+				"name": "Display debug info",
+				"category": "render",
+				"values": {
+					"type": "range_int",
+					"default": "0",
+					"list": [
+						{ "value": "0", "name": "disabled" },
+						{ "value": "1", "name": "fps" },
+						{ "value": "2", "name": "basic" },
+						{ "value": "3", "name": "enhanced" },
+					]
+				}
+			}
+		]
+	}
+}
