@@ -44,11 +44,11 @@ namespace Defter.StarCitizen.ConfigDB
         }
     }
 
-    public sealed class LocalConfigDataLoader : ConfigDataLoader
+    public sealed class FileConfigDataLoader : ConfigDataLoader
     {
         private readonly string _databasePath;
 
-        public LocalConfigDataLoader(string path)
+        public FileConfigDataLoader(string path)
         {
             _databasePath = path;
         }
@@ -58,7 +58,7 @@ namespace Defter.StarCitizen.ConfigDB
             if (forceReload || DatabaseJsonNode == null)
             {
                 DatabaseJsonNode = await ConfigDatabase.LoadFromFileAsync(
-                    LocalSourceSettings.DatabaseFilePath(_databasePath));
+                    FileSourceSettings.DatabaseFilePath(_databasePath));
             }
         }
 
@@ -67,19 +67,19 @@ namespace Defter.StarCitizen.ConfigDB
             if (forceReload || !TranslateJsonNodes.ContainsKey(language))
             {
                 TranslateJsonNodes[language] = await ConfigDatabase.LoadTranslateFromFileAsync(
-                    LocalSourceSettings.DatabaseTranslateFilePath(_databasePath, language));
+                    FileSourceSettings.DatabaseTranslateFilePath(_databasePath, language));
             }
         }
     }
 
-    public sealed class NetworkConfigDataLoader : ConfigDataLoader
+    public sealed class GitHubConfigDataLoader : ConfigDataLoader
     {
         private readonly HttpClient _client;
-        private readonly GitSourceSettings _sourceSettings;
+        private readonly GitHubSourceSettings _sourceSettings;
 
-        public NetworkConfigDataLoader(HttpClient client) : this(client, new GitSourceSettings()) { }
+        public GitHubConfigDataLoader(HttpClient client) : this(client, new GitHubSourceSettings()) { }
 
-        public NetworkConfigDataLoader(HttpClient client, GitSourceSettings sourceSettings)
+        public GitHubConfigDataLoader(HttpClient client, GitHubSourceSettings sourceSettings)
         {
             _client = client;
             _sourceSettings = sourceSettings;

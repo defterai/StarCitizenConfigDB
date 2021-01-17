@@ -29,9 +29,9 @@ namespace Defter.StarCitizen.TestApplication
                 var pressKey = Console.ReadKey();
                 Console.WriteLine(string.Empty);
                 if (pressKey.KeyChar == 'n' || pressKey.KeyChar == 'N')
-                    configDataLoader = new NetworkConfigDataLoader(client);
+                    configDataLoader = new GitHubConfigDataLoader(client);
                 else if (pressKey.KeyChar == 'l' || pressKey.KeyChar == 'L')
-                    configDataLoader = new LocalConfigDataLoader(Environment.CurrentDirectory);
+                    configDataLoader = new FileConfigDataLoader(Environment.CurrentDirectory);
                 else
                     Console.WriteLine("Invalid choice!");
             } while (configDataLoader == null);

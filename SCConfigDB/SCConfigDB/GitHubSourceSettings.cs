@@ -1,6 +1,6 @@
 namespace Defter.StarCitizen.ConfigDB
 {
-    public sealed class GitSourceSettings
+    public sealed class GitHubSourceSettings
     {
         public const string DefaultUser = "defterai";
         public const string DefaultRepository = "StarCitizenConfigDB";
@@ -11,7 +11,7 @@ namespace Defter.StarCitizen.ConfigDB
         public string Branch { get; set; } = DefaultBranch;
         public string RepositoryUrl => @$"https://github.com/{User}/{Repository}";
         public string DatabaseUrlPrefix => @$"https://raw.githubusercontent.com/{User}/{Repository}/{Branch}";
-        public string DatabaseUrl => LocalSourceSettings.DatabaseFilePath(DatabaseUrlPrefix);
-        public string DatabaseTranslateUrl(string language) => LocalSourceSettings.DatabaseTranslateFilePath(DatabaseUrlPrefix, language);
+        public string DatabaseUrl => FileSourceSettings.DatabaseFilePath(DatabaseUrlPrefix);
+        public string DatabaseTranslateUrl(string language) => FileSourceSettings.DatabaseTranslateFilePath(DatabaseUrlPrefix, language);
     }
 }
