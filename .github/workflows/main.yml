@@ -1,0 +1,36 @@
+name: Publish package
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    env:
+      Solution_Name: SCConfigDB
+      Build_Config: Release 
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Setup MSBuild.exe
+      uses: microsoft/setup-msbuild@v1.0.2
+
+    - name: Download NuGet dependencies
+      run: dotnet restore $env:Solution_Name
+
+    - name: Build configuration
+      run: msbuild $env:Solution_Name /p:Configuration=$env:Build_Config
+
+    - name: Build NuGet package
+      run: dotnet pack $env:Solution_Name -c $env:Build_Config --no-build
+    
+    - name: Publish artifacts
+      run: dotnet publish $env:Solution_Name -c $env:Build_Config -o publish/ --no-build
+    
+    
+      
