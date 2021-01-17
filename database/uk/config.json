@@ -1,8 +1,11 @@
 {
-  "$schema": "https://raw.githubusercontent.com/defterai/StarCitizenConfigDB/master/schema_translate.json",
-  "commands": {
+	"$schema": "https://raw.githubusercontent.com/defterai/StarCitizenConfigDB/master/schema_translate.json",
+	"commands": {
 		"categories": [
-			{ "key": "console", "name": "Консоль" }
+			{
+				"key": "console",
+				"name": "Консоль"
+			}
 		],
 		"items": [
 			{
@@ -12,10 +15,22 @@
 					{
 						"name": "режим",
 						"values": [
-							{ "value": "0", "name": "вимкнено" },
-							{ "value": "1", "name": "фпс" },
-							{ "value": "2", "name": "базові" },
-							{ "value": "3", "name": "розширені" }
+							{
+								"value": "0",
+								"name": "вимкнено"
+							},
+							{
+								"value": "1",
+								"name": "фпс"
+							},
+							{
+								"value": "2",
+								"name": "базові"
+							},
+							{
+								"value": "3",
+								"name": "розширені"
+							}
 						]
 					}
 				]
@@ -24,7 +39,10 @@
 	},
 	"settings": {
 		"categories": [
-			{ "key": "render", "name": "Рендер" }
+			{
+				"key": "render",
+				"name": "Рендер"
+			}
 		],
 		"items": [
 			{
@@ -35,10 +53,22 @@
 				"key": "r_DisplayInfo",
 				"name": "Показувати інформацію налагодження",
 				"values": [
-					{ "value": "0", "name": "вимкнено" },
-					{ "value": "1", "name": "фпс" },
-					{ "value": "2", "name": "базові" },
-					{ "value": "3", "name": "розширені" }
+					{
+						"value": "0",
+						"name": "вимкнено"
+					},
+					{
+						"value": "1",
+						"name": "фпс"
+					},
+					{
+						"value": "2",
+						"name": "базові"
+					},
+					{
+						"value": "3",
+						"name": "розширені"
+					}
 				]
 			}
 		]

@@ -1,9 +1,12 @@
 {
-  "$schema": "https://raw.githubusercontent.com/defterai/StarCitizenConfigDB/master/schema.json",
-  "languages": [ "uk" ],
+	"$schema": "https://raw.githubusercontent.com/defterai/StarCitizenConfigDB/master/schema.json",
+	"languages": [ "uk" ],
 	"commands": {
 		"categories": [
-			{ "key": "console", "name": "Console" }
+			{
+				"key": "console",
+				"name": "Console"
+			}
 		],
 		"items": [
 			{
@@ -17,10 +20,22 @@
 							"type": "int",
 							"default": "0",
 							"list": [
-								{ "value": "0", "name": "disabled" },
-								{ "value": "1", "name": "fps" },
-								{ "value": "2", "name": "basic" },
-								{ "value": "3", "name": "enhanced" }
+								{
+									"value": "0",
+									"name": "disabled"
+								},
+								{
+									"value": "1",
+									"name": "fps"
+								},
+								{
+									"value": "2",
+									"name": "basic"
+								},
+								{
+									"value": "3",
+									"name": "enhanced"
+								}
 							]
 						}
 					}
@@ -30,7 +45,10 @@
 	},
 	"settings": {
 		"categories": [
-			{ "key": "render", "name": "Render" }
+			{
+				"key": "render",
+				"name": "Render"
+			}
 		],
 		"items": [
 			{
@@ -50,10 +68,22 @@
 					"type": "int",
 					"default": "0",
 					"list": [
-						{ "value": "0", "name": "disabled" },
-						{ "value": "1", "name": "fps" },
-						{ "value": "2", "name": "basic" },
-						{ "value": "3", "name": "enhanced" }
+						{
+							"value": "0",
+							"name": "disabled"
+						},
+						{
+							"value": "1",
+							"name": "fps"
+						},
+						{
+							"value": "2",
+							"name": "basic"
+						},
+						{
+							"value": "3",
+							"name": "enhanced"
+						}
 					]
 				}
 			}
