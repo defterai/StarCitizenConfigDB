@@ -10,7 +10,6 @@ jobs:
     env:
       Solution_Name: SCConfigDB
       Project_Library_Name: SCConfigDB
-      Project_Library_Path: SCConfigDB/SCConfigDB
       Build_Config: Release 
 
     steps:
@@ -30,9 +29,10 @@ jobs:
     
     - name: Publish artifacts
       run: dotnet publish $env:Solution_Name -c $env:Build_Config /p:PublishProfile=FolderProfile.pubxml --no-build
-    
-    - name: Build library NuGet package
-      run: dotnet pack $env:Project_Library_Path -c $env:Build_Config --no-build
-      
-    - name: Publish NuGet package on GitHub
-      run: dotnet nuget push "$env:Project_Library_Path/bin/$env:Build_Config/SCConfigDB.0.1.0.nupkg" --api-key ${{ secrets.GITHUB_TOKEN }} --source "github"
+
+    - name: Build and publish NuGet package
+      run: |
+        cd $env:Solution_Name/$env:Project_Library_Name
+        dotnet pack -c $env:Build_Config --no-build
+        dotnet nuget push "bin/${{ $env:Build_Config }}/SCConfigDB.0.1.0.nupkg" --api-key ${{ secrets.GITHUB_TOKEN }} --source "github"
+        
