@@ -79,44 +79,81 @@
 											"type": "string",
 											"minLength": 1
 										},
+										"desc": {
+											"type": "string",
+											"minLength": 1
+										},
 										"values": {
 											"type": "object",
 											"required": [ "type", "default" ],
-											"additionalProperties": false,
-											"properties": {
-												"type": {
-													"type": "string",
-													"enum": [ "int", "string" ]
+											"anyOf": [
+												{
+													"additionalProperties": false,
+													"properties": {
+														"type": {
+															"type": "string",
+															"enum": [ "int" ]
+														},
+														"default": {
+															"type": "string",
+															"pattern": "^[+-]?\\d+$"
+														},
+														"list": {
+															"type": "array",
+															"uniqueItems": true,
+															"minItems": 1,
+															"items": {
+																"type": "object",
+																"required": [ "value" ],
+																"additionalProperties": false,
+																"properties": {
+																	"value": {
+																		"type": "string",
+																		"pattern": "^[+-]?\\d+$"
+																	},
+																	"name": {
+																		"type": "string",
+																		"minLength": 1
+																	}
+																}
+															}
+														}
+													}
 												},
-												"default": {
-													"type": "string",
-													"minLength": 1
-												},
-												"list": {
-													"type": "array",
-													"uniqueItems": true,
-													"minItems": 1,
-													"items": {
-														"type": "object",
-														"required": [ "value" ],
-														"additionalProperties": false,
-														"properties": {
-															"value": {
-																"type": "string",
-																"minLength": 1
-															},
-															"name": {
-																"type": "string",
-																"minLength": 1
+												{
+													"additionalProperties": false,
+													"properties": {
+														"type": {
+															"type": "string",
+															"enum": [ "string" ]
+														},
+														"default": {
+															"type": "string",
+															"minLength": 1
+														},
+														"list": {
+															"type": "array",
+															"uniqueItems": true,
+															"minItems": 1,
+															"items": {
+																"type": "object",
+																"required": [ "value" ],
+																"additionalProperties": false,
+																"properties": {
+																	"value": {
+																		"type": "string",
+																		"minLength": 1
+																	},
+																	"name": {
+																		"type": "string",
+																		"minLength": 1
+																	}
+																}
 															}
 														}
 													}
 												}
-											}
-										},
-										"desc": {
-											"type": "string",
-											"minLength": 1
+											]
 										}
 									}
 								}
@@ -170,44 +207,94 @@
 								"type": "string",
 								"minLength": 1
 							},
+							"desc": {
+								"type": "string",
+								"minLength": 1
+							},
 							"values": {
 								"type": "object",
 								"required": [ "type", "default" ],
-								"additionalProperties": false,
-								"properties": {
-									"type": {
-										"type": "string",
-										"enum": [ "bool", "int", "float", "range_int", "range_float" ]
+								"anyOf": [
+									{
+										"additionalProperties": false,
+										"properties": {
+											"type": {
+												"type": "string",
+												"enum": [ "bool" ]
+											},
+											"default": {
+												"type": "string",
+												"enum": [ "true", "false" ]
+											}
+										}
 									},
-									"default": {
-										"type": "string",
-										"minLength": 1
+									{
+										"additionalProperties": false,
+										"properties": {
+											"type": {
+												"type": "string",
+												"enum": [ "int", "range_int" ]
+											},
+											"default": {
+												"type": "string",
+												"pattern": "^[+-]?\\d+$"
+											},
+											"list": {
+												"type": "array",
+												"uniqueItems": true,
+												"minItems": 1,
+												"items": {
+													"type": "object",
+													"required": [ "value" ],
+													"additionalProperties": false,
+													"properties": {
+														"value": {
+															"type": "string",
+															"pattern": "^[+-]?\\d+$"
+														},
+														"name": {
+															"type": "string",
+															"minLength": 1
+														}
+													}
+												}
+											}
+										}
 									},
-									"list": {
-										"type": "array",
-										"uniqueItems": true,
-										"minItems": 1,
-										"items": {
-											"type": "object",
-											"required": [ "value" ],
-											"additionalProperties": false,
-											"properties": {
-												"value": {
-													"type": "string",
-													"minLength": 1
-												},
-												"name": {
-													"type": "string",
-													"minLength": 1
+									{
+										"additionalProperties": false,
+										"properties": {
+											"type": {
+												"type": "string",
+												"enum": [ "float", "range_float" ]
+											},
+											"default": {
+												"type": "string",
+												"pattern": "^[+-]?([0-9]+[.])?[0-9]+$"
+											},
+											"list": {
+												"type": "array",
+												"uniqueItems": true,
+												"minItems": 1,
+												"items": {
+													"type": "object",
+													"required": [ "value" ],
+													"additionalProperties": false,
+													"properties": {
+														"value": {
+															"type": "string",
+															"pattern": "^[+-]?([0-9]+[.])?[0-9]+$"
+														},
+														"name": {
+															"type": "string",
+															"minLength": 1
+														}
+													}
 												}
 											}
 										}
 									}
-								}
-							},
-							"desc": {
-								"type": "string",
-								"minLength": 1
+								]
 							}
 						}
 					}
