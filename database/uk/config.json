@@ -1,7 +1,8 @@
 {
-	"commands": {
+  "$schema": "https://raw.githubusercontent.com/defterai/StarCitizenConfigDB/master/schema_translate.json",
+  "commands": {
 		"categories": [
-			{ "key":"console", "name":"Консоль" }
+			{ "key": "console", "name": "Консоль" }
 		],
 		"items": [
 			{
@@ -23,7 +24,7 @@
 	},
 	"settings": {
 		"categories": [
-			{ "key":"render", "name":"Рендер" }
+			{ "key": "render", "name": "Рендер" }
 		],
 		"items": [
 			{

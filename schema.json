@@ -1,214 +1,218 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "$id": "https://raw.githubusercontent.com/defterai/StarCitizenConfigDB/master/schema.json",
-  "description": "Validation schema for StarCitizen Config Database",
-  "type": "object",
-  "required": [ "commands", "settings" ],
-  "additionalProperties": false,
-  "properties": {
-    "languages": {
-      "type": "array",
-      "uniqueItems": true,
-      "items": {
-        "type": "string",
-        "minLength": 1
-      }
-    },
-    "commands": {
-      "type": "object",
-      "required": [ "categories", "items" ],
-      "additionalProperties": false,
-      "properties": {
-        "categories": {
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
-            "type": "object",
-            "required": [ "key", "name" ],
-            "additionalProperties": false,
-            "properties": {
-              "key": {
-                "type": "string",
-                "minLength": 1
-              },
-              "name": {
-                "type": "string",
-                "minLength": 1
-              }
-            }
-          }
-        },
-        "items": {
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
-            "type": "object",
-            "required": [ "key", "name", "category" ],
-            "additionalProperties": false,
-            "properties": {
-              "key": {
-                "type": "string",
-                "minLength": 1
-              },
-              "name": {
-                "type": "string",
-                "minLength": 1
-              },
-              "category": {
-                "type": "string",
-                "minLength": 1
-              },
-              "desc": {
-                "type": "string",
-                "minLength": 1
-              },
-              "params": {
-                "type": "array",
-                "uniqueItems": true,
-                "minItems": 1,
-                "items": {
-                  "type": "object",
-                  "required": [ "name", "values" ],
-                  "additionalProperties": false,
-                  "properties": {
-                    "name": {
-                      "type": "string",
-                      "minLength": 1
-                    },
-                    "values": {
-                      "type": "object",
-                      "required": [ "type", "default" ],
-                      "additionalProperties": false,
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "enum": [ "int", "string" ]
-                        },
-                        "default": {
-                          "type": "string",
-                          "minLength": 1
-                        },
-                        "list": {
-                          "type": "array",
-                          "uniqueItems": true,
-                          "minItems": 1,
-                          "items": {
-                            "type": "object",
-                            "required": [ "value" ],
-                            "additionalProperties": false,
-                            "properties": {
-                              "value": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "name": {
-                                "type": "string",
-                                "minLength": 1
-                              }
-                            }
-                          }
-                        }
-                      }
-                    },
-                    "desc": {
-                      "type": "string",
-                      "minLength": 1
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "settings": {
-      "type": "object",
-      "required": [ "categories", "items" ],
-      "additionalProperties": false,
-      "properties": {
-        "categories": {
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
-            "type": "object",
-            "required": [ "key", "name" ],
-            "additionalProperties": false,
-            "properties": {
-              "key": {
-                "type": "string",
-                "minLength": 1
-              },
-              "name": {
-                "type": "string",
-                "minLength": 1
-              }
-            }
-          }
-        },
-        "items": {
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
-            "type": "object",
-            "required": [ "key", "name", "category", "values" ],
-            "additionalProperties": false,
-            "properties": {
-              "key": {
-                "type": "string",
-                "minLength": 1
-              },
-              "name": {
-                "type": "string",
-                "minLength": 1
-              },
-              "category": {
-                "type": "string",
-                "minLength": 1
-              },
-              "values": {
-                "type": "object",
-                "required": [ "type", "default" ],
-                "additionalProperties": false,
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "enum": [ "bool", "int", "float", "range_int", "range_float" ]
-                  },
-                  "default": {
-                    "type": "string",
-                    "minLength": 1
-                  },
-                  "list": {
-                    "type": "array",
-                    "uniqueItems": true,
-                    "minItems": 1,
-                    "items": {
-                      "type": "object",
-                      "required": [ "value" ],
-                      "additionalProperties": false,
-                      "properties": {
-                        "value": {
-                          "type": "string",
-                          "minLength": 1
-                        },
-                        "name": {
-                          "type": "string",
-                          "minLength": 1
-                        }
-                      }
-                    }
-                  }
-                }
-              },
-              "desc": {
-                "type": "string",
-                "minLength": 1
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"$id": "https://raw.githubusercontent.com/defterai/StarCitizenConfigDB/master/schema.json",
+	"description": "Validation schema for StarCitizen Config Database",
+	"type": "object",
+	"required": [ "commands", "settings" ],
+	"additionalProperties": false,
+	"properties": {
+		"schema": {
+			"type": "string",
+			"format": "uri"
+		},
+		"languages": {
+			"type": "array",
+			"uniqueItems": true,
+			"items": {
+				"type": "string",
+				"minLength": 1
+			}
+		},
+		"commands": {
+			"type": "object",
+			"required": [ "categories", "items" ],
+			"additionalProperties": false,
+			"properties": {
+				"categories": {
+					"type": "array",
+					"uniqueItems": true,
+					"items": {
+						"type": "object",
+						"required": [ "key", "name" ],
+						"additionalProperties": false,
+						"properties": {
+							"key": {
+								"type": "string",
+								"minLength": 1
+							},
+							"name": {
+								"type": "string",
+								"minLength": 1
+							}
+						}
+					}
+				},
+				"items": {
+					"type": "array",
+					"uniqueItems": true,
+					"items": {
+						"type": "object",
+						"required": [ "key", "name", "category" ],
+						"additionalProperties": false,
+						"properties": {
+							"key": {
+								"type": "string",
+								"minLength": 1
+							},
+							"name": {
+								"type": "string",
+								"minLength": 1
+							},
+							"category": {
+								"type": "string",
+								"minLength": 1
+							},
+							"desc": {
+								"type": "string",
+								"minLength": 1
+							},
+							"params": {
+								"type": "array",
+								"uniqueItems": true,
+								"minItems": 1,
+								"items": {
+									"type": "object",
+									"required": [ "name", "values" ],
+									"additionalProperties": false,
+									"properties": {
+										"name": {
+											"type": "string",
+											"minLength": 1
+										},
+										"values": {
+											"type": "object",
+											"required": [ "type", "default" ],
+											"additionalProperties": false,
+											"properties": {
+												"type": {
+													"type": "string",
+													"enum": [ "int", "string" ]
+												},
+												"default": {
+													"type": "string",
+													"minLength": 1
+												},
+												"list": {
+													"type": "array",
+													"uniqueItems": true,
+													"minItems": 1,
+													"items": {
+														"type": "object",
+														"required": [ "value" ],
+														"additionalProperties": false,
+														"properties": {
+															"value": {
+																"type": "string",
+																"minLength": 1
+															},
+															"name": {
+																"type": "string",
+																"minLength": 1
+															}
+														}
+													}
+												}
+											}
+										},
+										"desc": {
+											"type": "string",
+											"minLength": 1
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"settings": {
+			"type": "object",
+			"required": [ "categories", "items" ],
+			"additionalProperties": false,
+			"properties": {
+				"categories": {
+					"type": "array",
+					"uniqueItems": true,
+					"items": {
+						"type": "object",
+						"required": [ "key", "name" ],
+						"additionalProperties": false,
+						"properties": {
+							"key": {
+								"type": "string",
+								"minLength": 1
+							},
+							"name": {
+								"type": "string",
+								"minLength": 1
+							}
+						}
+					}
+				},
+				"items": {
+					"type": "array",
+					"uniqueItems": true,
+					"items": {
+						"type": "object",
+						"required": [ "key", "name", "category", "values" ],
+						"additionalProperties": false,
+						"properties": {
+							"key": {
+								"type": "string",
+								"minLength": 1
+							},
+							"name": {
+								"type": "string",
+								"minLength": 1
+							},
+							"category": {
+								"type": "string",
+								"minLength": 1
+							},
+							"values": {
+								"type": "object",
+								"required": [ "type", "default" ],
+								"additionalProperties": false,
+								"properties": {
+									"type": {
+										"type": "string",
+										"enum": [ "bool", "int", "float", "range_int", "range_float" ]
+									},
+									"default": {
+										"type": "string",
+										"minLength": 1
+									},
+									"list": {
+										"type": "array",
+										"uniqueItems": true,
+										"minItems": 1,
+										"items": {
+											"type": "object",
+											"required": [ "value" ],
+											"additionalProperties": false,
+											"properties": {
+												"value": {
+													"type": "string",
+													"minLength": 1
+												},
+												"name": {
+													"type": "string",
+													"minLength": 1
+												}
+											}
+										}
+									}
+								}
+							},
+							"desc": {
+								"type": "string",
+								"minLength": 1
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }

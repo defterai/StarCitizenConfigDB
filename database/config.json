@@ -1,8 +1,9 @@
 {
-	"languages": [ "uk" ],
+  "$schema": "https://raw.githubusercontent.com/defterai/StarCitizenConfigDB/master/schema.json",
+  "languages": [ "uk" ],
 	"commands": {
 		"categories": [
-			{ "key":"console", "name":"Console" }
+			{ "key": "console", "name": "Console" }
 		],
 		"items": [
 			{
@@ -29,7 +30,7 @@
 	},
 	"settings": {
 		"categories": [
-			{ "key":"render", "name":"Render" }
+			{ "key": "render", "name": "Render" }
 		],
 		"items": [
 			{

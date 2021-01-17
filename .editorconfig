@@ -19,8 +19,14 @@ indent_size = 4
 indent_size = 2
 
 # Configuration Files
-[*.{json,xml,yml,config,props,targets,nuspec,resx,ruleset,vsixmanifest,vsct}]
+[*.{xml,yml,config,props,targets,nuspec,resx,ruleset,vsixmanifest,vsct}]
 indent_size = 2
+
+# Json Files
+[*.json]
+indent_style = tab
+tab_width = 4
+json.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces = false
 
 # Solution Files
 [*.sln]
