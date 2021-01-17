@@ -25,10 +25,10 @@ namespace Defter.StarCitizen.TestApplication
             ConfigDataLoader? configDataLoader = null;
             do
             {
-                Console.Write("Press to choose load data source [N - network / L - local]: ");
+                Console.Write("Press to choose load data source [G - GitHub / L - Local file]: ");
                 var pressKey = Console.ReadKey();
                 Console.WriteLine(string.Empty);
-                if (pressKey.KeyChar == 'n' || pressKey.KeyChar == 'N')
+                if (pressKey.KeyChar == 'g' || pressKey.KeyChar == 'G')
                     configDataLoader = new GitHubConfigDataLoader(client);
                 else if (pressKey.KeyChar == 'l' || pressKey.KeyChar == 'L')
                     configDataLoader = new FileConfigDataLoader(Environment.CurrentDirectory);
@@ -41,12 +41,32 @@ namespace Defter.StarCitizen.TestApplication
                 configDataLoader.LoadDatabase();
                 Console.WriteLine($"---- Language [default] ----");
                 PrintConfigData(configDataLoader.BuildData());
-                foreach (var language in configDataLoader.GetSupportedLanguages())
+
+                Console.WriteLine(string.Empty);
+                var availableLanguages = configDataLoader.GetSupportedLanguages();
+                Console.WriteLine("Available additional languages: " + string.Join(",", availableLanguages));
+                Console.Write("Select print language [none / language / all]: ");
+                var printLanguage = Console.ReadLine().Trim();
+                if (printLanguage.Length == 0 || string.Equals(printLanguage, "all", StringComparison.OrdinalIgnoreCase))
                 {
-                    configDataLoader.LoadTranslation(language);
+                    foreach (var language in availableLanguages)
+                    {
+                        configDataLoader.LoadTranslation(language);
+                        Console.WriteLine(string.Empty);
+                        Console.WriteLine($"---- Language [{language}] ----");
+                        PrintConfigData(configDataLoader.BuildData(language));
+                    }
+                }
+                else if (availableLanguages.Contains(printLanguage))
+                {
+                    configDataLoader.LoadTranslation(printLanguage);
                     Console.WriteLine(string.Empty);
-                    Console.WriteLine($"---- Language [{language}] ----");
-                    PrintConfigData(configDataLoader.BuildData(language));
+                    Console.WriteLine($"---- Language [{printLanguage}] ----");
+                    PrintConfigData(configDataLoader.BuildData(printLanguage));
+                }
+                else if (!string.Equals(printLanguage, "none", StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.WriteLine("Waring: Language not found - " + printLanguage);
                 }
             }
             catch (Exception e)
