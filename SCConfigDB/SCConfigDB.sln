@@ -7,6 +7,22 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SCConfigDB", "SCConfigDB\SC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApplication", "TestApplication\TestApplication.csproj", "{C68CF7E5-B7E7-4057-90D5-C7AC4909A39A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "database", "database", "{9CDA4433-1379-4583-AB6C-C9B8C3466D99}"
+	ProjectSection(SolutionItems) = preProject
+		..\database\config.json = ..\database\config.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "uk", "uk", "{B7216E2A-6158-4D34-BAE2-B7926DB1E5F6}"
+	ProjectSection(SolutionItems) = preProject
+		..\database\uk\config.json = ..\database\uk\config.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "schemas", "schemas", "{630E07B4-7A51-4F4B-A0B5-EB39FA85AF12}"
+	ProjectSection(SolutionItems) = preProject
+		..\schema.json = ..\schema.json
+		..\schema_translate.json = ..\schema_translate.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +40,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B7216E2A-6158-4D34-BAE2-B7926DB1E5F6} = {9CDA4433-1379-4583-AB6C-C9B8C3466D99}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2E86E540-1B8C-4D28-813F-E1650F9249B0}
