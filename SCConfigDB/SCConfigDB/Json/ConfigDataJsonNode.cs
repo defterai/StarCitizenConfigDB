@@ -22,6 +22,7 @@ namespace Defter.StarCitizen.ConfigDB.Json
 
         public ConfigDataJsonNode(ConfigDataJsonNode node, ConfigDataTranslateJsonNode translateNode)
         {
+            Languages = node.Languages;
             Commands = node.Commands.TranslateWith(translateNode.Commands);
             Settings = node.Settings.TranslateWith(translateNode.Settings);
         }

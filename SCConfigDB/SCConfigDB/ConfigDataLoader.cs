@@ -13,6 +13,7 @@ namespace Defter.StarCitizen.ConfigDB
         protected Dictionary<string, ConfigDataTranslateJsonNode> TranslateJsonNodes { get; } =
             new Dictionary<string, ConfigDataTranslateJsonNode>(StringComparer.OrdinalIgnoreCase);
 
+        public bool DatabaseLoaded => DatabaseJsonNode != null;
         public ICollection<string> LoadedLanguages => TranslateJsonNodes.Keys;
 
         public abstract Task LoadDatabaseAsync(bool forceReload = false);
@@ -30,6 +31,24 @@ namespace Defter.StarCitizen.ConfigDB
             if (DatabaseJsonNode == null)
                 throw new InvalidOperationException("database not loaded to get supported languages");
             return DatabaseJsonNode.Languages;
+        }
+
+        public void UnloadDatabase() => DatabaseJsonNode = null;
+
+        public bool UnloadTranslation(string? language = null)
+        {
+            if (language != null)
+            {
+                return TranslateJsonNodes.Remove(language);
+            }
+            TranslateJsonNodes.Clear();
+            return true;
+        }
+
+        public void UnloadAll()
+        {
+            UnloadDatabase();
+            UnloadTranslation();
         }
 
         public ConfigData BuildData(string? language = null)

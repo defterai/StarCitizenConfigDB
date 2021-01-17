@@ -10,7 +10,5 @@ namespace Defter.StarCitizen.ConfigDB.Collection
             Array.Copy(array, result, array.Length);
             return result;
         }
-
-        
     }
 }
