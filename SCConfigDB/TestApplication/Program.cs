@@ -1,6 +1,7 @@
 using System;
 using System.Net;
 using System.Net.Http;
+using System.Reflection;
 using Defter.StarCitizen.ConfigDB;
 using Defter.StarCitizen.ConfigDB.Model;
 
@@ -12,14 +13,21 @@ namespace Defter.StarCitizen.TestApplication
         {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls |
                 SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
-            HttpClient client = new HttpClient();
+            var clientHandler = new HttpClientHandler
+            {
+                UseProxy = false
+            };
+            var client = new HttpClient(clientHandler);
+            var assemlyName = Assembly.GetExecutingAssembly().GetName();
+            client.DefaultRequestHeaders.UserAgent.ParseAdd($"{assemlyName.Name}/{assemlyName.Version.ToString(3)}");
+            client.Timeout = TimeSpan.FromSeconds(30);
 
             ConfigDataLoader? configDataLoader = null;
             do
             {
                 Console.Write("Press to choose load data source [N - network / L - local]: ");
                 var pressKey = Console.ReadKey();
-                Console.WriteLine("");
+                Console.WriteLine(string.Empty);
                 if (pressKey.KeyChar == 'n' || pressKey.KeyChar == 'N')
                     configDataLoader = new NetworkConfigDataLoader(client);
                 else if (pressKey.KeyChar == 'l' || pressKey.KeyChar == 'L')

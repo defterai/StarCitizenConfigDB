@@ -10,7 +10,7 @@
     <AssemblyTitle>Star Citizen : Config Database</AssemblyTitle>
     <Description>Star Citizen : Config Database</Description>
     <Authors>Defter</Authors>
-    <Copyright>Copyright (�) 2021 Defter</Copyright>
+    <Copyright>Copyright (©) 2021 Defter</Copyright>
     <AssemblyName>SCConfigDB</AssemblyName>
     <RootNamespace>Defter.StarCitizen.ConfigDB</RootNamespace>
     <LangVersion>8</LangVersion>
