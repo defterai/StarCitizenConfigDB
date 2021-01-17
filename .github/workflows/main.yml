@@ -33,6 +33,5 @@ jobs:
     - name: Build and publish NuGet package
       run: |
         cd $env:Solution_Name/$env:Project_Library_Name
-        dotnet pack -c $env:Build_Config --no-build
-        dotnet nuget push "bin/${{ env.Build_Config }}/SCConfigDB.0.1.0.nupkg" --api-key ${{ secrets.GITHUB_TOKEN }} --source "github"
-        
+        dotnet pack -c $env:Build_Config /p:IncludeSource=true --no-build
+        dotnet nuget push "bin/${{ env.Build_Config }}/*.nupkg" --api-key ${{ secrets.GITHUB_TOKEN }} --source "github"
