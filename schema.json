@@ -6,7 +6,7 @@
 	"required": [ "commands", "settings" ],
 	"additionalProperties": false,
 	"properties": {
-		"schema": {
+		"$schema": {
 			"type": "string",
 			"format": "uri"
 		},
