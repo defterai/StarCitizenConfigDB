@@ -1,15 +1,15 @@
-name: Star Citizen config database CI
+name: Build SCConfigDB solution
 
 on:
   push:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+  workflow_dispatch:
 
 jobs:
 
   build:
-
     strategy:
       matrix:
         configuration: [Release]
