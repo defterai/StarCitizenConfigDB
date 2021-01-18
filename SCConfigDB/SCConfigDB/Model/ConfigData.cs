@@ -19,8 +19,14 @@ namespace Defter.StarCitizen.ConfigDB.Model
 
         public sealed class Builder
         {
-            public IReadOnlyDictionary<string, CommandCategory.Builder> CommandCategoryBuilders { get; }
-            public IReadOnlyDictionary<string, SettingCategory.Builder> SettingCategoryBuilders { get; }
+            public Dictionary<string, CommandCategory.Builder> CommandCategoryBuilders { get; }
+            public Dictionary<string, SettingCategory.Builder> SettingCategoryBuilders { get; }
+
+            public Builder(Dictionary<string, CommandCategory.Builder> commandCategoryBuilders,
+                Dictionary<string, SettingCategory.Builder> settingCategoryBuilders) {
+                CommandCategoryBuilders = commandCategoryBuilders;
+                SettingCategoryBuilders = settingCategoryBuilders;
+            }
 
             public Builder(ConfigDataJsonNode node, SettingFactory settingFactory, ParameterFactory parameterFactory)
             {

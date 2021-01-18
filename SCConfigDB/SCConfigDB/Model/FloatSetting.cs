@@ -19,9 +19,27 @@ namespace Defter.StarCitizen.ConfigDB.Model
             Range = node.Values.Type == ValueJsonType.RangeFloat;
         }
 
+        private FloatSetting(Builder builder) : base(builder)
+        {
+            DefaultValue = builder.DefaultValue;
+            Values = builder.Values;
+            Range = builder.Range;
+        }
+
         public sealed class Factory : IFactory
         {
             public BaseSetting Build(SettingJsonNode node) => new FloatSetting(node);
+        }
+
+        public sealed class Builder : BaseBuilder
+        {
+            public float DefaultValue { get; set; }
+            public Dictionary<float, string> Values { get; } = new Dictionary<float, string>();
+            public bool Range { get; set; }
+
+            public Builder(string key, string name) : base(key, name) { }
+
+            public override BaseSetting Build() => new FloatSetting(this);
         }
     }
 }

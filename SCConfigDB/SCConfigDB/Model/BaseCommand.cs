@@ -1,8 +1,9 @@
+using System.Collections.Generic;
 using Defter.StarCitizen.ConfigDB.Json;
 
 namespace Defter.StarCitizen.ConfigDB.Model
 {
-    public class BaseCommand
+    public sealed class BaseCommand
     {
         public string Key { get; }
         public string Name { get; }
@@ -22,6 +23,33 @@ namespace Defter.StarCitizen.ConfigDB.Model
                     Parameters[i] = parameterFactory.Build(node.Parameters[i]);
                 }
             }
+        }
+
+        private BaseCommand(BaseBuilder builder)
+        {
+            Key = builder.Key;
+            Name = builder.Name;
+            Description = builder.Description;
+            if (builder.Parameters.Count != 0)
+            {
+                Parameters = builder.Parameters.ToArray();
+            }
+        }
+
+        public sealed class BaseBuilder
+        {
+            public string Key { get; }
+            public string Name { get; }
+            public string? Description { get; set; }
+            public List<BaseParameter> Parameters { get; } = new List<BaseParameter>();
+
+            public BaseBuilder(string key, string name)
+            {
+                Key = key;
+                Name = name;
+            }
+
+            public BaseCommand Build() => new BaseCommand(this);
         }
     }
 }
