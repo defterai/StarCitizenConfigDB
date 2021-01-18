@@ -41,6 +41,14 @@ namespace Defter.StarCitizen.ConfigDB.Json
             return OrderedDictionary<T, string>.Empty;
         }
 
+        public static void ValuesToNodes<T>(IReadOnlyDictionary<T, string> values, List<ValueJsonNode> nodes, Func<T, string> valueFormatter)
+        {
+            foreach (var valuePair in values)
+            {
+                nodes.Add(new ValueJsonNode(valueFormatter(valuePair.Key), valuePair.Value));
+            }
+        }
+
         public sealed class Builder
         {
             public string Value { get; }

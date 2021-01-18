@@ -1,8 +1,9 @@
+using System.Collections.Generic;
 using Defter.StarCitizen.ConfigDB.Json;
 
 namespace Defter.StarCitizen.ConfigDB.Model
 {
-    public class BaseSetting
+    public abstract class BaseSetting
     {
         public string Key { get; }
         public string Name { get; }
@@ -21,6 +22,10 @@ namespace Defter.StarCitizen.ConfigDB.Model
             Name = builder.Name;
             Description = builder.Description;
         }
+
+        public abstract void ExctractValueNodes(List<ValueJsonNode> nodes);
+
+        public abstract ValuesJsonNode GetValuesNode();
 
         public interface IFactory
         {

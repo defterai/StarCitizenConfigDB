@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Defter.StarCitizen.ConfigDB.Json;
 
 namespace Defter.StarCitizen.ConfigDB.Model
@@ -14,6 +15,15 @@ namespace Defter.StarCitizen.ConfigDB.Model
         private BooleanSetting(Builder builder) : base(builder)
         {
             DefaultValue = builder.DefaultValue;
+        }
+
+        public override void ExctractValueNodes(List<ValueJsonNode> nodes) { }
+
+        public override ValuesJsonNode GetValuesNode()
+        {
+            var builder = new ValuesJsonNode.Builder(ValueJsonType.Bool,
+                DefaultValue.ToString().ToLower());
+            return builder.Build();
         }
 
         public sealed class Factory : IFactory

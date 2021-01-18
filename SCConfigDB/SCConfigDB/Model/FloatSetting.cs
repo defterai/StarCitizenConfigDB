@@ -26,6 +26,23 @@ namespace Defter.StarCitizen.ConfigDB.Model
             Range = builder.Range;
         }
 
+        public override void ExctractValueNodes(List<ValueJsonNode> nodes) =>
+            ValueJsonNode.ValuesToNodes(Values, nodes, v => v.ToString());
+
+        public override ValuesJsonNode GetValuesNode()
+        {
+            var builder = new ValuesJsonNode.Builder(Range ? ValueJsonType.RangeInt : ValueJsonType.Int, DefaultValue.ToString());
+            foreach (var valuePair in Values)
+            {
+                var valueBuilder = new ValueJsonNode.Builder(valuePair.Key.ToString())
+                {
+                    Name = valuePair.Value
+                };
+                builder.ValueList.Add(valueBuilder.Build());
+            }
+            return builder.Build();
+        }
+
         public sealed class Factory : IFactory
         {
             public BaseSetting Build(SettingJsonNode node) => new FloatSetting(node);

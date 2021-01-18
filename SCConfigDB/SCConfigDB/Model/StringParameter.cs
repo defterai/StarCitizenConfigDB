@@ -20,6 +20,16 @@ namespace Defter.StarCitizen.ConfigDB.Model
             Values = builder.Values;
         }
 
+        public override void ExctractValueNodes(List<ValueJsonNode> nodes) =>
+            ValueJsonNode.ValuesToNodes(Values, nodes, v => v);
+
+        public override ValuesJsonNode GetValuesNode()
+        {
+            var builder = new ValuesJsonNode.Builder(ValueJsonType.String, DefaultValue);
+            ExctractValueNodes(builder.ValueList);
+            return builder.Build();
+        }
+
         public sealed class Factory : IFactory
         {
             public BaseParameter Build(ParamJsonNode node) => new StringParameter(node);
