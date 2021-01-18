@@ -25,7 +25,7 @@ namespace Defter.StarCitizen.ConfigDB.Model
             }
         }
 
-        private BaseCommand(BaseBuilder builder)
+        private BaseCommand(Builder builder)
         {
             Key = builder.Key;
             Name = builder.Name;
@@ -36,14 +36,14 @@ namespace Defter.StarCitizen.ConfigDB.Model
             }
         }
 
-        public sealed class BaseBuilder
+        public sealed class Builder
         {
             public string Key { get; }
             public string Name { get; }
             public string? Description { get; set; }
             public List<BaseParameter> Parameters { get; } = new List<BaseParameter>();
 
-            public BaseBuilder(string key, string name)
+            public Builder(string key, string name)
             {
                 Key = key;
                 Name = name;

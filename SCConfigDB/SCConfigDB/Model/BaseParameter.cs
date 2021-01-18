@@ -13,7 +13,7 @@ namespace Defter.StarCitizen.ConfigDB.Model
             Description = node.Description;
         }
 
-        protected BaseParameter(BaseBuilder builder)
+        protected BaseParameter(Builder builder)
         {
             Name = builder.Name;
             Description = builder.Description;
@@ -24,12 +24,12 @@ namespace Defter.StarCitizen.ConfigDB.Model
             public BaseParameter Build(ParamJsonNode node);
         }
 
-        public abstract class BaseBuilder
+        public abstract class Builder
         {
             public string Name { get; }
             public string? Description { get; set; }
 
-            public BaseBuilder(string name)
+            public Builder(string name)
             {
                 Name = name;
             }

@@ -21,7 +21,7 @@ namespace Defter.StarCitizen.ConfigDB.Model
             public BaseSetting Build(SettingJsonNode node) => new BooleanSetting(node);
         }
 
-        public sealed class Builder : BaseBuilder
+        public new sealed class Builder : BaseSetting.Builder
         {
             public bool DefaultValue { get; set; }
 

@@ -31,7 +31,7 @@ namespace Defter.StarCitizen.ConfigDB.Model
             public BaseSetting Build(SettingJsonNode node) => new IntegerSetting(node);
         }
 
-        public sealed class Builder : BaseBuilder
+        public new sealed class Builder : BaseSetting.Builder
         {
             public int DefaultValue { get; set; }
             public Dictionary<int, string> Values { get; } = new Dictionary<int, string>();

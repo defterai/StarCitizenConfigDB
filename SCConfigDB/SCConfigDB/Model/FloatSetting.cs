@@ -31,7 +31,7 @@ namespace Defter.StarCitizen.ConfigDB.Model
             public BaseSetting Build(SettingJsonNode node) => new FloatSetting(node);
         }
 
-        public sealed class Builder : BaseBuilder
+        public new sealed class Builder : BaseSetting.Builder
         {
             public float DefaultValue { get; set; }
             public Dictionary<float, string> Values { get; } = new Dictionary<float, string>();

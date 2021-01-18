@@ -25,7 +25,7 @@ namespace Defter.StarCitizen.ConfigDB.Model
             public BaseParameter Build(ParamJsonNode node) => new IntegerParameter(node);
         }
 
-        public sealed class Builder : BaseBuilder
+        public new sealed class Builder : BaseParameter.Builder
         {
             public int DefaultValue { get; set; }
             public Dictionary<int, string> Values { get; } = new Dictionary<int, string>();
