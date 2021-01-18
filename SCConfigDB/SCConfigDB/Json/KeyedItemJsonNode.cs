@@ -14,5 +14,17 @@ namespace Defter.StarCitizen.ConfigDB.Json
         }
 
         public bool IsKeyEqual(string key) => string.Equals(Key, key);
+
+        public class Builder
+        {
+            public string Key { get; }
+
+            public Builder(string key)
+            {
+                Key = key;
+            }
+
+            public KeyedItemJsonNode Build() => new KeyedItemJsonNode(Key);
+        }
     }
 }

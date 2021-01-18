@@ -15,5 +15,21 @@ namespace Defter.StarCitizen.ConfigDB.Json
             Commands = commands;
             Settings = settings;
         }
+
+        private ConfigDataTranslateJsonNode(Builder builder) : this(builder.Commands, builder.Settings) { }
+
+        public sealed class Builder
+        {
+            public CommandsTranslateJsonNode Commands { get; }
+            public SettingsTranslateJsonNode Settings { get; }
+
+            public Builder(CommandsTranslateJsonNode commands, SettingsTranslateJsonNode settings)
+            {
+                Commands = commands;
+                Settings = settings;
+            }
+
+            public ConfigDataTranslateJsonNode Build() => new ConfigDataTranslateJsonNode(this);
+        }
     }
 }

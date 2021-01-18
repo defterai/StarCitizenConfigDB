@@ -20,7 +20,12 @@ namespace Defter.StarCitizen.ConfigDB.Json
             Settings = settings;
         }
 
-        public ConfigDataJsonNode(ConfigDataJsonNode node, ConfigDataTranslateJsonNode translateNode)
+        private ConfigDataJsonNode(Builder builder) : this(builder.Commands, builder.Settings)
+        {
+            Languages = builder.Languages;
+        }
+
+        private ConfigDataJsonNode(ConfigDataJsonNode node, ConfigDataTranslateJsonNode translateNode)
         {
             Languages = node.Languages;
             Commands = node.Commands.TranslateWith(translateNode.Commands);
@@ -29,5 +34,20 @@ namespace Defter.StarCitizen.ConfigDB.Json
 
         public ConfigDataJsonNode TranslateWith(ConfigDataTranslateJsonNode translateNode) =>
             new ConfigDataJsonNode(this, translateNode);
+
+        public sealed class Builder
+        {
+            public ISet<string> Languages { get; } = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            public CommandsJsonNode Commands { get; }
+            public SettingsJsonNode Settings { get; }
+
+            public Builder(CommandsJsonNode commands, SettingsJsonNode settings)
+            {
+                Commands = commands;
+                Settings = settings;
+            }
+
+            public ConfigDataJsonNode Build() => new ConfigDataJsonNode(this);
+        }
     }
 }

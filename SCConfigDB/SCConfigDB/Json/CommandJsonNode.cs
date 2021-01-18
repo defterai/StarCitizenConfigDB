@@ -1,6 +1,7 @@
 using System;
 using Newtonsoft.Json;
 using Defter.StarCitizen.ConfigDB.Collection;
+using System.Collections.Generic;
 
 namespace Defter.StarCitizen.ConfigDB.Json
 {
@@ -22,7 +23,16 @@ namespace Defter.StarCitizen.ConfigDB.Json
             Category = category;
         }
 
-        public CommandJsonNode(CommandJsonNode node, CommandTranslateJsonNode translateNode)
+        private CommandJsonNode(Builder builder) : this(builder.Key, builder.Name, builder.Category)
+        {
+            Description = builder.Description;
+            if (builder.Parameters.Count != 0)
+            {
+                Parameters = builder.Parameters.ToArray();
+            }
+        }
+
+        private CommandJsonNode(CommandJsonNode node, CommandTranslateJsonNode translateNode)
             : base(node.Key)
         {
             if (!node.IsKeyEqual(translateNode.Key))
@@ -55,5 +65,21 @@ namespace Defter.StarCitizen.ConfigDB.Json
 
         public CommandJsonNode TranslateWith(CommandTranslateJsonNode translateNode) =>
             new CommandJsonNode(this, translateNode);
+
+        public new sealed class Builder : KeyedItemJsonNode.Builder
+        {
+            public string Name { get; }
+            public string Category { get; }
+            public string? Description { get; set; }
+            public List<ParamJsonNode> Parameters { get; } = new List<ParamJsonNode>();
+
+            public Builder(string key, string name, string category) : base(key)
+            {
+                Name = name;
+                Category = category;
+            }
+
+            public new CommandJsonNode Build() => new CommandJsonNode(this);
+        }
     }
 }

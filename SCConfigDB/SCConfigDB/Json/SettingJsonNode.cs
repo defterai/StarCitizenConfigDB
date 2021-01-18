@@ -22,7 +22,12 @@ namespace Defter.StarCitizen.ConfigDB.Json
             Values = values;
         }
 
-        public SettingJsonNode(SettingJsonNode node, SettingTranslateJsonNode translateNode)
+        private SettingJsonNode(Builder builder) : this(builder.Key, builder.Name, builder.Category, builder.Values)
+        {
+            Description = builder.Description;
+        }
+
+        private SettingJsonNode(SettingJsonNode node, SettingTranslateJsonNode translateNode)
             : base(node.Key)
         {
             if (!node.IsKeyEqual(translateNode.Key))
@@ -41,5 +46,22 @@ namespace Defter.StarCitizen.ConfigDB.Json
 
         public SettingJsonNode TranslateWith(SettingTranslateJsonNode translateNode) =>
             new SettingJsonNode(this, translateNode);
+
+        public new sealed class Builder : KeyedItemJsonNode.Builder
+        {
+            public string Name { get; }
+            public string Category { get; }
+            public string? Description { get; set; }
+            public ValuesJsonNode Values { get; }
+
+            public Builder(string key, string name, string category, ValuesJsonNode values) : base(key)
+            {
+                Name = name;
+                Category = category;
+                Values = values;
+            }
+
+            public new SettingJsonNode Build() => new SettingJsonNode(this);
+        }
     }
 }

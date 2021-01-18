@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Defter.StarCitizen.ConfigDB.Json
 {
-    public class CategoryJsonNode : KeyedItemJsonNode
+    public sealed class CategoryJsonNode : KeyedItemJsonNode
     {
         [JsonProperty("name", Required = Required.Always)]
         public string Name { get; }
@@ -14,7 +14,9 @@ namespace Defter.StarCitizen.ConfigDB.Json
             Name = name;
         }
 
-        public CategoryJsonNode(CategoryJsonNode node, CategoryJsonNode translateNode) : base(node.Key)
+        private CategoryJsonNode(Builder builder) : this(builder.Key, builder.Name) { }
+
+        private CategoryJsonNode(CategoryJsonNode node, CategoryJsonNode translateNode) : base(node.Key)
         {
             if (!IsKeyEqual(translateNode.Key))
             {
@@ -25,5 +27,17 @@ namespace Defter.StarCitizen.ConfigDB.Json
 
         public CategoryJsonNode TranslateWith(CategoryJsonNode translateNode) =>
             new CategoryJsonNode(this, translateNode);
+
+        public new sealed class Builder : KeyedItemJsonNode.Builder
+        {
+            public string Name { get; }
+
+            public Builder(string key, string name) : base(key)
+            {
+                Name = name;
+            }
+
+            public new CategoryJsonNode Build() => new CategoryJsonNode(this);
+        } 
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using Newtonsoft.Json;
 using Defter.StarCitizen.ConfigDB.Collection;
+using System.Collections.Generic;
 
 namespace Defter.StarCitizen.ConfigDB.Json
 {
@@ -21,7 +22,15 @@ namespace Defter.StarCitizen.ConfigDB.Json
             DefaultValue = defaultValue;
         }
 
-        public ValuesJsonNode(ValuesJsonNode node, ValueJsonNode[]? translateNodes)
+        private ValuesJsonNode(Builder builder) : this(builder.Type, builder.DefaultValue)
+        {
+            if (builder.ValueList.Count != 0)
+            {
+                List = builder.ValueList.ToArray();
+            }
+        }
+
+        private ValuesJsonNode(ValuesJsonNode node, ValueJsonNode[]? translateNodes)
         {
             Type = node.Type;
             DefaultValue = node.DefaultValue;
@@ -53,5 +62,20 @@ namespace Defter.StarCitizen.ConfigDB.Json
         public int IntegerDefault() => int.Parse(DefaultValue);
 
         public float FloatDefault() => float.Parse(DefaultValue);
+
+        public sealed class Builder
+        {
+            public ValueJsonType Type { get; }
+            public string DefaultValue { get; }
+            public List<ValueJsonNode> ValueList { get; } = new List<ValueJsonNode>();
+
+            public Builder(ValueJsonType type, string defaultValue)
+            {
+                Type = type;
+                DefaultValue = defaultValue;
+            }
+
+            public ValuesJsonNode Build() => new ValuesJsonNode(this);
+        }
     }
 }

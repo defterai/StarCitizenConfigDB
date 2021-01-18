@@ -8,7 +8,9 @@ namespace Defter.StarCitizen.ConfigDB.Json
         [JsonConstructor]
         public SettingsJsonNode() { }
 
-        public SettingsJsonNode(SettingsJsonNode node, SettingsTranslateJsonNode translateNode)
+        private SettingsJsonNode(Builder builder) : base(builder) { }
+
+        private SettingsJsonNode(SettingsJsonNode node, SettingsTranslateJsonNode translateNode)
             : base(ArrayHelper.Clone(node.Categories), ArrayHelper.Clone(node.Items))
         {
             foreach (var categoryTranslateNode in translateNode.Categories)
@@ -30,5 +32,10 @@ namespace Defter.StarCitizen.ConfigDB.Json
         }
 
         public SettingsJsonNode TranslateWith(SettingsTranslateJsonNode translateNode) => new SettingsJsonNode(this, translateNode);
+
+        public new sealed class Builder : CategoryItemsJsonNode<SettingJsonNode>.Builder
+        {
+            public new SettingsJsonNode Build() => new SettingsJsonNode(this);
+        }
     }
 }

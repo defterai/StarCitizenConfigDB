@@ -19,6 +19,8 @@ namespace Defter.StarCitizen.ConfigDB.Json
             Name = name ?? value;
         }
 
+        private ValueJsonNode(Builder builder) : this(builder.Value, builder.Name) { }
+
         public ValueJsonNode TranslateWith(ValueJsonNode translateNode) => new ValueJsonNode(Value, translateNode.Name);
 
         public int IntegerValue() => int.Parse(Value);
@@ -37,6 +39,19 @@ namespace Defter.StarCitizen.ConfigDB.Json
                 return values;
             }
             return OrderedDictionary<T, string>.Empty;
+        }
+
+        public sealed class Builder
+        {
+            public string Value { get; }
+            public string? Name { get; set; }
+
+            public Builder(string value)
+            {
+                Value = value;
+            }
+
+            public ValueJsonNode Build() => new ValueJsonNode(this);
         }
     }
 }
