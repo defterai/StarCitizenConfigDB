@@ -65,7 +65,8 @@ namespace Defter.StarCitizen.ConfigDB
         public static async Task SaveToFileAsync<T>(T node, string path) =>
             await WriteContentToFileAsync(path, SaveToString(node), JsonEncoding).ConfigureAwait(false);
 
-        public static ConfigDataJsonNode Build(ConfigData data, ISet<string> languages)
+        public static ConfigDataJsonNode Build(ConfigData data, ISet<string> languages,
+            INetworkSourceSettings? schemaSource = null)
         {
             // build commands node
             var commandsJsonBuilder = new CommandsJsonNode.Builder();
@@ -112,11 +113,15 @@ namespace Defter.StarCitizen.ConfigDB
             // build final root node
             var builder = new ConfigDataJsonNode.Builder(commandsJsonBuilder.Build(),
                 settingsJsonBuilder.Build());
+            if (schemaSource != null)
+            {
+                builder.Schema = schemaSource.JsonSchemaUrl;
+            }
             builder.Languages.UnionWith(languages);
             return builder.Build();
         }
 
-        public static ConfigDataTranslateJsonNode Build(ConfigData data)
+        public static ConfigDataTranslateJsonNode Build(ConfigData data, INetworkSourceSettings? schemaSource = null)
         {
             // build commands node
             var commandsJsonBuilder = new CommandsTranslateJsonNode.Builder();
@@ -162,6 +167,10 @@ namespace Defter.StarCitizen.ConfigDB
             // build final root node
             var builder = new ConfigDataTranslateJsonNode.Builder(commandsJsonBuilder.Build(),
                 settingsJsonBuilder.Build());
+            if (schemaSource != null)
+            {
+                builder.Schema = schemaSource.JsonTranslateSchemaUrl;
+            }
             return builder.Build();
         }
 

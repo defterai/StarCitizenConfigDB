@@ -65,11 +65,11 @@ namespace Defter.StarCitizen.ConfigDB
 
     public sealed class FileConfigDataLoader : ConfigDataLoader
     {
-        private readonly string _databasePath;
+        private readonly IFileSourceSettings _sourceSettings;
 
-        public FileConfigDataLoader(string path)
+        public FileConfigDataLoader(IFileSourceSettings sourceSettings)
         {
-            _databasePath = path;
+            _sourceSettings = sourceSettings;
         }
 
         public override async Task LoadDatabaseAsync(bool forceReload = false)
@@ -77,7 +77,7 @@ namespace Defter.StarCitizen.ConfigDB
             if (forceReload || DatabaseJsonNode == null)
             {
                 DatabaseJsonNode = await ConfigDatabase.LoadFromFileAsync<ConfigDataJsonNode>(
-                    FileSourceSettings.DatabaseFilePath(_databasePath));
+                    _sourceSettings.DatabaseFilePath);
             }
         }
 
@@ -86,19 +86,17 @@ namespace Defter.StarCitizen.ConfigDB
             if (forceReload || !TranslateJsonNodes.ContainsKey(language))
             {
                 TranslateJsonNodes[language] = await ConfigDatabase.LoadFromFileAsync<ConfigDataTranslateJsonNode>(
-                    FileSourceSettings.DatabaseTranslateFilePath(_databasePath, language));
+                    _sourceSettings.DatabaseTranslateFilePath(language));
             }
         }
     }
 
-    public sealed class GitHubConfigDataLoader : ConfigDataLoader
+    public sealed class NetworkConfigDataLoader : ConfigDataLoader
     {
         private readonly HttpClient _client;
-        private readonly GitHubSourceSettings _sourceSettings;
+        private readonly INetworkSourceSettings _sourceSettings;
 
-        public GitHubConfigDataLoader(HttpClient client) : this(client, new GitHubSourceSettings()) { }
-
-        public GitHubConfigDataLoader(HttpClient client, GitHubSourceSettings sourceSettings)
+        public NetworkConfigDataLoader(HttpClient client, INetworkSourceSettings sourceSettings)
         {
             _client = client;
             _sourceSettings = sourceSettings;

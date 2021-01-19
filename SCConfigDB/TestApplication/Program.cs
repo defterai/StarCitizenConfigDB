@@ -23,15 +23,17 @@ namespace Defter.StarCitizen.TestApplication
             client.Timeout = TimeSpan.FromSeconds(30);
 
             ConfigDataLoader? configDataLoader = null;
+            IFileSourceSettings fileSourceSettings = new LocalFileSourceSettings(Environment.CurrentDirectory);
+            INetworkSourceSettings networkSourceSettings = new GitHubSourceSettings();
             do
             {
                 Console.Write("Press to choose load data source [G - GitHub / L - Local file]: ");
                 var pressKey = Console.ReadKey();
                 Console.WriteLine(string.Empty);
                 if (pressKey.KeyChar == 'g' || pressKey.KeyChar == 'G')
-                    configDataLoader = new GitHubConfigDataLoader(client);
+                    configDataLoader = new NetworkConfigDataLoader(client, networkSourceSettings);
                 else if (pressKey.KeyChar == 'l' || pressKey.KeyChar == 'L')
-                    configDataLoader = new FileConfigDataLoader(Environment.CurrentDirectory);
+                    configDataLoader = new FileConfigDataLoader(fileSourceSettings);
                 else
                     Console.WriteLine("Invalid choice!");
             } while (configDataLoader == null);

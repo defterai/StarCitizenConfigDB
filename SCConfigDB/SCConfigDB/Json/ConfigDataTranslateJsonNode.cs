@@ -4,9 +4,11 @@ namespace Defter.StarCitizen.ConfigDB.Json
 {
     public sealed class ConfigDataTranslateJsonNode
     {
-        [JsonProperty("commands", Required = Required.Always, Order = 0)]
+        [JsonProperty("$schema", Order = 0)]
+        public string? Schema { get; }
+        [JsonProperty("commands", Required = Required.Always, Order = 1)]
         public CommandsTranslateJsonNode Commands { get; }
-        [JsonProperty("settings", Required = Required.Always, Order = 1)]
+        [JsonProperty("settings", Required = Required.Always, Order = 2)]
         public SettingsTranslateJsonNode Settings { get; }
 
         [JsonConstructor]
@@ -16,10 +18,14 @@ namespace Defter.StarCitizen.ConfigDB.Json
             Settings = settings;
         }
 
-        private ConfigDataTranslateJsonNode(Builder builder) : this(builder.Commands, builder.Settings) { }
+        private ConfigDataTranslateJsonNode(Builder builder) : this(builder.Commands, builder.Settings)
+        {
+            Schema = builder.Schema;
+        }
 
         public sealed class Builder
         {
+            public string? Schema { get; set; }
             public CommandsTranslateJsonNode Commands { get; }
             public SettingsTranslateJsonNode Settings { get; }
 

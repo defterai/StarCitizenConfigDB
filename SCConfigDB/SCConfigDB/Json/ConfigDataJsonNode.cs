@@ -6,11 +6,13 @@ namespace Defter.StarCitizen.ConfigDB.Json
 {
     public sealed class ConfigDataJsonNode
     {
-        [JsonProperty("languages", Order = 0)]
+        [JsonProperty("$schema", Order = 0)]
+        public string? Schema { get; }
+        [JsonProperty("languages", Order = 1)]
         public ISet<string> Languages { get; } = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-        [JsonProperty("commands", Required = Required.Always, Order = 1)]
+        [JsonProperty("commands", Required = Required.Always, Order = 2)]
         public CommandsJsonNode Commands { get; }
-        [JsonProperty("settings", Required = Required.Always, Order = 2)]
+        [JsonProperty("settings", Required = Required.Always, Order = 3)]
         public SettingsJsonNode Settings { get; }
 
         [JsonConstructor]
@@ -22,11 +24,13 @@ namespace Defter.StarCitizen.ConfigDB.Json
 
         private ConfigDataJsonNode(Builder builder) : this(builder.Commands, builder.Settings)
         {
+            Schema = builder.Schema;
             Languages = builder.Languages;
         }
 
         private ConfigDataJsonNode(ConfigDataJsonNode node, ConfigDataTranslateJsonNode translateNode)
         {
+            Schema = node.Schema;
             Languages = node.Languages;
             Commands = node.Commands.TranslateWith(translateNode.Commands);
             Settings = node.Settings.TranslateWith(translateNode.Settings);
@@ -37,6 +41,7 @@ namespace Defter.StarCitizen.ConfigDB.Json
 
         public sealed class Builder
         {
+            public string? Schema { get; set; }
             public ISet<string> Languages { get; } = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
             public CommandsJsonNode Commands { get; }
             public SettingsJsonNode Settings { get; }
