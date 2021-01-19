@@ -76,7 +76,7 @@ namespace Defter.StarCitizen.ConfigDB
         {
             if (forceReload || DatabaseJsonNode == null)
             {
-                DatabaseJsonNode = await ConfigDatabase.LoadFromFileAsync(
+                DatabaseJsonNode = await ConfigDatabase.LoadFromFileAsync<ConfigDataJsonNode>(
                     FileSourceSettings.DatabaseFilePath(_databasePath));
             }
         }
@@ -85,7 +85,7 @@ namespace Defter.StarCitizen.ConfigDB
         {
             if (forceReload || !TranslateJsonNodes.ContainsKey(language))
             {
-                TranslateJsonNodes[language] = await ConfigDatabase.LoadTranslateFromFileAsync(
+                TranslateJsonNodes[language] = await ConfigDatabase.LoadFromFileAsync<ConfigDataTranslateJsonNode>(
                     FileSourceSettings.DatabaseTranslateFilePath(_databasePath, language));
             }
         }
@@ -108,7 +108,7 @@ namespace Defter.StarCitizen.ConfigDB
         {
             if (forceReload || DatabaseJsonNode == null)
             {
-                DatabaseJsonNode = await ConfigDatabase.LoadFromUrlAsync(_client,
+                DatabaseJsonNode = await ConfigDatabase.LoadFromUrlAsync<ConfigDataJsonNode>(_client,
                     _sourceSettings.DatabaseUrl, null);
             }
         }
@@ -117,7 +117,7 @@ namespace Defter.StarCitizen.ConfigDB
         {
             if (forceReload || !TranslateJsonNodes.ContainsKey(language))
             {
-                TranslateJsonNodes[language] = await ConfigDatabase.LoadTranslateFromUrlAsync(
+                TranslateJsonNodes[language] = await ConfigDatabase.LoadFromUrlAsync<ConfigDataTranslateJsonNode>(
                     _client, _sourceSettings.DatabaseTranslateUrl(language), null);
             }
         }

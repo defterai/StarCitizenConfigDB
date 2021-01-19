@@ -6,11 +6,11 @@ namespace Defter.StarCitizen.ConfigDB.Json
 {
     public sealed class ConfigDataJsonNode
     {
-        [JsonProperty("languages")]
+        [JsonProperty("languages", Order = 0)]
         public ISet<string> Languages { get; } = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-        [JsonProperty("commands", Required = Required.Always)]
+        [JsonProperty("commands", Required = Required.Always, Order = 1)]
         public CommandsJsonNode Commands { get; }
-        [JsonProperty("settings", Required = Required.Always)]
+        [JsonProperty("settings", Required = Required.Always, Order = 2)]
         public SettingsJsonNode Settings { get; }
 
         [JsonConstructor]

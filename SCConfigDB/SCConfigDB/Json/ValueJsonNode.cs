@@ -7,9 +7,9 @@ namespace Defter.StarCitizen.ConfigDB.Json
 {
     public class ValueJsonNode
     {
-        [JsonProperty("value", Required = Required.Always)]
+        [JsonProperty("value", Required = Required.Always, Order = 0)]
         public string Value { get; }
-        [JsonProperty("name")]
+        [JsonProperty("name", Order = 1)]
         public string Name { get; }
 
         [JsonConstructor]

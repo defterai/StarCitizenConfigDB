@@ -7,13 +7,13 @@ namespace Defter.StarCitizen.ConfigDB.Json
 {
     public sealed class CommandJsonNode : KeyedItemJsonNode
     {
-        [JsonProperty("name", Required = Required.Always)]
+        [JsonProperty("name", Required = Required.Always, Order = 1)]
         public string Name { get; }
-        [JsonProperty("category", Required = Required.Always)]
+        [JsonProperty("category", Required = Required.Always, Order = 2)]
         public string Category { get; }
-        [JsonProperty("desc")]
+        [JsonProperty("desc", Order = 3)]
         public string? Description { get; }
-        [JsonProperty("params")]
+        [JsonProperty("params", Order = 4)]
         public ParamJsonNode[]? Parameters { get; internal set; }
 
         [JsonConstructor]

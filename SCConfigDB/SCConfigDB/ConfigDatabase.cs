@@ -1,6 +1,3 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Serialization;
 using Defter.StarCitizen.ConfigDB.Json;
 using Defter.StarCitizen.ConfigDB.Model;
 using System.IO;
@@ -14,54 +11,24 @@ namespace Defter.StarCitizen.ConfigDB
 {
     public static class ConfigDatabase
     {
-        private static readonly JsonSerializerSettings _jsonSettings = GetJsonSettings();
         private static readonly ParameterFactory _parameterFactory = new ParameterFactory();
         private static readonly SettingFactory _settingFactory = new SettingFactory();
-
-        private static JsonSerializerSettings GetJsonSettings()
-        {
-            var settings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
-            settings.Converters.Add(new StringEnumConverter(new SnakeCaseNamingStrategy(), false));
-            return settings;
-        }
 
         public static Encoding JsonEncoding { get; } = Encoding.UTF8;
 
         // Loading (json -> json nodes -> model)
 
-        public static ConfigDataJsonNode LoadFromString(string json)
-        {
-            var node = JsonConvert.DeserializeObject<ConfigDataJsonNode>(json, _jsonSettings);
-            if (node == null)
-                throw new InvalidDataException("database json data is invalid");
-            return node;
-        }
+        public static T LoadFromString<T>(string json) =>
+            DbJsonConverter.Deserialize<T>(json);
 
-        public static ConfigDataTranslateJsonNode LoadTranslateFromString(string json)
-        {
-            var node = JsonConvert.DeserializeObject<ConfigDataTranslateJsonNode>(json, _jsonSettings);
-            if (node == null)
-                throw new InvalidDataException("database translate json data is invalid");
-            return node;
-        }
+        public static T LoadFromFile<T>(string path) =>
+            LoadFromString<T>(File.ReadAllText(path, JsonEncoding));
 
-        public static ConfigDataJsonNode LoadFromFile(string path) =>
-            LoadFromString(File.ReadAllText(path, JsonEncoding));
+        public static async Task<T> LoadFromFileAsync<T>(string path) =>
+            LoadFromString<T>(await GetContentFromFileAsync(path, JsonEncoding).ConfigureAwait(false));
 
-        public static ConfigDataTranslateJsonNode LoadTranslateFromFile(string path) =>
-            LoadTranslateFromString(File.ReadAllText(path, JsonEncoding));
-
-        public static async Task<ConfigDataJsonNode> LoadFromFileAsync(string path) =>
-            LoadFromString(await GetContentFromFileAsync(path, JsonEncoding).ConfigureAwait(false));
-
-        public static async Task<ConfigDataTranslateJsonNode> LoadTranslateFromFileAsync(string path) =>
-            LoadTranslateFromString(await GetContentFromFileAsync(path, JsonEncoding).ConfigureAwait(false));
-
-        public static async Task<ConfigDataJsonNode> LoadFromUrlAsync(HttpClient client, string url, CancellationToken? cancellationToken = default) =>
-            LoadFromString(await GetContentFromUrlAsync(client, url, cancellationToken).ConfigureAwait(false));
-
-        public static async Task<ConfigDataTranslateJsonNode> LoadTranslateFromUrlAsync(HttpClient client, string url, CancellationToken? cancellationToken = default) =>
-            LoadTranslateFromString(await GetContentFromUrlAsync(client, url, cancellationToken).ConfigureAwait(false));
+        public static async Task<T> LoadFromUrlAsync<T>(HttpClient client, string url, CancellationToken? cancellationToken = default) =>
+            LoadFromString<T>(await GetContentFromUrlAsync(client, url, cancellationToken).ConfigureAwait(false));
 
         public static ConfigData Build(ConfigDataJsonNode node)
         {
@@ -87,25 +54,16 @@ namespace Defter.StarCitizen.ConfigDB
             return await result.Content.ReadAsStringAsync().ConfigureAwait(false);
         }
 
-        // Saving 
+        // Saving (model -> json nodes -> json)
 
-        public static string SaveToString(ConfigDataJsonNode node) =>
-            JsonConvert.SerializeObject(node, _jsonSettings);
+        public static string SaveToString<T>(T node) =>
+            DbJsonConverter.Serialize(node);
 
-        public static string SaveTranslateToString(ConfigDataTranslateJsonNode node) =>
-            JsonConvert.SerializeObject(node, _jsonSettings);
-
-        public static void SaveToFile(ConfigDataJsonNode node, string path) =>
+        public static void SaveToFile<T>(T node, string path) =>
             File.WriteAllText(path, SaveToString(node), JsonEncoding);
 
-        public static void SaveTranslateToFile(ConfigDataTranslateJsonNode node, string path) =>
-            File.WriteAllText(path, SaveTranslateToString(node), JsonEncoding);
-
-        public static async Task SaveToFileAsync(ConfigDataJsonNode node, string path) =>
+        public static async Task SaveToFileAsync<T>(T node, string path) =>
             await WriteContentToFileAsync(path, SaveToString(node), JsonEncoding).ConfigureAwait(false);
-
-        public static async Task SaveTranslateToFileAsync(ConfigDataTranslateJsonNode node, string path) =>
-            await WriteContentToFileAsync(path, SaveTranslateToString(node), JsonEncoding).ConfigureAwait(false);
 
         public static ConfigDataJsonNode Build(ConfigData data, ISet<string> languages)
         {

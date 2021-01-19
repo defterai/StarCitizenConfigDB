@@ -4,7 +4,7 @@ namespace Defter.StarCitizen.ConfigDB.Json
 {
     public class KeyedItemJsonNode
     {
-        [JsonProperty("key", Required = Required.Always)]
+        [JsonProperty("key", Required = Required.Always, Order = 0)]
         public string Key { get; }
 
         [JsonConstructor]

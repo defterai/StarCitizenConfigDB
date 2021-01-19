@@ -5,11 +5,11 @@ namespace Defter.StarCitizen.ConfigDB.Json
 {
     public sealed class ParamTranslateJsonNode
     {
-        [JsonProperty("name", Required = Required.Always)]
+        [JsonProperty("name", Required = Required.Always, Order = 0)]
         public string Name { get; }
-        [JsonProperty("desc")]
+        [JsonProperty("desc", Order = 1)]
         public string? Description { get; }
-        [JsonProperty("values")]
+        [JsonProperty("values", Order = 2)]
         public ValueJsonNode[]? Values { get; internal set; }
 
         [JsonConstructor]

@@ -4,9 +4,9 @@ namespace Defter.StarCitizen.ConfigDB.Json
 {
     public sealed class ConfigDataTranslateJsonNode
     {
-        [JsonProperty("commands", Required = Required.Always)]
+        [JsonProperty("commands", Required = Required.Always, Order = 0)]
         public CommandsTranslateJsonNode Commands { get; }
-        [JsonProperty("settings", Required = Required.Always)]
+        [JsonProperty("settings", Required = Required.Always, Order = 1)]
         public SettingsTranslateJsonNode Settings { get; }
 
         [JsonConstructor]

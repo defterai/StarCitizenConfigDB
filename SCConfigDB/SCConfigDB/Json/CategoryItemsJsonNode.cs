@@ -7,9 +7,9 @@ namespace Defter.StarCitizen.ConfigDB.Json
 {
     public class CategoryItemsJsonNode<T> where T : KeyedItemJsonNode
     {
-        [JsonProperty("categories", Required = Required.Always)]
+        [JsonProperty("categories", Required = Required.Always, Order = 0)]
         public CategoryJsonNode[] Categories { get; private set; } = new CategoryJsonNode[0];
-        [JsonProperty("items", Required = Required.Always)]
+        [JsonProperty("items", Required = Required.Always, Order = 1)]
         public T[] Items { get; private set; } = new T[0];
 
         [JsonConstructor]

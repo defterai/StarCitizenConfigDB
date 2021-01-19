@@ -6,13 +6,13 @@ using System.Collections.Generic;
 
 namespace Defter.StarCitizen.ConfigDB.Json
 {
-    public class ValuesJsonNode
+    public sealed class ValuesJsonNode
     {
-        [JsonProperty("type", Required = Required.Always)]
+        [JsonProperty("type", Required = Required.Always, Order = 0)]
         public ValueJsonType Type { get; }
-        [JsonProperty("default", Required = Required.Always)]
+        [JsonProperty("default", Required = Required.Always, Order = 1)]
         public string DefaultValue { get; }
-        [JsonProperty("list")]
+        [JsonProperty("list", Order = 2)]
         public ValueJsonNode[]? List { get; internal set; }
 
         [JsonConstructor]

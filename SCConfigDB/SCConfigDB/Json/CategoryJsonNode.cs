@@ -5,7 +5,7 @@ namespace Defter.StarCitizen.ConfigDB.Json
 {
     public sealed class CategoryJsonNode : KeyedItemJsonNode
     {
-        [JsonProperty("name", Required = Required.Always)]
+        [JsonProperty("name", Required = Required.Always, Order = 1)]
         public string Name { get; }
 
         [JsonConstructor]
