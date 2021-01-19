@@ -29,7 +29,7 @@ namespace Defter.StarCitizen.ConfigDB.Model
 
         public interface IFactory
         {
-            public BaseSetting Build(SettingJsonNode node);
+            BaseSetting Build(SettingJsonNode node);
         }
 
         public abstract class Builder
