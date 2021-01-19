@@ -7,7 +7,7 @@ namespace Defter.StarCitizen.ConfigDB.Json
         [JsonProperty("name", Required = Required.Always, Order = 0)]
         public string Name { get; }
         [JsonProperty("desc", Order = 1)]
-        public string? Description { get; }
+        public string? Description { get; private set; }
         [JsonProperty("values", Required = Required.Always, Order = 2)]
         public ValuesJsonNode Values { get; }
 

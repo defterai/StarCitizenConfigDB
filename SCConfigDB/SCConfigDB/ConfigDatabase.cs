@@ -65,7 +65,7 @@ namespace Defter.StarCitizen.ConfigDB
         public static async Task SaveToFileAsync<T>(T node, string path) =>
             await WriteContentToFileAsync(path, SaveToString(node), JsonEncoding).ConfigureAwait(false);
 
-        public static ConfigDataJsonNode Build(ConfigData data, ISet<string> languages,
+        public static ConfigDataJsonNode BuildNode(ConfigData data, ISet<string> languages,
             INetworkSourceSettings? schemaSource = null)
         {
             // build commands node
@@ -121,7 +121,7 @@ namespace Defter.StarCitizen.ConfigDB
             return builder.Build();
         }
 
-        public static ConfigDataTranslateJsonNode Build(ConfigData data, INetworkSourceSettings? schemaSource = null)
+        public static ConfigDataTranslateJsonNode BuildTranslateNode(ConfigData data, INetworkSourceSettings? schemaSource = null)
         {
             // build commands node
             var commandsJsonBuilder = new CommandsTranslateJsonNode.Builder();

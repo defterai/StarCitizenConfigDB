@@ -13,7 +13,7 @@ namespace Defter.StarCitizen.ConfigDB.Json
         [JsonProperty("default", Required = Required.Always, Order = 1)]
         public string DefaultValue { get; }
         [JsonProperty("list", Order = 2)]
-        public ValueJsonNode[]? List { get; internal set; }
+        public ValueJsonNode[]? List { get; private set; }
 
         [JsonConstructor]
         public ValuesJsonNode(ValueJsonType type, string defaultValue)

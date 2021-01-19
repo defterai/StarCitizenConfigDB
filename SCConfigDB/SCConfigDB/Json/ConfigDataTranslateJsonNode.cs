@@ -5,7 +5,7 @@ namespace Defter.StarCitizen.ConfigDB.Json
     public sealed class ConfigDataTranslateJsonNode
     {
         [JsonProperty("$schema", Order = 0)]
-        public string? Schema { get; }
+        public string? Schema { get; private set; }
         [JsonProperty("commands", Required = Required.Always, Order = 1)]
         public CommandsTranslateJsonNode Commands { get; }
         [JsonProperty("settings", Required = Required.Always, Order = 2)]

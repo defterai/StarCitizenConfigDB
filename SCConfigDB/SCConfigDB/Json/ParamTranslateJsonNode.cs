@@ -10,7 +10,7 @@ namespace Defter.StarCitizen.ConfigDB.Json
         [JsonProperty("desc", Order = 1)]
         public string? Description { get; }
         [JsonProperty("values", Order = 2)]
-        public ValueJsonNode[]? Values { get; internal set; }
+        public ValueJsonNode[]? Values { get; private set; }
 
         [JsonConstructor]
         public ParamTranslateJsonNode(string name)

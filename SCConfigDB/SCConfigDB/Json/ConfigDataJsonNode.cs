@@ -7,7 +7,7 @@ namespace Defter.StarCitizen.ConfigDB.Json
     public sealed class ConfigDataJsonNode
     {
         [JsonProperty("$schema", Order = 0)]
-        public string? Schema { get; }
+        public string? Schema { get; private set; }
         [JsonProperty("languages", Order = 1)]
         public ISet<string> Languages { get; } = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         [JsonProperty("commands", Required = Required.Always, Order = 2)]
@@ -45,6 +45,14 @@ namespace Defter.StarCitizen.ConfigDB.Json
             public ISet<string> Languages { get; } = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
             public CommandsJsonNode Commands { get; }
             public SettingsJsonNode Settings { get; }
+
+            public Builder(ConfigDataJsonNode node)
+            {
+                Schema = node.Schema;
+                Languages = new HashSet<string>(node.Languages, StringComparer.OrdinalIgnoreCase);
+                Commands = node.Commands;
+                Settings = node.Settings;
+            }
 
             public Builder(CommandsJsonNode commands, SettingsJsonNode settings)
             {

@@ -12,9 +12,9 @@ namespace Defter.StarCitizen.ConfigDB.Json
         [JsonProperty("category", Required = Required.Always, Order = 2)]
         public string Category { get; }
         [JsonProperty("desc", Order = 3)]
-        public string? Description { get; }
+        public string? Description { get; private set; }
         [JsonProperty("params", Order = 4)]
-        public ParamJsonNode[]? Parameters { get; internal set; }
+        public ParamJsonNode[]? Parameters { get; private set; }
 
         [JsonConstructor]
         public CommandJsonNode(string key, string name, string category) : base(key)
