@@ -29,7 +29,7 @@ jobs:
       uses: microsoft/setup-msbuild@v1.0.2
 
     - name: Download NuGet dependencies
-      run: dotnet restore $env:Solution_Name
+      run: dotnet restore $env:Solution_Name --ignore-failed-sources
 
     - name: Build configuration
       run: msbuild $env:Solution_Name /p:Configuration=$env:Configuration
