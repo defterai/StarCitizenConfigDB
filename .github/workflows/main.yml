@@ -1,4 +1,4 @@
-name: Publish package
+name: Build and publish
 
 on:
   workflow_dispatch:
@@ -22,7 +22,7 @@ jobs:
       uses: microsoft/setup-msbuild@v1.0.2
 
     - name: Download NuGet dependencies
-      run: dotnet restore $env:Solution_Name --ignore-failed-sources
+      run: dotnet restore $env:Solution_Name --source https://api.nuget.org/v3/index.json
 
     - name: Build solution items
       run: msbuild $env:Solution_Name /p:Configuration=$env:Build_Config
@@ -30,9 +30,14 @@ jobs:
     - name: Publish artifacts
       run: dotnet publish $env:Solution_Name -c $env:Build_Config /p:PublishProfile=FolderProfile.pubxml --no-build
 
-    - name: Build and publish NuGet package
-      run: |
-        cd $env:Solution_Name\$env:Project_Library_Name
-        dotnet pack -c $env:Build_Config --no-build
-        dotnet nuget push "bin\${{ env.Build_Config }}\*.nupkg" --api-key ${{ secrets.GITHUB_TOKEN }} --source "github"
-        dotnet nuget push "bin\${{ env.Build_Config }}\*.snupkg" --api-key ${{ secrets.GITHUB_TOKEN }} --source "github"
+    - name: Pack NuGet package
+      working-directory: $env:Solution_Name\$env:Project_Library_Name
+      run: dotnet pack -c $env:Build_Config --no-build
+
+    - name: Publish NuGet package
+      working-directory: $env:Solution_Name\$env:Project_Library_Name
+      run: dotnet nuget push "bin\${{ env.Build_Config }}\*.nupkg" --api-key ${{ secrets.GITHUB_TOKEN }} --source "github"
+
+    - name: Publish NuGet symbol package
+      working-directory: $env:Solution_Name\$env:Project_Library_Name
+      run: dotnet nuget push "bin\${{ env.Build_Config }}\*.snupkg" --api-key ${{ secrets.GITHUB_TOKEN }} --source "github"
