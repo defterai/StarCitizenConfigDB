@@ -31,5 +31,31 @@ namespace Defter.StarCitizen.ConfigDB.Transaction
             }
             return true;
         }
+
+        public static bool MoveDirecory(string sourceDirName, string destDirName)
+        {
+            try
+            {
+                Directory.Move(sourceDirName, destDirName);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public static bool DeleteDirectory(string path, bool recursive)
+        {
+            try
+            {
+                Directory.Delete(path, recursive);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

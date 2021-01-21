@@ -4,8 +4,8 @@ namespace Defter.StarCitizen.ConfigDB.Transaction
 {
     public abstract class Transaction : ITransaction
     {
-        public bool Applied { get; protected set; }
-        public bool Commited { get; protected set; }
+        public bool Applied { get; private set; }
+        public bool Commited { get; private set; }
         protected abstract bool OnApply();
         protected abstract void OnRevert();
         protected abstract void OnCommit();

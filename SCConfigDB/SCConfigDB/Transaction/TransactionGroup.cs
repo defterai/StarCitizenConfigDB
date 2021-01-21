@@ -1,13 +1,15 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Defter.StarCitizen.ConfigDB.Transaction
 {
     public sealed class TransactionGroup : Transaction
     {
         private readonly List<Transaction> _transactions;
-        public int Count => _transactions.Count;
+        public IReadOnlyList<Transaction> Transactions => _transactions;
         public Transaction? FailedTransaction { get; private set; }
+        public bool ReverseCommitOrder { get; set; }
 
         public TransactionGroup()
         {
@@ -17,16 +19,6 @@ namespace Defter.StarCitizen.ConfigDB.Transaction
         public TransactionGroup(int capacity)
         {
             _transactions = new List<Transaction>(capacity);
-        }
-
-        private TransactionGroup(TransactionGroup group)
-        {
-            _transactions = new List<Transaction>(group._transactions);
-            Applied = group.Applied;
-            Commited = group.Commited;
-            group._transactions.Clear();
-            group.Applied = true;
-            group.Commited = true;
         }
 
         public new void Dispose()
@@ -63,56 +55,13 @@ namespace Defter.StarCitizen.ConfigDB.Transaction
             if (_transactions.Count != 0)
             {
                 if (Commited || Applied)
-                    throw new InvalidOperationException("Can't clear applied transation group");
+                    throw new InvalidOperationException("Can't remove applied transations from group");
                 if (dispose)
                 {
-                    DisposeTransactions(_transactions);
+                    DisposeTransactions(ReverseCommitOrder ? _transactions.Reverse<Transaction>() : _transactions);
                 }
                 _transactions.Clear();
             }
-        }
-
-        public TransactionGroup? ApplyAndCommitPartially()
-        {
-            if (Commited)
-                throw new InvalidOperationException("Can't apply after commit transation");
-            if (!Applied)
-            {
-                int failedCount = 0;
-                foreach (var transaction in _transactions)
-                {
-                    if (!transaction.Apply())
-                    {
-                        failedCount++;
-                    }
-                }
-                if (failedCount != 0)
-                {
-                    if (failedCount == _transactions.Count)
-                    {
-                        return new TransactionGroup(this);
-                    }
-                    var failedGroup = new TransactionGroup(failedCount);
-                    foreach (var transaction in _transactions)
-                    {
-                        if (!transaction.Applied)
-                        {
-                            failedGroup.Add(transaction);
-                            if (failedGroup.Count >= failedCount)
-                            {
-                                break;
-                            }
-                        }
-                    }
-                    _transactions.RemoveAll(t => !t.Applied);
-                    Applied = true;
-                    Commit();
-                    return failedGroup;
-                }
-                Applied = true;
-            }
-            Commit();
-            return null;
         }
 
         protected override bool OnApply()
@@ -133,12 +82,12 @@ namespace Defter.StarCitizen.ConfigDB.Transaction
         {
             if (_transactions.Count != 0)
             {
-                CommitTransactions(_transactions);
+                CommitTransactions(ReverseCommitOrder ? _transactions.Reverse<Transaction>() : _transactions);
                 _transactions.Clear();
             }
         }
 
-        private static void DisposeTransactions(IList<Transaction> transactions)
+        private static void DisposeTransactions(IEnumerable<Transaction> transactions)
         {
             foreach (var transaction in transactions)
             {
@@ -160,13 +109,13 @@ namespace Defter.StarCitizen.ConfigDB.Transaction
 
         private static void RevertTransactions(IList<Transaction> transactions, int revertCount)
         {
-            for (int i = 0; i < revertCount; i++)
+            for (int i = revertCount - 1; i >= 0; i--)
             {
                 transactions[i].Revert();
             }
         }
 
-        private static void CommitTransactions(IList<Transaction> transactions)
+        private static void CommitTransactions(IEnumerable<Transaction> transactions)
         {
             foreach (var transaction in transactions)
             {

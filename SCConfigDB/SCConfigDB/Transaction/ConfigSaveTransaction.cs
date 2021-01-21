@@ -4,40 +4,40 @@ namespace Defter.StarCitizen.ConfigDB.Transaction
     {
         private const string TemporaryExtension = ".tmp";
         private const string BackupExtension = ".bak";
-        private readonly object _node;
-        private readonly string _filePath;
+        public object Node { get; }
+        public string FilePath { get; }
 
         public static ConfigSaveTransaction Create(object node, string filePath) =>
             new ConfigSaveTransaction(node, filePath);
 
         public ConfigSaveTransaction(object node, string filePath)
         {
-            _node = node;
-            _filePath = filePath;
+            Node = node;
+            FilePath = filePath;
         }
 
         protected override bool OnApply()
         {
-            if (!FileUtils.MoveFile(_filePath, _filePath + BackupExtension))
+            if (!FileUtils.MoveFile(FilePath, FilePath + BackupExtension))
             {
                 return false;
             }
-            if (!SaveToFile(_node, _filePath + TemporaryExtension))
+            if (!SaveToFile(Node, FilePath + TemporaryExtension))
             {
-                FileUtils.MoveFile(_filePath + BackupExtension, _filePath);
-                FileUtils.DeleteFile(_filePath + TemporaryExtension);
+                FileUtils.MoveFile(FilePath + BackupExtension, FilePath);
+                FileUtils.DeleteFile(FilePath + TemporaryExtension);
                 return false;
             }
             return true;
         }
 
-        protected override void OnRevert() => FileUtils.MoveFile(_filePath + BackupExtension, _filePath);
+        protected override void OnRevert() => FileUtils.MoveFile(FilePath + BackupExtension, FilePath);
 
         protected override void OnCommit()
         {
             if (Applied)
             {
-                FileUtils.DeleteFile(_filePath + BackupExtension);
+                FileUtils.DeleteFile(FilePath + BackupExtension);
             }
         }
 
