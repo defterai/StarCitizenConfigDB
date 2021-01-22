@@ -1,3 +1,5 @@
+using System;
+
 namespace Defter.StarCitizen.ConfigDB.Transaction
 {
     public sealed class ConfigSaveTransaction : Transaction
@@ -20,6 +22,7 @@ namespace Defter.StarCitizen.ConfigDB.Transaction
         {
             if (!FileUtils.MoveFile(FilePath, FilePath + BackupExtension))
             {
+                LastApplyException = FileUtils.LastException;
                 return false;
             }
             if (!SaveToFile(Node, FilePath + TemporaryExtension))
@@ -41,14 +44,15 @@ namespace Defter.StarCitizen.ConfigDB.Transaction
             }
         }
 
-        private static bool SaveToFile(object node, string path)
+        private bool SaveToFile(object node, string path)
         {
             try
             {
                 ConfigDatabase.SaveToFile(node, path);
             }
-            catch
+            catch (Exception e)
             {
+                LastApplyException = e;
                 return false;
             }
             return true;

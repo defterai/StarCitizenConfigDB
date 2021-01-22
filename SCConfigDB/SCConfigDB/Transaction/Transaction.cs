@@ -4,6 +4,7 @@ namespace Defter.StarCitizen.ConfigDB.Transaction
 {
     public abstract class Transaction : ITransaction
     {
+        public Exception? LastApplyException { get; protected set; }
         public bool Applied { get; private set; }
         public bool Commited { get; private set; }
         protected abstract bool OnApply();

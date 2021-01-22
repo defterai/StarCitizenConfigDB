@@ -13,7 +13,15 @@ namespace Defter.StarCitizen.ConfigDB.Transaction
             FilePath = filePath;
         }
 
-        protected override bool OnApply() => FileUtils.MoveFile(FilePath, FilePath + BackupExtension);
+        protected override bool OnApply()
+        {
+            if (!FileUtils.MoveFile(FilePath, FilePath + BackupExtension))
+            {
+                LastApplyException = FileUtils.LastException;
+                return false;
+            }
+            return true;
+        }
 
         protected override void OnRevert() => FileUtils.MoveFile(FilePath + BackupExtension, FilePath);
 

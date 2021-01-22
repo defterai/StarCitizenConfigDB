@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 
 namespace Defter.StarCitizen.ConfigDB.Transaction
@@ -19,17 +20,20 @@ namespace Defter.StarCitizen.ConfigDB.Transaction
 
         protected override bool OnApply()
         {
-            string parentDirPath = Path.GetDirectoryName(DirectoryPath.TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar));
-            if (parentDirPath != null)
+            string? parentDirPath = FileUtils.GetParentDirPath(DirectoryPath);
+            if (parentDirPath == null)
             {
-                string backupDirPath = Path.Combine(parentDirPath, Path.GetRandomFileName());
-                if (FileUtils.MoveDirecory(DirectoryPath, backupDirPath))
-                {
-                    _backupDirPath = backupDirPath;
-                    return true;
-                }
+                LastApplyException = new ArgumentException("Invalid delete directory path: " + DirectoryPath);
+                return false;
             }
-            return false;
+            string backupDirPath = Path.Combine(parentDirPath, Path.GetRandomFileName());
+            if (!FileUtils.MoveDirecory(DirectoryPath, backupDirPath))
+            {
+                LastApplyException = FileUtils.LastException;
+                return false;
+            }
+            _backupDirPath = backupDirPath;
+            return true;
         }
 
         protected override void OnRevert()

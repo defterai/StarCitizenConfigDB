@@ -8,7 +8,7 @@ namespace Defter.StarCitizen.ConfigDB.Transaction
     {
         private readonly List<Transaction> _transactions;
         public IReadOnlyList<Transaction> Transactions => _transactions;
-        public Transaction? FailedTransaction { get; private set; }
+        public Transaction? LastFailToApplyTransaction { get; private set; }
         public bool ReverseCommitOrder { get; set; }
 
         public TransactionGroup()
@@ -69,7 +69,8 @@ namespace Defter.StarCitizen.ConfigDB.Transaction
             int appliedCount = ApplyTransactions(_transactions);
             if (appliedCount < _transactions.Count)
             {
-                FailedTransaction = _transactions[appliedCount];
+                LastFailToApplyTransaction = _transactions[appliedCount];
+                LastApplyException = LastFailToApplyTransaction.LastApplyException;
                 RevertTransactions(_transactions, appliedCount);
                 return false;
             }

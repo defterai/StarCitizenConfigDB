@@ -1,9 +1,21 @@
+using System;
 using System.IO;
+using System.Threading;
 
 namespace Defter.StarCitizen.ConfigDB.Transaction
 {
     public static class FileUtils
     {
+        private static readonly ThreadLocal<Exception?> _lastThreadException = new ThreadLocal<Exception?>();
+        public static Exception? LastException
+        {
+            get => _lastThreadException.Value;
+            set => _lastThreadException.Value = value;
+        }
+
+        public static string? GetParentDirPath(string path) =>
+            Path.GetDirectoryName(path.TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar));
+
         public static bool MoveFile(string sourceFileName, string destinationFileName)
         {
             try
@@ -12,8 +24,9 @@ namespace Defter.StarCitizen.ConfigDB.Transaction
                     File.Delete(destinationFileName);
                 File.Move(sourceFileName, destinationFileName);
             }
-            catch
+            catch (Exception e)
             {
+                _lastThreadException.Value = e;
                 return false;
             }
             return true;
@@ -25,8 +38,9 @@ namespace Defter.StarCitizen.ConfigDB.Transaction
             {
                 File.Delete(path);
             }
-            catch
+            catch (Exception e)
             {
+                _lastThreadException.Value = e;
                 return false;
             }
             return true;
@@ -38,8 +52,9 @@ namespace Defter.StarCitizen.ConfigDB.Transaction
             {
                 Directory.Move(sourceDirName, destDirName);
             }
-            catch
+            catch (Exception e)
             {
+                _lastThreadException.Value = e;
                 return false;
             }
             return true;
@@ -51,8 +66,9 @@ namespace Defter.StarCitizen.ConfigDB.Transaction
             {
                 Directory.Delete(path, recursive);
             }
-            catch
+            catch (Exception e)
             {
+                _lastThreadException.Value = e;
                 return false;
             }
             return true;
