@@ -20,9 +20,28 @@ namespace Defter.StarCitizen.ConfigDB.Transaction
         {
             try
             {
-                if (File.Exists(destinationFileName))
+                if (FileExists(destinationFileName))
                     File.Delete(destinationFileName);
                 File.Move(sourceFileName, destinationFileName);
+            }
+            catch (Exception e)
+            {
+                _lastThreadException.Value = e;
+                return false;
+            }
+            return true;
+        }
+
+        public static bool MoveFileIfExist(string sourceFileName, string destinationFileName)
+        {
+            try
+            {
+                if (FileExists(sourceFileName))
+                {
+                    if (FileExists(destinationFileName))
+                        File.Delete(destinationFileName);
+                    File.Move(sourceFileName, destinationFileName);
+                }
             }
             catch (Exception e)
             {
@@ -37,6 +56,23 @@ namespace Defter.StarCitizen.ConfigDB.Transaction
             try
             {
                 File.Delete(path);
+            }
+            catch (Exception e)
+            {
+                _lastThreadException.Value = e;
+                return false;
+            }
+            return true;
+        }
+
+        public static bool DeleteFileIfExist(string path)
+        {
+            try
+            {
+                if (FileExists(path))
+                {
+                    File.Delete(path);
+                }
             }
             catch (Exception e)
             {
@@ -72,6 +108,12 @@ namespace Defter.StarCitizen.ConfigDB.Transaction
                 return false;
             }
             return true;
+        }
+
+        private static bool FileExists(string path)
+        {
+            var fileInfo = new FileInfo(path);
+            return fileInfo.Exists;
         }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 
 namespace Defter.StarCitizen.ConfigDB.Transaction
 {
@@ -20,27 +21,47 @@ namespace Defter.StarCitizen.ConfigDB.Transaction
 
         protected override bool OnApply()
         {
-            if (!FileUtils.MoveFile(FilePath, FilePath + BackupExtension))
+            if (!FileUtils.MoveFileIfExist(FilePath, FilePath + BackupExtension))
             {
                 LastApplyException = FileUtils.LastException;
                 return false;
             }
             if (!SaveToFile(Node, FilePath + TemporaryExtension))
             {
-                FileUtils.MoveFile(FilePath + BackupExtension, FilePath);
-                FileUtils.DeleteFile(FilePath + TemporaryExtension);
+                FileUtils.MoveFileIfExist(FilePath + BackupExtension, FilePath);
+                FileUtils.DeleteFileIfExist(FilePath + TemporaryExtension);
+                return false;
+            }
+            if (!FileUtils.MoveFile(FilePath + TemporaryExtension, FilePath))
+            {
+                LastApplyException = FileUtils.LastException;
                 return false;
             }
             return true;
         }
 
-        protected override void OnRevert() => FileUtils.MoveFile(FilePath + BackupExtension, FilePath);
+        protected override void OnRevert()
+        {
+#if DEBUG
+            FileUtils.LastException = null;
+#endif
+            FileUtils.MoveFileIfExist(FilePath + BackupExtension, FilePath);
+#if DEBUG
+            LastRevertException = FileUtils.LastException;
+#endif
+        }
 
         protected override void OnCommit()
         {
             if (Applied)
             {
-                FileUtils.DeleteFile(FilePath + BackupExtension);
+#if DEBUG
+                FileUtils.LastException = null;
+#endif
+                FileUtils.DeleteFileIfExist(FilePath + BackupExtension);
+#if DEBUG
+                LastCommitException = FileUtils.LastException;
+#endif
             }
         }
 

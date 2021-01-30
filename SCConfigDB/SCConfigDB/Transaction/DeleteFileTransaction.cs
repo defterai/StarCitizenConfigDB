@@ -23,13 +23,28 @@ namespace Defter.StarCitizen.ConfigDB.Transaction
             return true;
         }
 
-        protected override void OnRevert() => FileUtils.MoveFile(FilePath + BackupExtension, FilePath);
+        protected override void OnRevert()
+        {
+#if DEBUG
+            FileUtils.LastException = null;
+#endif
+            FileUtils.MoveFile(FilePath + BackupExtension, FilePath);
+#if DEBUG
+            LastRevertException = FileUtils.LastException;
+#endif
+        }
 
         protected override void OnCommit()
         {
             if (Applied)
             {
+#if DEBUG
+                FileUtils.LastException = null;
+#endif
                 FileUtils.DeleteFile(FilePath + BackupExtension);
+#if DEBUG
+                LastCommitException = FileUtils.LastException;
+#endif
             }
         }
     }

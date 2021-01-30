@@ -40,7 +40,13 @@ namespace Defter.StarCitizen.ConfigDB.Transaction
         {
             if (_backupDirPath != null)
             {
+#if DEBUG
+                FileUtils.LastException = null;
+#endif
                 FileUtils.MoveDirecory(_backupDirPath, DirectoryPath);
+#if DEBUG
+                LastRevertException = FileUtils.LastException;
+#endif
                 _backupDirPath = null;
             }
         }
@@ -49,7 +55,13 @@ namespace Defter.StarCitizen.ConfigDB.Transaction
         {
             if (_backupDirPath != null)
             {
+#if DEBUG
+                FileUtils.LastException = null;
+#endif
                 FileUtils.DeleteDirectory(_backupDirPath, Recursive);
+#if DEBUG
+                LastCommitException = FileUtils.LastException;
+#endif
                 _backupDirPath = null;
             }
         }

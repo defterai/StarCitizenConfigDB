@@ -5,6 +5,10 @@ namespace Defter.StarCitizen.ConfigDB.Transaction
     public abstract class Transaction : ITransaction
     {
         public Exception? LastApplyException { get; protected set; }
+#if DEBUG
+        public Exception? LastRevertException { get; protected set; }
+        public Exception? LastCommitException { get; protected set; }
+#endif
         public bool Applied { get; private set; }
         public bool Commited { get; private set; }
         protected abstract bool OnApply();
@@ -19,9 +23,11 @@ namespace Defter.StarCitizen.ConfigDB.Transaction
                 {
                     OnRevert();
                     Applied = false;
+                    CheckRevertException();
                 }
                 Commited = true;
                 OnCommit();
+                CheckCommitException();
             }
         }
 
@@ -44,6 +50,7 @@ namespace Defter.StarCitizen.ConfigDB.Transaction
             {
                 OnRevert();
                 Applied = false;
+                CheckRevertException();
             }
         }
 
@@ -53,6 +60,7 @@ namespace Defter.StarCitizen.ConfigDB.Transaction
             {
                 Commited = true;
                 OnCommit();
+                CheckCommitException();
             }
         }
 
@@ -70,6 +78,26 @@ namespace Defter.StarCitizen.ConfigDB.Transaction
         {
             Revert();
             Commit();
+        }
+
+        private void CheckRevertException()
+        {
+#if DEBUG
+            if (LastRevertException != null)
+            {
+                throw new Exception("Failed revert transaction: ", LastRevertException);
+            }
+#endif
+        }
+
+        private void CheckCommitException()
+        {
+#if DEBUG
+            if (LastCommitException != null)
+            {
+                throw new Exception("Failed commit transaction: ", LastCommitException);
+            }
+#endif
         }
     }
 }
