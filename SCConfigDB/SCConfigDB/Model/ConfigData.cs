@@ -17,6 +17,30 @@ namespace Defter.StarCitizen.ConfigDB.Model
             SettingCategories = builder.SettingCategoryBuilders.ToDictionary(entry => entry.Key, entry => entry.Value.Build());
         }
 
+        public BaseCommand? GetCommand(string commandKey)
+        {
+            foreach (var category in CommandCategories.Values)
+            {
+                if (category.Commands.TryGetValue(commandKey, out var comand))
+                {
+                    return comand;
+                }
+            }
+            return null;
+        }
+
+        public BaseSetting? GetSetting(string settingKey)
+        {
+            foreach (var category in SettingCategories.Values)
+            {
+                if (category.Settings.TryGetValue(settingKey, out var setting))
+                {
+                    return setting;
+                }
+            }
+            return null;
+        }
+
         public sealed class Builder
         {
             public Dictionary<string, CommandCategory.Builder> CommandCategoryBuilders { get; }
