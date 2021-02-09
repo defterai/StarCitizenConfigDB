@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using Defter.StarCitizen.ConfigDB.Json;
 using Defter.StarCitizen.ConfigDB.Model;
@@ -95,6 +96,7 @@ namespace Defter.StarCitizen.ConfigDB
     {
         private readonly HttpClient _client;
         private readonly INetworkSourceSettings _sourceSettings;
+        private readonly CancellationToken? _cancelationToken;
 
         public NetworkConfigDataLoader(HttpClient client, INetworkSourceSettings sourceSettings)
         {
@@ -102,12 +104,18 @@ namespace Defter.StarCitizen.ConfigDB
             _sourceSettings = sourceSettings;
         }
 
+        public NetworkConfigDataLoader(HttpClient client, INetworkSourceSettings sourceSettings,
+            CancellationToken cancellationToken) : this(client, sourceSettings)
+        {
+            _cancelationToken = cancellationToken;
+        }
+
         public override async Task LoadDatabaseAsync(bool forceReload = false)
         {
             if (forceReload || DatabaseJsonNode == null)
             {
                 DatabaseJsonNode = await ConfigDatabase.LoadFromUrlAsync<ConfigDataJsonNode>(_client,
-                    _sourceSettings.DatabaseUrl, null);
+                    _sourceSettings.DatabaseUrl, _cancelationToken);
             }
         }
 
@@ -116,7 +124,7 @@ namespace Defter.StarCitizen.ConfigDB
             if (forceReload || !TranslateJsonNodes.ContainsKey(language))
             {
                 TranslateJsonNodes[language] = await ConfigDatabase.LoadFromUrlAsync<ConfigDataTranslateJsonNode>(
-                    _client, _sourceSettings.DatabaseTranslateUrl(language), null);
+                    _client, _sourceSettings.DatabaseTranslateUrl(language), _cancelationToken);
             }
         }
     }
