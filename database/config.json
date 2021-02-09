@@ -1,7 +1,7 @@
-﻿{
+{
 	"$schema": "https://raw.githubusercontent.com/defterai/StarCitizenConfigDB/master/schema.json",
 	"languages": [
-		"uk"
+		"uk-UA"
 	],
 	"commands": {
 		"categories": [
@@ -48,14 +48,63 @@
 	"settings": {
 		"categories": [
 			{
+				"key": "system",
+				"name": "System"
+			},
+			{
 				"key": "render",
 				"name": "Render"
 			}
 		],
 		"items": [
 			{
+				"key": "sys_maxFPS",
+				"name": "Maximum FPS",
+				"category": "system",
+				"values": {
+					"type": "range_int",
+					"default": "0",
+					"list": [
+						{
+							"value": "0",
+							"name": "unlimited"
+						},
+						{
+							"value": "120"
+						}
+					]
+				}
+			},
+			{
+				"key": "sys_maxIdleFPS",
+				"name": "Maximum Idle FPS",
+				"category": "system",
+				"values": {
+					"type": "range_int",
+					"default": "0",
+					"list": [
+						{
+							"value": "0",
+							"name": "unlimited"
+						},
+						{
+							"value": "120"
+						}
+					]
+				}
+			},
+			{
 				"key": "r_Fullscreen",
-				"name": "Fullscreen mode",
+				"name": "Fullscreen Mode",
+				"category": "render",
+				"values": {
+					"type": "bool",
+					"default": "false"
+				}
+			},
+			{
+				"key": "r_VSync",
+				"name": "Vertical Sync",
 				"category": "render",
 				"values": {
 					"type": "bool",
@@ -64,7 +113,7 @@
 			},
 			{
 				"key": "r_DisplayInfo",
-				"name": "Display debug info",
+				"name": "Display Debug Info",
 				"category": "render",
 				"values": {
 					"type": "int",
@@ -87,6 +136,49 @@
 							"name": "enhanced"
 						}
 					]
+				}
+			},
+			{
+				"key": "r_AntialiasingMode",
+				"name": "Antialiasing Mode",
+				"category": "render",
+				"values": {
+					"type": "int",
+					"list": [
+						{
+							"value": "5",
+							"name": "FXAA (1xMSAAx1T)"
+						},
+						{
+							"value": "6",
+							"name": "TXAA medium (2xMSAAx1T)"
+						},
+						{
+							"value": "7",
+							"name": "TXAA high (4xMSAAx1T)"
+						},
+						{
+							"value": "8",
+							"name": "MSAA low (2xMSAA)"
+						},
+						{
+							"value": "9",
+							"name": "MSAA medium (4xMSAA)"
+						},
+						{
+							"value": "10",
+							"name": "MSAA high (8xMSAA)"
+						}
+					]
+				}
+			},
+			{
+				"key": "r_MotionBlur",
+				"name": "Camera Motion Blur",
+				"category": "render",
+				"values": {
+					"type": "bool",
+					"default": "true"
 				}
 			}
 		]

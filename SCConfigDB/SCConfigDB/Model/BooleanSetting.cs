@@ -5,7 +5,7 @@ namespace Defter.StarCitizen.ConfigDB.Model
 {
     public sealed class BooleanSetting : BaseSetting
     {
-        public bool DefaultValue { get; }
+        public bool? DefaultValue { get; }
 
         private BooleanSetting(SettingJsonNode node) : base(node)
         {
@@ -19,10 +19,13 @@ namespace Defter.StarCitizen.ConfigDB.Model
 
         public override void ExctractValueNodes(List<ValueJsonNode> nodes) { }
 
-        public override ValuesJsonNode GetValuesNode()
+        public override SettingValuesJsonNode GetValuesNode()
         {
-            var builder = new ValuesJsonNode.Builder(ValueJsonType.Bool,
-                DefaultValue.ToString().ToLower());
+            var builder = new SettingValuesJsonNode.Builder(ValueJsonType.Bool);
+            if (DefaultValue.HasValue)
+            {
+                builder.DefaultValue = DefaultValue.Value.ToString().ToLower();
+            }
             return builder.Build();
         }
 
@@ -33,7 +36,7 @@ namespace Defter.StarCitizen.ConfigDB.Model
 
         public new sealed class Builder : BaseSetting.Builder
         {
-            public bool DefaultValue { get; set; }
+            public bool? DefaultValue { get; set; }
 
             public Builder(string key, string name) : base(key, name) { }
 

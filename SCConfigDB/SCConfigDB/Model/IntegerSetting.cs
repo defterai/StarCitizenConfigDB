@@ -6,7 +6,7 @@ namespace Defter.StarCitizen.ConfigDB.Model
 {
     public sealed class IntegerSetting : BaseSetting
     {
-        public int DefaultValue { get; }
+        public int? DefaultValue { get; }
         public IReadOnlyDictionary<int, string> Values { get; }
         public bool Range { get; }
         public int MinValue => Values.Keys.Min();
@@ -29,10 +29,13 @@ namespace Defter.StarCitizen.ConfigDB.Model
         public override void ExctractValueNodes(List<ValueJsonNode> nodes) =>
             ValueJsonNode.ValuesToNodes(Values, nodes, v => v.ToString());
 
-        public override ValuesJsonNode GetValuesNode()
+        public override SettingValuesJsonNode GetValuesNode()
         {
-            var builder = new ValuesJsonNode.Builder(Range ? ValueJsonType.RangeInt :
-                ValueJsonType.Int, DefaultValue.ToString());
+            var builder = new SettingValuesJsonNode.Builder(Range ? ValueJsonType.RangeInt : ValueJsonType.Int);
+            if (DefaultValue.HasValue)
+            {
+                builder.DefaultValue = DefaultValue.Value.ToString();
+            }
             foreach (var valuePair in Values)
             {
                 var valueBuilder = new ValueJsonNode.Builder(valuePair.Key.ToString())
@@ -51,7 +54,7 @@ namespace Defter.StarCitizen.ConfigDB.Model
 
         public new sealed class Builder : BaseSetting.Builder
         {
-            public int DefaultValue { get; set; }
+            public int? DefaultValue { get; set; }
             public Dictionary<int, string> Values { get; } = new Dictionary<int, string>();
             public bool Range { get; set; }
 

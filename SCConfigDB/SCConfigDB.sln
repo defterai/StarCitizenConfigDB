@@ -12,9 +12,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "database", "database", "{9C
 		..\database\config.json = ..\database\config.json
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "uk", "uk", "{B7216E2A-6158-4D34-BAE2-B7926DB1E5F6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "uk-UA", "uk-UA", "{B7216E2A-6158-4D34-BAE2-B7926DB1E5F6}"
 	ProjectSection(SolutionItems) = preProject
-		..\database\uk\config.json = ..\database\uk\config.json
+		..\database\uk-UA\config.json = ..\database\uk-UA\config.json
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "schemas", "schemas", "{630E07B4-7A51-4F4B-A0B5-EB39FA85AF12}"

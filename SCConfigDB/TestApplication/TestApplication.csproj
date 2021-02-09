@@ -37,9 +37,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <TargetPath>database\config.json</TargetPath>
     </ContentWithTargetPath>
-    <ContentWithTargetPath Include="..\..\database\uk\config.json">
+    <ContentWithTargetPath Include="..\..\database\uk-UA\config.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <TargetPath>database\uk\config.json</TargetPath>
+      <TargetPath>database\uk-UA\config.json</TargetPath>
     </ContentWithTargetPath>
   </ItemGroup>
 </Project>

@@ -12,10 +12,10 @@ namespace Defter.StarCitizen.ConfigDB.Json
         [JsonProperty("desc", Order = 3)]
         public string? Description { get; private set; }
         [JsonProperty("values", Required = Required.Always, Order = 4)]
-        public ValuesJsonNode Values { get; }
+        public SettingValuesJsonNode Values { get; }
 
         [JsonConstructor]
-        public SettingJsonNode(string key, string name, string category, ValuesJsonNode values) : base(key)
+        public SettingJsonNode(string key, string name, string category, SettingValuesJsonNode values) : base(key)
         {
             Name = name;
             Category = category;
@@ -52,9 +52,9 @@ namespace Defter.StarCitizen.ConfigDB.Json
             public string Name { get; }
             public string Category { get; }
             public string? Description { get; set; }
-            public ValuesJsonNode Values { get; }
+            public SettingValuesJsonNode Values { get; }
 
-            public Builder(string key, string name, string category, ValuesJsonNode values) : base(key)
+            public Builder(string key, string name, string category, SettingValuesJsonNode values) : base(key)
             {
                 Name = name;
                 Category = category;

@@ -213,7 +213,7 @@
 							},
 							"values": {
 								"type": "object",
-								"required": [ "type", "default" ],
+								"required": [ "type" ],
 								"anyOf": [
 									{
 										"additionalProperties": false,

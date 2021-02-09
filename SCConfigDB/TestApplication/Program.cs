@@ -300,13 +300,13 @@ namespace Defter.StarCitizen.TestApplication
                 {
                     Console.WriteLine($"{ident}  Description: {setting.Description}");
                 }
-                if (setting is BooleanSetting booleanSetting)
+                if (setting is BooleanSetting booleanSetting && booleanSetting.DefaultValue.HasValue)
                 {
-                    Console.WriteLine($"{ident}  Default: {booleanSetting.DefaultValue}");
+                    Console.WriteLine($"{ident}  Default: {booleanSetting.DefaultValue.Value}");
                 }
-                else if (setting is IntegerSetting integerSetting)
+                else if (setting is IntegerSetting integerSetting && integerSetting.DefaultValue.HasValue)
                 {
-                    Console.WriteLine($"{ident}  Default: {integerSetting.DefaultValue}");
+                    Console.WriteLine($"{ident}  Default: {integerSetting.DefaultValue.Value}");
                     Console.WriteLine($"{ident}  Values: {string.Join(",", integerSetting.Values)}");
                     if (integerSetting.Range)
                     {
@@ -315,9 +315,9 @@ namespace Defter.StarCitizen.TestApplication
                         Console.WriteLine($"{ident}  Max: {integerSetting.MaxValue}");
                     }
                 }
-                else if (setting is FloatSetting floatSetting)
+                else if (setting is FloatSetting floatSetting && floatSetting.DefaultValue.HasValue)
                 {
-                    Console.WriteLine($"{ident}  Default: {floatSetting.DefaultValue}");
+                    Console.WriteLine($"{ident}  Default: {floatSetting.DefaultValue.Value}");
                     Console.WriteLine($"{ident}  Values: {string.Join(",", floatSetting.Values)}");
                     if (floatSetting.Range)
                     {

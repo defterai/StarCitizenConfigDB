@@ -25,7 +25,7 @@ namespace Defter.StarCitizen.ConfigDB.Model
 
         public abstract void ExctractValueNodes(List<ValueJsonNode> nodes);
 
-        public abstract ValuesJsonNode GetValuesNode();
+        public abstract SettingValuesJsonNode GetValuesNode();
 
         public interface IFactory
         {
