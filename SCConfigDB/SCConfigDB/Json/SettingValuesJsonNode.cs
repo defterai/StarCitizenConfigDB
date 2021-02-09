@@ -74,7 +74,7 @@ namespace Defter.StarCitizen.ConfigDB.Json
         public float? FloatDefault()
         {
             if (DefaultValue != null)
-                float.Parse(DefaultValue);
+                return float.Parse(DefaultValue);
             return null;
         }
 

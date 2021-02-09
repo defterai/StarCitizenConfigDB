@@ -31,7 +31,7 @@ namespace Defter.StarCitizen.ConfigDB.Model
 
         public override SettingValuesJsonNode GetValuesNode()
         {
-            var builder = new SettingValuesJsonNode.Builder(Range ? ValueJsonType.RangeInt : ValueJsonType.Int);
+            var builder = new SettingValuesJsonNode.Builder(Range ? ValueJsonType.RangeFloat : ValueJsonType.Float);
             if (DefaultValue.HasValue)
             {
                 builder.DefaultValue = DefaultValue.Value.ToString();
