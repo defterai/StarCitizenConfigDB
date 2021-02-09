@@ -17,15 +17,15 @@ namespace Defter.StarCitizen.ConfigDB
         public bool DatabaseLoaded => DatabaseJsonNode != null;
         public ICollection<string> LoadedLanguages => TranslateJsonNodes.Keys;
 
-        public abstract Task LoadDatabaseAsync(bool forceReload = false);
+        public abstract Task LoadDatabaseAsync(CancellationToken? cancellationToken = default, bool forceReload = false);
 
-        public abstract Task LoadTranslationAsync(string language, bool forceReload = false);
+        public abstract Task LoadTranslationAsync(string language, CancellationToken? cancellationToken = default, bool forceReload = false);
 
         public void LoadDatabase(bool forceReload = false) =>
-            LoadDatabaseAsync(forceReload).GetAwaiter().GetResult();
+            LoadDatabaseAsync(default, forceReload).GetAwaiter().GetResult();
 
         public void LoadTranslation(string language, bool forceReload = false) =>
-            LoadTranslationAsync(language, forceReload).GetAwaiter().GetResult();
+            LoadTranslationAsync(language, default, forceReload).GetAwaiter().GetResult();
 
         public ISet<string> GetSupportedLanguages()
         {
@@ -73,7 +73,7 @@ namespace Defter.StarCitizen.ConfigDB
             _sourceSettings = sourceSettings;
         }
 
-        public override async Task LoadDatabaseAsync(bool forceReload = false)
+        public override async Task LoadDatabaseAsync(CancellationToken? cancellationToken = default, bool forceReload = false)
         {
             if (forceReload || DatabaseJsonNode == null)
             {
@@ -82,7 +82,7 @@ namespace Defter.StarCitizen.ConfigDB
             }
         }
 
-        public override async Task LoadTranslationAsync(string language, bool forceReload = false)
+        public override async Task LoadTranslationAsync(string language, CancellationToken? cancellationToken = default, bool forceReload = false)
         {
             if (forceReload || !TranslateJsonNodes.ContainsKey(language))
             {
@@ -96,7 +96,6 @@ namespace Defter.StarCitizen.ConfigDB
     {
         private readonly HttpClient _client;
         private readonly INetworkSourceSettings _sourceSettings;
-        private readonly CancellationToken? _cancelationToken;
 
         public NetworkConfigDataLoader(HttpClient client, INetworkSourceSettings sourceSettings)
         {
@@ -104,27 +103,21 @@ namespace Defter.StarCitizen.ConfigDB
             _sourceSettings = sourceSettings;
         }
 
-        public NetworkConfigDataLoader(HttpClient client, INetworkSourceSettings sourceSettings,
-            CancellationToken cancellationToken) : this(client, sourceSettings)
-        {
-            _cancelationToken = cancellationToken;
-        }
-
-        public override async Task LoadDatabaseAsync(bool forceReload = false)
+        public override async Task LoadDatabaseAsync(CancellationToken? cancellationToken = default, bool forceReload = false)
         {
             if (forceReload || DatabaseJsonNode == null)
             {
                 DatabaseJsonNode = await ConfigDatabase.LoadFromUrlAsync<ConfigDataJsonNode>(_client,
-                    _sourceSettings.DatabaseUrl, _cancelationToken);
+                    _sourceSettings.DatabaseUrl, cancellationToken);
             }
         }
 
-        public override async Task LoadTranslationAsync(string language, bool forceReload = false)
+        public override async Task LoadTranslationAsync(string language, CancellationToken? cancellationToken = default, bool forceReload = false)
         {
             if (forceReload || !TranslateJsonNodes.ContainsKey(language))
             {
                 TranslateJsonNodes[language] = await ConfigDatabase.LoadFromUrlAsync<ConfigDataTranslateJsonNode>(
-                    _client, _sourceSettings.DatabaseTranslateUrl(language), _cancelationToken);
+                    _client, _sourceSettings.DatabaseTranslateUrl(language), cancellationToken);
             }
         }
     }
