@@ -13,7 +13,7 @@
 		"items": [
 			{
 				"key": "r_DisplayInfo",
-				"name": "Display debug info",
+				"name": "Display Debug Info",
 				"category": "console",
 				"params": [
 					{
@@ -54,6 +54,14 @@
 			{
 				"key": "render",
 				"name": "Render"
+			},
+			{
+				"key": "shader",
+				"name": "Shader"
+			},
+			{
+				"key": "ui",
+				"name": "UI"
 			}
 		],
 		"items": [
@@ -94,12 +102,26 @@
 				}
 			},
 			{
-				"key": "r_Fullscreen",
-				"name": "Fullscreen Mode",
+				"key": "r_WindowMode",
+				"name": "Window mode",
 				"category": "render",
 				"values": {
-					"type": "bool",
-					"default": "false"
+					"type": "int",
+					"default": "1",
+					"list": [
+						{
+							"value": "0",
+							"name": "windowed"
+						},
+						{
+							"value": "1",
+							"name": "fullscreen"
+						},
+						{
+							"value": "2",
+							"name": "borderless"
+						}
+					]
 				}
 			},
 			{
@@ -108,7 +130,39 @@
 				"category": "render",
 				"values": {
 					"type": "bool",
-					"default": "false"
+					"default": "true"
+				}
+			},
+			{
+				"key": "r_Width",
+				"name": "Display Width (in pixels)",
+				"category": "render",
+				"values": {
+					"type": "range_int",
+					"list": [
+						{
+							"value": "1024"
+						},
+						{
+							"value": "7680"
+						}
+					]
+				}
+			},
+			{
+				"key": "r_Height",
+				"name": "Display Height (in pixels)",
+				"category": "render",
+				"values": {
+					"type": "range_int",
+					"list": [
+						{
+							"value": "768"
+						},
+						{
+							"value": "4320"
+						}
+					]
 				}
 			},
 			{
@@ -136,6 +190,15 @@
 							"name": "enhanced"
 						}
 					]
+				}
+			},
+			{
+				"key": "r_DisplaySessionInfo",
+				"name": "Display Session Info QR code",
+				"category": "render",
+				"values": {
+					"type": "bool",
+					"default": "false"
 				}
 			},
 			{
@@ -177,8 +240,277 @@
 				"name": "Camera Motion Blur",
 				"category": "render",
 				"values": {
+					"type": "bool"
+				}
+			},
+			{
+				"key": "q_ShaderGeneral",
+				"name": "General Quality",
+				"category": "shader",
+				"values": {
+					"type": "int",
+					"default": "3",
+					"list": [
+						{
+							"value": "0",
+							"name": "low"
+						},
+						{
+							"value": "1",
+							"name": "medium"
+						},
+						{
+							"value": "2",
+							"name": "high"
+						},
+						{
+							"value": "3",
+							"name": "very high"
+						}
+					]
+				}
+			},
+			{
+				"key": "q_ShaderDecal",
+				"name": "Decal Quality",
+				"category": "shader",
+				"values": {
+					"type": "int",
+					"default": "3",
+					"list": [
+						{
+							"value": "0",
+							"name": "low"
+						},
+						{
+							"value": "1",
+							"name": "medium"
+						},
+						{
+							"value": "2",
+							"name": "high"
+						},
+						{
+							"value": "3",
+							"name": "very high"
+						}
+					]
+				}
+			},
+			{
+				"key": "q_ShaderShadow",
+				"name": "Shadow Quality",
+				"category": "shader",
+				"values": {
+					"type": "int",
+					"default": "3",
+					"list": [
+						{
+							"value": "0",
+							"name": "low"
+						},
+						{
+							"value": "1",
+							"name": "medium"
+						},
+						{
+							"value": "2",
+							"name": "high"
+						},
+						{
+							"value": "3",
+							"name": "very high"
+						}
+					]
+				}
+			},
+			{
+				"key": "q_ShaderWater",
+				"name": "Water Quality",
+				"category": "shader",
+				"values": {
+					"type": "int",
+					"default": "3",
+					"list": [
+						{
+							"value": "0",
+							"name": "low"
+						},
+						{
+							"value": "1",
+							"name": "medium"
+						},
+						{
+							"value": "2",
+							"name": "high"
+						},
+						{
+							"value": "3",
+							"name": "very high"
+						}
+					]
+				}
+			},
+			{
+				"key": "q_ShaderFX",
+				"name": "FX Quality",
+				"category": "shader",
+				"values": {
+					"type": "int",
+					"default": "3",
+					"list": [
+						{
+							"value": "0",
+							"name": "low"
+						},
+						{
+							"value": "1",
+							"name": "medium"
+						},
+						{
+							"value": "2",
+							"name": "high"
+						},
+						{
+							"value": "3",
+							"name": "very high"
+						}
+					]
+				}
+			},
+			{
+				"key": "q_ShaderPostProcess",
+				"name": "Post Process Quality",
+				"category": "shader",
+				"values": {
+					"type": "int",
+					"default": "3",
+					"list": [
+						{
+							"value": "0",
+							"name": "low"
+						},
+						{
+							"value": "1",
+							"name": "medium"
+						},
+						{
+							"value": "2",
+							"name": "high"
+						},
+						{
+							"value": "3",
+							"name": "very high"
+						}
+					]
+				}
+			},
+			{
+				"key": "q_ShaderHDR",
+				"name": "HDR Quality",
+				"category": "shader",
+				"values": {
+					"type": "int",
+					"default": "3",
+					"list": [
+						{
+							"value": "0",
+							"name": "low"
+						},
+						{
+							"value": "1",
+							"name": "medium"
+						},
+						{
+							"value": "2",
+							"name": "high"
+						},
+						{
+							"value": "3",
+							"name": "very high"
+						}
+					]
+				}
+			},
+			{
+				"key": "q_ShaderSky",
+				"name": "Sky Quality",
+				"category": "shader",
+				"values": {
+					"type": "int",
+					"default": "3",
+					"list": [
+						{
+							"value": "0",
+							"name": "low"
+						},
+						{
+							"value": "1",
+							"name": "medium"
+						},
+						{
+							"value": "2",
+							"name": "high"
+						},
+						{
+							"value": "3",
+							"name": "very high"
+						}
+					]
+				}
+			},
+			{
+				"key": "q_ShaderParticle",
+				"name": "Particle Quality",
+				"category": "shader",
+				"values": {
+					"type": "int",
+					"default": "3",
+					"list": [
+						{
+							"value": "0",
+							"name": "low"
+						},
+						{
+							"value": "1",
+							"name": "medium"
+						},
+						{
+							"value": "2",
+							"name": "high"
+						},
+						{
+							"value": "3",
+							"name": "very high"
+						}
+					]
+				}
+			},
+			{
+				"key": "ui_disableScreenFade",
+				"name": "Disable Screen Fade During Respawn",
+				"category": "ui",
+				"values": {
 					"type": "bool",
-					"default": "true"
+					"default": "false"
+				}
+			},
+			{
+				"key": "sys_audio_disable",
+				"name": "Disable Audio",
+				"category": "system",
+				"values": {
+					"type": "bool",
+					"default": "false"
+				}
+			},
+			{
+				"key": "sys_social_disable",
+				"name": "Disable CIGSocial (FOIP)",
+				"category": "system",
+				"values": {
+					"type": "bool",
+					"default": "false"
 				}
 			}
 		]
