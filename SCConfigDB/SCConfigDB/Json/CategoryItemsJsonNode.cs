@@ -35,11 +35,11 @@ namespace Defter.StarCitizen.ConfigDB.Json
 
         public CategoryJsonNode? GetCategory(string key) => Categories.FirstOrDefault(c => c.IsKeyEqual(key));
 
-        public int? GetCategoryIndex(string key) => Array.FindIndex(Categories, c => c.IsKeyEqual(key));
+        public int GetCategoryIndex(string key) => Array.FindIndex(Categories, c => c.IsKeyEqual(key));
 
         public T? GetItem(string key) => Items.FirstOrDefault(c => c.IsKeyEqual(key));
 
-        public int? GetItemIndex(string key) => Array.FindIndex(Items, c => c.IsKeyEqual(key));
+        public int GetItemIndex(string key) => Array.FindIndex(Items, c => c.IsKeyEqual(key));
 
         public class Builder
         {

@@ -241,7 +241,7 @@ namespace Defter.StarCitizen.TestApplication
                 _errorOutput.WriteLine("Error: Failed update language file");
                 return false;
             }
-            _configDataTranslateJsonNodes.Add(language, updatedTranslationJsonNode);
+            _configDataTranslateJsonNodes[language] = updatedTranslationJsonNode;
             transation.Commit();
             return true;
         }

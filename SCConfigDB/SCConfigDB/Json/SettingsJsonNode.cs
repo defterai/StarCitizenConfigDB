@@ -15,18 +15,18 @@ namespace Defter.StarCitizen.ConfigDB.Json
         {
             foreach (var categoryTranslateNode in translateNode.Categories)
             {
-                int? index = node.GetCategoryIndex(categoryTranslateNode.Key);
-                if (index.HasValue)
+                int index = node.GetCategoryIndex(categoryTranslateNode.Key);
+                if (index != -1)
                 {
-                    Categories[index.Value] = node.Categories[index.Value].TranslateWith(categoryTranslateNode);
+                    Categories[index] = node.Categories[index].TranslateWith(categoryTranslateNode);
                 }
             }
             foreach (var itemTranslateNode in translateNode.Items)
             {
-                int? index = node.GetItemIndex(itemTranslateNode.Key);
-                if (index.HasValue)
+                int index = node.GetItemIndex(itemTranslateNode.Key);
+                if (index != -1)
                 {
-                    Items[index.Value] = node.Items[index.Value].TranslateWith(itemTranslateNode);
+                    Items[index] = node.Items[index].TranslateWith(itemTranslateNode);
                 }
             }
         }

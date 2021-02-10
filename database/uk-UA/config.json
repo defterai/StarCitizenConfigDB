@@ -40,14 +40,108 @@
 	"settings": {
 		"categories": [
 			{
+				"key": "system",
+				"name": "Системні"
+			},
+			{
 				"key": "render",
 				"name": "Рендер"
+			},
+			{
+				"key": "shader",
+				"name": "Шейдери"
+			},
+			{
+				"key": "ui",
+				"name": "Інтерфейс"
 			}
 		],
 		"items": [
 			{
-				"key": "r_Fullscreen",
-				"name": "Повноекранний"
+				"key": "sys_maxFPS",
+				"name": "Максимальний ФПС",
+				"values": [
+					{
+						"value": "0",
+						"name": "необмежений"
+					},
+					{
+						"value": "120",
+						"name": "120"
+					}
+				]
+			},
+			{
+				"key": "sys_maxIdleFPS",
+				"name": "Максимальний ФПС у спокої",
+				"values": [
+					{
+						"value": "0",
+						"name": "необмежений"
+					},
+					{
+						"value": "120",
+						"name": "120"
+					}
+				]
+			},
+			{
+				"key": "sys_audio_disable",
+				"name": "Вимкнути аудіо"
+			},
+			{
+				"key": "sys_social_disable",
+				"name": "Вимкнути CIGSocial (FOIP)"
+			},
+			{
+				"key": "r_WindowMode",
+				"name": "Window mode",
+				"values": [
+					{
+						"value": "0",
+						"name": "віконний"
+					},
+					{
+						"value": "1",
+						"name": "повноекраний"
+					},
+					{
+						"value": "2",
+						"name": "безрамковий"
+					}
+				]
+			},
+			{
+				"key": "r_VSync",
+				"name": "Вертикальна синхронізація"
+			},
+			{
+				"key": "r_Width",
+				"name": "Ширина дисплея (у пікселях)",
+				"values": [
+					{
+						"value": "1024",
+						"name": "1024"
+					},
+					{
+						"value": "7680",
+						"name": "7680"
+					}
+				]
+			},
+			{
+				"key": "r_Height",
+				"name": "Висота дисплея (у пікселях)",
+				"values": [
+					{
+						"value": "768",
+						"name": "768"
+					},
+					{
+						"value": "4320",
+						"name": "4320"
+					}
+				]
 			},
 			{
 				"key": "r_DisplayInfo",
@@ -63,13 +157,253 @@
 					},
 					{
 						"value": "2",
-						"name": "базові"
+						"name": "базова"
 					},
 					{
 						"value": "3",
-						"name": "розширені"
+						"name": "розширена"
 					}
 				]
+			},
+			{
+				"key": "r_DisplaySessionInfo",
+				"name": "Відображення QR-коду сесії"
+			},
+			{
+				"key": "r_AntialiasingMode",
+				"name": "Режим згладжування",
+				"values": [
+					{
+						"value": "5",
+						"name": "FXAA (1xMSAAx1T)"
+					},
+					{
+						"value": "6",
+						"name": "TXAA середній (2xMSAAx1T)"
+					},
+					{
+						"value": "7",
+						"name": "TXAA високий (4xMSAAx1T)"
+					},
+					{
+						"value": "8",
+						"name": "MSAA низький (2xMSAA)"
+					},
+					{
+						"value": "9",
+						"name": "MSAA середній (4xMSAA)"
+					},
+					{
+						"value": "10",
+						"name": "MSAA високий (8xMSAA)"
+					}
+				]
+			},
+			{
+				"key": "r_MotionBlur",
+				"name": "Розмиття руху камери"
+			},
+			{
+				"key": "q_ShaderGeneral",
+				"name": "Загальна якість",
+				"values": [
+					{
+						"value": "0",
+						"name": "низька"
+					},
+					{
+						"value": "1",
+						"name": "середня"
+					},
+					{
+						"value": "2",
+						"name": "висока"
+					},
+					{
+						"value": "3",
+						"name": "дуже висока"
+					}
+				]
+			},
+			{
+				"key": "q_ShaderDecal",
+				"name": "Якість декалей",
+				"values": [
+					{
+						"value": "0",
+						"name": "низька"
+					},
+					{
+						"value": "1",
+						"name": "середня"
+					},
+					{
+						"value": "2",
+						"name": "висока"
+					},
+					{
+						"value": "3",
+						"name": "дуже висока"
+					}
+				]
+			},
+			{
+				"key": "q_ShaderShadow",
+				"name": "Якість тіней",
+				"values": [
+					{
+						"value": "0",
+						"name": "низька"
+					},
+					{
+						"value": "1",
+						"name": "середня"
+					},
+					{
+						"value": "2",
+						"name": "висока"
+					},
+					{
+						"value": "3",
+						"name": "дуже висока"
+					}
+				]
+			},
+			{
+				"key": "q_ShaderWater",
+				"name": "Якість води",
+				"values": [
+					{
+						"value": "0",
+						"name": "низька"
+					},
+					{
+						"value": "1",
+						"name": "середня"
+					},
+					{
+						"value": "2",
+						"name": "висока"
+					},
+					{
+						"value": "3",
+						"name": "дуже висока"
+					}
+				]
+			},
+			{
+				"key": "q_ShaderFX",
+				"name": "Якість візуальних ефектів (FX)",
+				"values": [
+					{
+						"value": "0",
+						"name": "низька"
+					},
+					{
+						"value": "1",
+						"name": "середня"
+					},
+					{
+						"value": "2",
+						"name": "висока"
+					},
+					{
+						"value": "3",
+						"name": "дуже висока"
+					}
+				]
+			},
+			{
+				"key": "q_ShaderPostProcess",
+				"name": "Якість пост обробки",
+				"values": [
+					{
+						"value": "0",
+						"name": "низька"
+					},
+					{
+						"value": "1",
+						"name": "середня"
+					},
+					{
+						"value": "2",
+						"name": "висока"
+					},
+					{
+						"value": "3",
+						"name": "дуже висока"
+					}
+				]
+			},
+			{
+				"key": "q_ShaderHDR",
+				"name": "Якість HDR",
+				"values": [
+					{
+						"value": "0",
+						"name": "низька"
+					},
+					{
+						"value": "1",
+						"name": "середня"
+					},
+					{
+						"value": "2",
+						"name": "висока"
+					},
+					{
+						"value": "3",
+						"name": "дуже висока"
+					}
+				]
+			},
+			{
+				"key": "q_ShaderSky",
+				"name": "Якість хмар",
+				"values": [
+					{
+						"value": "0",
+						"name": "низька"
+					},
+					{
+						"value": "1",
+						"name": "середня"
+					},
+					{
+						"value": "2",
+						"name": "висока"
+					},
+					{
+						"value": "3",
+						"name": "дуже висока"
+					}
+				]
+			},
+			{
+				"key": "q_ShaderParticle",
+				"name": "Якість часточок",
+				"values": [
+					{
+						"value": "0",
+						"name": "низька"
+					},
+					{
+						"value": "1",
+						"name": "середня"
+					},
+					{
+						"value": "2",
+						"name": "висока"
+					},
+					{
+						"value": "3",
+						"name": "дуже висока"
+					}
+				]
+			},
+			{
+				"key": "ui_disableScreenFade",
+				"name": "Вимкнути згасання екрану під час відродження"
 			}
 		]
 	}

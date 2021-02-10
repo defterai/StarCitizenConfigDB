@@ -41,10 +41,10 @@ namespace Defter.StarCitizen.ConfigDB.Json
                 {
                     foreach (var translateNode in translateNodes)
                     {
-                        int? index = node.GetValueIndex(translateNode.Value);
-                        if (index.HasValue)
+                        int index = node.GetValueIndex(translateNode.Value);
+                        if (index != -1)
                         {
-                            List[index.Value] = node.List[index.Value].TranslateWith(translateNode);
+                            List[index] = node.List[index].TranslateWith(translateNode);
                         }
                     }
                 }
@@ -55,7 +55,7 @@ namespace Defter.StarCitizen.ConfigDB.Json
 
         public ValueJsonNode? GetValueNode(string value) => List.FirstOrDefault(v => string.Equals(v.Value, value));
 
-        public int? GetValueIndex(string value) => Array.FindIndex(List, v => string.Equals(v.Value, value));
+        public int GetValueIndex(string value) => Array.FindIndex(List, v => string.Equals(v.Value, value));
 
         public bool BooleanDefault() => bool.Parse(DefaultValue);
 
