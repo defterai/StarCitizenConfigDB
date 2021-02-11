@@ -244,6 +244,34 @@
 				}
 			},
 			{
+				"key": "r_ssdo",
+				"name": "Screen Space Directional Occlusion (SSDO)",
+				"category": "render",
+				"desc": "Lighting &post process that makes stuff look prettier and more realistic.\nIt can be set to off for Performance and up to high for Quality.",
+				"values": {
+					"type": "int",
+					"default": "2",
+					"list": [
+						{
+							"value": "0",
+							"name": "off"
+						},
+						{
+							"value": "1",
+							"name": "low"
+						},
+						{
+							"value": "2",
+							"name": "medium"
+						},
+						{
+							"value": "3",
+							"name": "high"
+						}
+					]
+				}
+			},
+			{
 				"key": "q_ShaderGeneral",
 				"name": "General Quality",
 				"category": "shader",
