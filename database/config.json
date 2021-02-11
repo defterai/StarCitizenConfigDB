@@ -244,6 +244,46 @@
 				}
 			},
 			{
+				"key": "r_FogShadows",
+				"name": "Deferred Volumetric Fog Shadows",
+				"category": "render",
+				"values": {
+					"type": "int",
+					"default": "1",
+					"list": [
+						{
+							"value": "0",
+							"name": "off"
+						},
+						{
+							"value": "1",
+							"name": "standard resolution"
+						},
+						{
+							"value": "2",
+							"name": "reduced resolution"
+						}
+					]
+				}
+			},
+			{
+				"key": "r_Gamma",
+				"name": "Gamma Correction",
+				"category": "render",
+				"values": {
+					"type": "range_float",
+					"default": "1.0",
+					"list": [
+						{
+							"value": "0.1"
+						},
+						{
+							"value": "4.0"
+						}
+					]
+				}
+			},
+			{
 				"key": "r_ssdo",
 				"name": "Screen Space Directional Occlusion (SSDO)",
 				"category": "render",
