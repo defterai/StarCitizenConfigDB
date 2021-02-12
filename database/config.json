@@ -352,6 +352,173 @@
 				}
 			},
 			{
+				"key": "r_OpticsQuality",
+				"name": "Optics Quality",
+				"category": "render",
+				"values": {
+					"type": "int",
+					"list": [
+						{
+							"value": "1",
+							"name": "low"
+						},
+						{
+							"value": "2",
+							"name": "medium"
+						},
+						{
+							"value": "3",
+							"name": "high"
+						},
+						{
+							"value": "4",
+							"name": "very high"
+						}
+					]
+				}
+			},
+			{
+				"key": "r_ssdoColorBleeding",
+				"name": "SSDO Color Blending",
+				"category": "render",
+				"values": {
+					"type": "bool"
+				}
+			},
+			{
+				"key": "r_PostProcessHUD3DCache",
+				"name": "3D HUD Caching Overframes",
+				"category": "render",
+				"values": {
+					"type": "int",
+					"default": "0",
+					"list": [
+						{
+							"value": "0",
+							"name": "disabled"
+						},
+						{
+							"value": "1",
+							"name": "every frame"
+						},
+						{
+							"value": "2",
+							"name": "every 2 frames"
+						},
+						{
+							"value": "3",
+							"name": "every 3 frames"
+						}
+					]
+				}
+			},
+
+			{
+				"key": "r_ColorGrading",
+				"name": "Color Grading",
+				"category": "render",
+				"values": {
+					"type": "int",
+					"list": [
+						{
+							"value": "1",
+							"name": "low"
+						},
+						{
+							"value": "2",
+							"name": "medium"
+						},
+						{
+							"value": "3",
+							"name": "high"
+						},
+						{
+							"value": "4",
+							"name": "very high"
+						}
+					]
+				}
+			},
+			{
+				"key": "r_DepthOfField",
+				"name": "Depth Of Field",
+				"category": "render",
+				"values": {
+					"type": "int",
+					"list": [
+						{
+							"value": "0",
+							"name": "disabled"
+						},
+						{
+							"value": "1",
+							"name": "ordinal dof"
+						},
+						{
+							"value": "2",
+							"name": "hdr time of day dof"
+						}
+					]
+				}
+			},
+			{
+				"key": "r_RainMaxViewDist_Deferred",
+				"name": "Rain Reflection Maximum View Distance",
+				"desc": "Sets maximum view distance (in meters) for deferred rain reflection layer",
+				"category": "render",
+				"values": {
+					"type": "range_int",
+					"list": [
+						{
+							"value": "20",
+							"name": "very low"
+						},
+						{
+							"value": "40",
+							"name": "low"
+						},
+						{
+							"value": "100",
+							"name": "medium"
+						},
+						{
+							"value": "150",
+							"name": "high"
+						},
+						{
+							"value": "200",
+							"name": "very high"
+						}
+					]
+				}
+			},
+			{
+				"key": "r_MotionBlurQuality",
+				"name": "Motion Blur Quality",
+				"category": "render",
+				"values": {
+					"type": "int",
+					"list": [
+						{
+							"value": "0",
+							"name": "low"
+						},
+						{
+							"value": "1",
+							"name": "medium"
+						},
+						{
+							"value": "2",
+							"name": "high"
+						},
+						{
+							"value": "3",
+							"name": "very high"
+						}
+					]
+				}
+			},
+			{
 				"key": "e_ObjQuality",
 				"name": "Object Detail Quality",
 				"category": "object_detail",
@@ -1217,6 +1384,203 @@
 						},
 						{
 							"value": "320",
+							"name": "very high"
+						}
+					]
+				}
+			},
+			{
+				"key": "p_max_MC_iters",
+				"name": "Max Collision Contact Iterations",
+				"desc": "Specifies the maximum number of microcontact solver iterations (per contact)",
+				"category": "physics",
+				"values": {
+					"type": "range_int",
+					"list": [
+						{
+							"value": "2000",
+							"name": "very low"
+						},
+						{
+							"value": "4000",
+							"name": "low"
+						},
+						{
+							"value": "6000",
+							"name": "high"
+						},
+						{
+							"value": "8000",
+							"name": "very high"
+						}
+					]
+				}
+			},
+			{
+				"key": "p_max_object_splashes",
+				"name": "Max Object Splashes",
+				"desc": "Specifies how many splash events one entity is allowed to generate",
+				"category": "physics",
+				"values": {
+					"type": "range_int",
+					"default": "3",
+					"list": [
+						{
+							"value": "1"
+						},
+						{
+							"value": "6"
+						}
+					]
+				}
+			},
+			{
+				"key": "p_max_substeps_large_group",
+				"name": "Max Substeps Large Groups",
+				"desc": "Limits the number of substeps large groups of objects can make",
+				"category": "physics",
+				"values": {
+					"type": "range_int",
+					"default": "5",
+					"list": [
+						{
+							"value": "1"
+						},
+						{
+							"value": "10"
+						}
+					]
+				}
+			},
+			{
+				"key": "p_splash_dist0",
+				"name": "Start Splash Culling Distance",
+				"desc": "Range start for splash event distance culling",
+				"category": "physics",
+				"values": {
+					"type": "range_int",
+					"default": "7",
+					"list": [
+						{
+							"value": "5"
+						},
+						{
+							"value": "10"
+						}
+					]
+				}
+			},
+			{
+				"key": "p_splash_force0",
+				"name": "Splash Generate Min Force at start culling distance",
+				"desc": "Minimum water hit force to generate splash events at start splash culling distance",
+				"category": "physics",
+				"values": {
+					"type": "range_int",
+					"default": "10",
+					"list": [
+						{
+							"value": "5"
+						},
+						{
+							"value": "15"
+						}
+					]
+				}
+			},
+			{
+				"key": "p_splash_vel0",
+				"name": "Splash Generate Min Velocitty at start culling distance",
+				"desc": "Minimum water hit velocity to generate splash events at start splash culling distance",
+				"category": "physics",
+				"values": {
+					"type": "range_float",
+					"default": "4.5",
+					"list": [
+						{
+							"value": "2.0"
+						},
+						{
+							"value": "8"
+						}
+					]
+				}
+			},
+			{
+				"key": "p_splash_dist1",
+				"name": "End Splash Culling Distance",
+				"desc": "Range end for splash event distance culling",
+				"category": "physics",
+				"values": {
+					"type": "range_int",
+					"default": "30",
+					"list": [
+						{
+							"value": "15"
+						},
+						{
+							"value": "60"
+						}
+					]
+				}
+			},
+			{
+				"key": "p_splash_force1",
+				"name": "Splash Generate Min Force at end culling distance",
+				"desc": "Minimum water hit force to generate splash events at end splash culling distance",
+				"category": "physics",
+				"values": {
+					"type": "range_int",
+					"list": [
+						{
+							"value": "20"
+						},
+						{
+							"value": "200"
+						}
+					]
+				}
+			},
+			{
+				"key": "p_splash_vel1",
+				"name": "Splash Generate Min Velocitty at end culling distance",
+				"desc": "Minimum water hit velocity to generate splash events at end splash culling distance",
+				"category": "physics",
+				"values": {
+					"type": "range_float",
+					"default": "10",
+					"list": [
+						{
+							"value": "10"
+						},
+						{
+							"value": "20"
+						}
+					]
+				}
+			},
+			{
+				"key": "v_vehicle_quality",
+				"name": "Vehicle Quality",
+				"category": "physics",
+				"values": {
+					"type": "int",
+					"default": "4",
+					"list": [
+						{
+							"value": "1",
+							"name": "low"
+						},
+						{
+							"value": "2",
+							"name": "medium"
+						},
+						{
+							"value": "3",
+							"name": "high"
+						},
+						{
+							"value": "4",
 							"name": "very high"
 						}
 					]
