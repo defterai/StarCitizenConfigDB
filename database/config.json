@@ -63,10 +63,17 @@
 				"key": "object_detail",
 				"name": "Objct Detail"
 			},
-
 			{
 				"key": "particles",
 				"name": "Particles"
+			},
+			{
+				"key": "texture",
+				"name": "Texture"
+			},
+			{
+				"key": "shadows",
+				"name": "Shadows"
 			},
 			{
 				"key": "shader",
@@ -783,6 +790,245 @@
 							"name": "low"
 						}
 					]
+				}
+			},
+			{
+				"key": "r_DynTexMaxSize",
+				"name": "Dynamic Texture Pool Size",
+				"category": "texture",
+				"values": {
+					"type": "int",
+					"list": [
+						{
+							"value": "50",
+							"name": "low"
+						},
+						{
+							"value": "60",
+							"name": "medium"
+						},
+						{
+							"value": "80",
+							"name": "high"
+						},
+						{
+							"value": "120",
+							"name": "very high"
+						}
+					]
+				}
+			},
+			{
+				"key": "r_TexAtlasSize",
+				"name": "Texture Atlas Size",
+				"category": "texture",
+				"values": {
+					"type": "int",
+					"list": [
+						{
+							"value": "512",
+							"name": "low"
+						},
+						{
+							"value": "1024",
+							"name": "medium"
+						},
+						{
+							"value": "2048",
+							"name": "high"
+						},
+						{
+							"value": "4096",
+							"name": "very high"
+						}
+					]
+				}
+			},
+			{
+				"key": "r_ShadowsPoolSize",
+				"name": "Shadows Pool Size",
+				"category": "shadows",
+				"values": {
+					"type": "int",
+					"list": [
+						{
+							"value": "4096",
+							"name": "medium"
+						},
+						{
+							"value": "8192",
+							"name": "high"
+						}
+					]
+				}
+			},
+			{
+				"key": "r_FogShadows",
+				"name": "Deferred Volumetric Fog Shadows",
+				"category": "shadows",
+				"values": {
+					"type": "int",
+					"list": [
+						{
+							"value": "0",
+							"name": "off"
+						},
+						{
+							"value": "1",
+							"name": "standard resolution"
+						},
+						{
+							"value": "2",
+							"name": "reduced resolution"
+						}
+					]
+				}
+			},
+			{
+				"key": "r_FogShadowsWater",
+				"name": "Volumetric Fog Shadows For Watervolumes",
+				"category": "shadows",
+				"values": {
+					"type": "bool"
+				}
+			},
+			{
+				"key": "e_ShadowTexelWidthInPixels",
+				"name": "Shadow Texelss Width (in pixels)",
+				"desc": "Width of shadow texels measured in pixels",
+				"category": "shadows",
+				"values": {
+					"type": "range_float",
+					"list": [
+						{
+							"value": "3.0",
+							"name": "high"
+						},
+						{
+							"value": "6.0",
+							"name": "low"
+						}
+					]
+				}
+			},
+			{
+				"key": "r_ShadowJitteringProjectionLight",
+				"name": "Shadow Jittering Projection Light",
+				"desc": "Shadow map jittering radius for projection light",
+				"category": "shadows",
+				"values": {
+					"type": "float",
+					"list": [
+						{
+							"value": "0",
+							"name": "off"
+						},
+						{
+							"value": "1.0",
+							"name": "low"
+						},
+						{
+							"value": "1.5",
+							"name": "high"
+						}
+					]
+				}
+			},
+			{
+				"key": "r_ShadowJitteringOmniDirectionalLight",
+				"name": "Shadow Jittering Omni Directional Light",
+				"desc": "Shadow map jittering radius for omnidirectional light",
+				"category": "shadows",
+				"values": {
+					"type": "float",
+					"list": [
+						{
+							"value": "0",
+							"name": "off"
+						},
+						{
+							"value": "1.0",
+							"name": "low"
+						},
+						{
+							"value": "2.5",
+							"name": "high"
+						}
+					]
+				}
+			},
+			{
+				"key": "e_ObjShadowCastSpec",
+				"name": "Object Shadow Cast Specification",
+				"desc": "Only objects with Shadow Cast Specification less or equal selected value setting here will cast shadows",
+				"category": "shadows",
+				"values": {
+					"type": "int",
+					"list": [
+						{
+							"value": "1",
+							"name": "low"
+						},
+						{
+							"value": "2",
+							"name": "medium"
+						},
+						{
+							"value": "3",
+							"name": "high"
+						},
+						{
+							"value": "4",
+							"name": "very high"
+						}
+					]
+				}
+			},
+			{
+				"key": "e_ShadowsCastViewDistRatio",
+				"name": "Shadows Cast View Distance Ratio",
+				"desc": "View distance ratio for shadow maps casting from objects",
+				"category": "shadows",
+				"values": {
+					"type": "range_float",
+					"list": [
+						{
+							"value": "0.8",
+							"name": "low"
+						},
+						{
+							"value": "1.0",
+							"name": "high"
+						}
+					]
+				}
+			},
+			{
+				"key": "e_ShadowsTessellateCascades",
+				"name": "Shadows Tessellate Cascades",
+				"desc": "Maximum cascade number to render tessellated shadows\n(0 - no tessellation for sun shadows)",
+				"category": "shadows",
+				"values": {
+					"type": "range_int",
+					"default": "1",
+					"list": [
+						{
+							"value": "0",
+							"name": "none"
+						},
+						{
+							"value": "1",
+							"name": "one"
+						}
+					]
+				}
+			},
+			{
+				"key": "e_ShadowsBlendCascades",
+				"name": "Blend Between Shadow Cascades",
+				"category": "shadows",
+				"values": {
+					"type": "bool"
 				}
 			},
 
