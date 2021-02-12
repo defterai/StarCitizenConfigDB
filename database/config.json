@@ -80,6 +80,14 @@
 				"name": "Shader"
 			},
 			{
+				"key": "physics",
+				"name": "Physics"
+			},
+			{
+				"key": "light",
+				"name": "Light"
+			},
+			{
 				"key": "ui",
 				"name": "UI"
 			}
@@ -296,29 +304,6 @@
 				"category": "render",
 				"values": {
 					"type": "bool"
-				}
-			},
-			{
-				"key": "r_FogShadows",
-				"name": "Deferred Volumetric Fog Shadows",
-				"category": "render",
-				"values": {
-					"type": "int",
-					"default": "1",
-					"list": [
-						{
-							"value": "0",
-							"name": "off"
-						},
-						{
-							"value": "1",
-							"name": "standard resolution"
-						},
-						{
-							"value": "2",
-							"name": "reduced resolution"
-						}
-					]
 				}
 			},
 			{
@@ -1031,7 +1016,212 @@
 					"type": "bool"
 				}
 			},
-
+			{
+				"key": "g_ProjectileLightLimit",
+				"name": "Projectile Lights Limit",
+				"category": "light",
+				"values": {
+					"type": "range_int",
+					"list": [
+						{
+							"value": "-1",
+							"name": "disabled"
+						},
+						{
+							"value": "0",
+							"name": "no limit"
+						},
+						{
+							"value": "1",
+							"name": "minimal"
+						},
+						{
+							"value": "5",
+							"name": "low"
+						},
+						{
+							"value": "20",
+							"name": "medium"
+						},
+						{
+							"value": "30",
+							"name": "high"
+						},
+						{
+							"value": "50",
+							"name": "very high"
+						}
+					]
+				}
+			},
+			{
+				"key": "es_MaxPhysDist",
+				"name": "Max Physics Distance",
+				"desc": "Physical entities farther from the camera than this are forcefully deactivated",
+				"category": "physics",
+				"values": {
+					"type": "range_int",
+					"list": [
+						{
+							"value": "15",
+							"name": "very low"
+						},
+						{
+							"value": "25",
+							"name": "low"
+						},
+						{
+							"value": "50",
+							"name": "medium"
+						},
+						{
+							"value": "100",
+							"name": "high"
+						},
+						{
+							"value": "200",
+							"name": "very high"
+						}
+					]
+				}
+			},
+			{
+				"key": "es_MaxPhysDistInvisible",
+				"name": "Max Invisible Physics Distance",
+				"desc": "Invisible physical entities farther from the camera than this are forcefully deactivated",
+				"category": "physics",
+				"values": {
+					"type": "range_int",
+					"list": [
+						{
+							"value": "10",
+							"name": "low"
+						},
+						{
+							"value": "15",
+							"name": "medium"
+						},
+						{
+							"value": "20",
+							"name": "high"
+						},
+						{
+							"value": "25",
+							"name": "very high"
+						}
+					]
+				}
+			},
+			{
+				"key": "e_FoliageWindActivationDist",
+				"name": "Foliage Wind Activation Distance",
+				"desc": "If the wind is sufficiently strong, visible foliage in this view distance will be forcefully activated",
+				"category": "physics",
+				"values": {
+					"type": "range_int",
+					"list": [
+						{
+							"value": "10",
+							"name": "low"
+						},
+						{
+							"value": "20",
+							"name": "medium"
+						},
+						{
+							"value": "25",
+							"name": "high"
+						},
+						{
+							"value": "50",
+							"name": "very high"
+						}
+					]
+				}
+			},
+			{
+				"key": "e_CullVegActivation",
+				"name": "Vegetation Activation Distance Limit",
+				"desc": "Vegetation activation distance limit; 0 disables visibility-based culling (= unconditional activation)",
+				"category": "physics",
+				"values": {
+					"type": "int",
+					"list": [
+						{
+							"value": "0",
+							"name": "disable culling"
+						},
+						{
+							"value": "10",
+							"name": "very low"
+						},
+						{
+							"value": "15",
+							"name": "low"
+						},
+						{
+							"value": "30",
+							"name": "medium"
+						},
+						{
+							"value": "50",
+							"name": "high"
+						},
+						{
+							"value": "75",
+							"name": "very high"
+						}
+					]
+				}
+			},
+			{
+				"key": "e_PhysProxyTriLimit",
+				"name": "Phys Proxy Triangles Limit",
+				"desc": "Maximum allowed triangle count for phys proxies",
+				"category": "physics",
+				"values": {
+					"type": "range_int",
+					"default": "100000",
+					"list": [
+						{
+							"value": "100000"
+						},
+						{
+							"value": "250000"
+						}
+					]
+				}
+			},
+			{
+				"key": "g_breakage_particles_limit",
+				"name": "Breakage Particles Limit",
+				"category": "physics",
+				"values": {
+					"type": "range_int",
+					"list": [
+						{
+							"value": "40",
+							"name": "very low"
+						},
+						{
+							"value": "80",
+							"name": "low"
+						},
+						{
+							"value": "120",
+							"name": "medium"
+						},
+						{
+							"value": "160",
+							"name": "high"
+						},
+						{
+							"value": "320",
+							"name": "very high"
+						}
+					]
+				}
+			},
 			{
 				"key": "q_ShaderGeneral",
 				"name": "General Quality",
