@@ -48,12 +48,25 @@
 	"settings": {
 		"categories": [
 			{
+				"key": "client",
+				"name": "Client"
+			},
+			{
 				"key": "system",
 				"name": "System"
 			},
 			{
 				"key": "render",
 				"name": "Render"
+			},
+			{
+				"key": "object_detail",
+				"name": "Objct Detail"
+			},
+
+			{
+				"key": "particles",
+				"name": "Particles"
 			},
 			{
 				"key": "shader",
@@ -65,6 +78,23 @@
 			}
 		],
 		"items": [
+			{
+				"key": "cl_fov",
+				"name": "Fov",
+				"category": "client",
+				"values": {
+					"type": "range_float",
+					"default": "90",
+					"list": [
+						{
+							"value": "30"
+						},
+						{
+							"value": "180"
+						}
+					]
+				}
+			},
 			{
 				"key": "sys_maxFPS",
 				"name": "Maximum FPS",
@@ -99,6 +129,24 @@
 							"value": "120"
 						}
 					]
+				}
+			},
+			{
+				"key": "sys_audio_disable",
+				"name": "Disable Audio",
+				"category": "system",
+				"values": {
+					"type": "bool",
+					"default": "false"
+				}
+			},
+			{
+				"key": "sys_social_disable",
+				"name": "Disable CIGSocial (FOIP)",
+				"category": "system",
+				"values": {
+					"type": "bool",
+					"default": "false"
 				}
 			},
 			{
@@ -311,6 +359,433 @@
 					]
 				}
 			},
+			{
+				"key": "e_ObjQuality",
+				"name": "Object Detail Quality",
+				"category": "object_detail",
+				"values": {
+					"type": "int",
+					"list": [
+						{
+							"value": "1",
+							"name": "low"
+						},
+						{
+							"value": "2",
+							"name": "medium"
+						},
+						{
+							"value": "3",
+							"name": "high"
+						},
+						{
+							"value": "4",
+							"name": "very high"
+						}
+					]
+				}
+			},
+			{
+				"key": "e_LodRatio",
+				"name": "Level of Details (LOD) ratio",
+				"category": "object_detail",
+				"values": {
+					"type": "int",
+					"list": [
+						{
+							"value": "2",
+							"name": "very low"
+						},
+						{
+							"value": "5",
+							"name": "low"
+						},
+						{
+							"value": "10",
+							"name": "medium"
+						},
+						{
+							"value": "20",
+							"name": "high"
+						},
+						{
+							"value": "50",
+							"name": "very high"
+						}
+					]
+				}
+			},
+			{
+				"key": "e_LodFaceAreaTargetSize",
+				"name": "Computation Threshold of LOD",
+				"desc": "Threshold used for LOD computation",
+				"category": "object_detail",
+				"values": {
+					"type": "float",
+					"list": [
+						{
+							"value": "1.0",
+							"name": "very high"
+						},
+						{
+							"value": "2.0",
+							"name": "high"
+						},
+						{
+							"value": "2.5",
+							"name": "medium"
+						},
+						{
+							"value": "3.0",
+							"name": "low"
+						},
+						{
+							"value": "5.0",
+							"name": "very low"
+						}
+					]
+				}
+			},
+			{
+				"key": "e_TerrainLodRatio",
+				"name": "Terrain Heightmap LOD Ratio",
+				"category": "object_detail",
+				"values": {
+					"type": "float",
+					"list": [
+						{
+							"value": "0.25",
+							"name": "very high"
+						},
+						{
+							"value": "0.5",
+							"name": "high"
+						},
+						{
+							"value": "1.0",
+							"name": "medium"
+						},
+						{
+							"value": "2.0",
+							"name": "low"
+						}
+					]
+				}
+			},
+			{
+				"key": "e_ViewDistRatio",
+				"name": "View Distance Ratio",
+				"category": "object_detail",
+				"values": {
+					"type": "int",
+					"list": [
+						{
+							"value": "50",
+							"name": "very low"
+						},
+						{
+							"value": "75",
+							"name": "low"
+						},
+						{
+							"value": "100",
+							"name": "medium"
+						},
+						{
+							"value": "125",
+							"name": "high"
+						},
+						{
+							"value": "150",
+							"name": "very high"
+						}
+					]
+				}
+			},
+			{
+				"key": "e_ViewDistRatioDetail",
+				"name": "View Distance Ratio (detail objects)",
+				"category": "object_detail",
+				"values": {
+					"type": "int",
+					"list": [
+						{
+							"value": "10",
+							"name": "very low"
+						},
+						{
+							"value": "25",
+							"name": "low"
+						},
+						{
+							"value": "50",
+							"name": "medium"
+						},
+						{
+							"value": "100",
+							"name": "high"
+						},
+						{
+							"value": "150",
+							"name": "very high"
+						}
+					]
+				}
+			},
+			{
+				"key": "e_ViewDistRatioLights",
+				"name": "View Distance Ratio (light sources)",
+				"category": "object_detail",
+				"values": {
+					"type": "int",
+					"list": [
+						{
+							"value": "10",
+							"name": "very low"
+						},
+						{
+							"value": "25",
+							"name": "low"
+						},
+						{
+							"value": "50",
+							"name": "medium"
+						},
+						{
+							"value": "75",
+							"name": "high"
+						},
+						{
+							"value": "100",
+							"name": "very high"
+						}
+
+					]
+				}
+			},
+			{
+				"key": "e_MergedMeshesInstanceDist",
+				"name": "Merged Meshes Turn Off Animation Distance",
+				"desc": "Distance fudge factor at which merged meshes turn off animation",
+				"category": "object_detail",
+				"values": {
+					"type": "float",
+					"list": [
+						{
+							"value": "0.5",
+							"name": "very low"
+						},
+						{
+							"value": "0.75",
+							"name": "low"
+						},
+						{
+							"value": "1.0",
+							"name": "medium"
+						},
+						{
+							"value": "2.0",
+							"name": "high"
+						},
+						{
+							"value": "4.0",
+							"name": "very high"
+						}
+					]
+				}
+			},
+			{
+				"key": "e_MergedMeshesPool",
+				"name": "Merged Meshes Pool Size",
+				"category": "object_detail",
+				"values": {
+					"type": "int",
+					"list": [
+						{
+							"value": "8192",
+							"name": "8 MB"
+						},
+						{
+							"value": "16384",
+							"name": "16 MB"
+						},
+						{
+							"value": "32768",
+							"name": "32 MB"
+						}
+					]
+				}
+			},
+			{
+				"key": "e_Tessellation",
+				"name": "Hardware Geometry Tessellation",
+				"category": "object_detail",
+				"values": {
+					"type": "bool"
+				}
+			},
+			{
+				"key": "e_ParticlesQuality",
+				"name": "Detail Quality",
+				"category": "particles",
+				"values": {
+					"type": "int",
+					"list": [
+						{
+							"value": "2",
+							"name": "low"
+						},
+						{
+							"value": "3",
+							"name": "medium"
+						},
+						{
+							"value": "4",
+							"name": "high"
+						}
+					]
+				}
+			},
+			{
+				"key": "e_ParticleMaxActiveCount",
+				"name": "Max Active Count",
+				"category": "particles",
+				"values": {
+					"type": "range_int",
+					"default": "1000000",
+					"list": [
+						{
+							"value": "100000",
+							"name": "very low"
+						},
+						{
+							"value": "250000",
+							"name": "low"
+						},
+						{
+							"value": "500000",
+							"name": "medium"
+						},
+						{
+							"value": "1000000",
+							"name": "high"
+						},
+						{
+							"value": "2000000",
+							"name": "very high"
+						}
+					]
+				}
+			},
+			{
+				"key": "e_ParticlesObjectCollisions",
+				"name": "Collisions With Objects",
+				"desc": "Particle and object collisions",
+				"category": "particles",
+				"values": {
+					"type": "int",
+					"list": [
+						{
+							"value": "0",
+							"name": "off"
+						},
+						{
+							"value": "1",
+							"name": "static only"
+						},
+						{
+							"value": "2",
+							"name": "static & dynamic"
+						}
+					]
+				}
+			},
+			{
+				"key": "e_ParticlesMaxScreenFill",
+				"name": "Max Screen Fill",
+				"category": "particles",
+				"values": {
+					"type": "int",
+					"list": [
+						{
+							"value": "32",
+							"name": "low"
+						},
+						{
+							"value": "64",
+							"name": "medium"
+						},
+						{
+							"value": "128",
+							"name": "high"
+						},
+						{
+							"value": "160",
+							"name": "very high"
+						}
+					]
+				}
+			},
+			{
+				"key": "e_ParticlesMotionBlur",
+				"name": "Motion Blur",
+				"desc": "Motion blur for particles",
+				"category": "particles",
+				"values": {
+					"type": "int",
+					"list": [
+						{
+							"value": "0",
+							"name": "off"
+						},
+						{
+							"value": "1",
+							"name": "on"
+						},
+						{
+							"value": "2",
+							"name": "force"
+						}
+					]
+				}
+			},
+			{
+				"key": "r_ParticlesTessellation",
+				"name": "Tessellation",
+				"desc": "Enables particle tessellation for higher quality lighting (DX11 only)",
+				"category": "particles",
+				"values": {
+					"type": "bool"
+				}
+			},
+			{
+				"key": "e_ParticlesMinDrawPixels",
+				"name": "Pixel size min per particle",
+				"desc": "Pixel size min per particle - fade out earlier",
+				"category": "particles",
+				"values": {
+					"type": "range_float",
+					"list": [
+						{
+							"value": "0.75",
+							"name": "very high"
+						},
+						{
+							"value": "1.0",
+							"name": "high"
+						},
+						{
+							"value": "1.5",
+							"name": "medium"
+						},
+						{
+							"value": "2.0",
+							"name": "low"
+						}
+					]
+				}
+			},
+
 			{
 				"key": "q_ShaderGeneral",
 				"name": "General Quality",
@@ -556,26 +1031,8 @@
 			},
 			{
 				"key": "ui_disableScreenFade",
-				"name": "Disable Screen Fade During Respawn",
+				"name": "Disable Screen Fade",
 				"category": "ui",
-				"values": {
-					"type": "bool",
-					"default": "false"
-				}
-			},
-			{
-				"key": "sys_audio_disable",
-				"name": "Disable Audio",
-				"category": "system",
-				"values": {
-					"type": "bool",
-					"default": "false"
-				}
-			},
-			{
-				"key": "sys_social_disable",
-				"name": "Disable CIGSocial (FOIP)",
-				"category": "system",
 				"values": {
 					"type": "bool",
 					"default": "false"
