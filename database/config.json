@@ -95,7 +95,7 @@
 		"items": [
 			{
 				"key": "cl_fov",
-				"name": "Fov",
+				"name": "Camera Fov",
 				"category": "client",
 				"values": {
 					"type": "range_float",
@@ -108,6 +108,70 @@
 							"value": "180"
 						}
 					]
+				}
+			},
+			{
+				"key": "cl_invertMouse",
+				"name": "Invert Mouse",
+				"category": "client",
+				"values": {
+					"type": "bool"
+				}
+			},
+			{
+				"key": "cl_invertController",
+				"name": "Invert Controller",
+				"category": "client",
+				"values": {
+					"type": "bool"
+				}
+			},
+			{
+				"key": "cl_zoomToggle",
+				"name": "Zoom Toogle Mode",
+				"category": "client",
+				"values": {
+					"type": "bool"
+				}
+			},
+			{
+				"key": "cl_crouchToggle",
+				"name": "Crouch Toogle Mode",
+				"category": "client",
+				"values": {
+					"type": "bool"
+				}
+			},
+			{
+				"key": "cl_sprintToggle",
+				"name": "Sprint Toogle Mode",
+				"category": "client",
+				"values": {
+					"type": "bool"
+				}
+			},
+			{
+				"key": "cl_proneToggle",
+				"name": "Prone Toogle Mode",
+				"category": "client",
+				"values": {
+					"type": "bool"
+				}
+			},
+			{
+				"key": "cl_interactionToggle",
+				"name": "Interaction Toogle Mode",
+				"category": "client",
+				"values": {
+					"type": "bool"
+				}
+			},
+			{
+				"key": "cl_leanToggle",
+				"name": "Lean Toogle Mode",
+				"category": "client",
+				"values": {
+					"type": "bool"
 				}
 			},
 			{
@@ -201,8 +265,7 @@
 				"name": "Vertical Sync",
 				"category": "render",
 				"values": {
-					"type": "bool",
-					"default": "true"
+					"type": "bool"
 				}
 			},
 			{
@@ -321,13 +384,46 @@
 				"category": "render",
 				"values": {
 					"type": "range_float",
-					"default": "1.0",
 					"list": [
 						{
-							"value": "0.1"
+							"value": "0.8"
 						},
 						{
-							"value": "4.0"
+							"value": "1.25"
+						}
+					]
+				}
+			},
+			{
+				"key": "r_Brightness",
+				"name": "Brightness Correction",
+				"category": "render",
+				"values": {
+					"type": "range_float",
+					"default": "0.5",
+					"list": [
+						{
+							"value": "0"
+						},
+						{
+							"value": "1"
+						}
+					]
+				}
+			},
+			{
+				"key": "r_Contrast",
+				"name": "Contrast Correction",
+				"category": "render",
+				"values": {
+					"type": "range_float",
+					"default": "0.5",
+					"list": [
+						{
+							"value": "0"
+						},
+						{
+							"value": "1"
 						}
 					]
 				}
@@ -525,6 +621,71 @@
 							"name": "very high"
 						}
 					]
+				}
+			},
+
+			{
+				"key": "r_ChromaticAberrationQuality",
+				"name": "Chromatic Aberration Quality",
+				"category": "render",
+				"values": {
+					"type": "int",
+					"default": "2",
+					"list": [
+						{
+							"value": "0",
+							"name": "low"
+						},
+						{
+							"value": "1",
+							"name": "standard"
+						},
+						{
+							"value": "2",
+							"name": "high"
+						}
+					]
+				}
+			},
+			{
+				"key": "r_UserChromaticAberration",
+				"name": "Chromatic Aberration",
+				"category": "render",
+				"values": {
+					"type": "range_float",
+					"list": [
+						{
+							"value": "0"
+						},
+						{
+							"value": "1"
+						}
+					]
+				}
+			},
+			{
+				"key": "r_UserSharpening",
+				"name": "User Sharpening",
+				"category": "render",
+				"values": {
+					"type": "range_float",
+					"list": [
+						{
+							"value": "0"
+						},
+						{
+							"value": "1"
+						}
+					]
+				}
+			},
+			{
+				"key": "r_Beams",
+				"name": "Volumetric light beams",
+				"category": "render",
+				"values": {
+					"type": "bool",
+					"default": "true"
 				}
 			},
 			{
