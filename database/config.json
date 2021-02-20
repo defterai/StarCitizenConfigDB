@@ -165,6 +165,15 @@
 				}
 			},
 			{
+				"key": "sys_no_crash_dialog",
+				"name": "Disable Game Crash Dialog",
+				"category": "system",
+				"values": {
+					"type": "bool",
+					"default": "false"
+				}
+			},
+			{
 				"key": "r_WindowMode",
 				"name": "Window mode",
 				"category": "render",
