@@ -3,6 +3,7 @@ using System.Linq;
 using Newtonsoft.Json;
 using Defter.StarCitizen.ConfigDB.Collection;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace Defter.StarCitizen.ConfigDB.Json
 {
@@ -61,7 +62,7 @@ namespace Defter.StarCitizen.ConfigDB.Json
 
         public int IntegerDefault() => int.Parse(DefaultValue);
 
-        public float FloatDefault() => float.Parse(DefaultValue);
+        public float FloatDefault() => float.Parse(DefaultValue, CultureInfo.InvariantCulture);
 
         public sealed class Builder
         {

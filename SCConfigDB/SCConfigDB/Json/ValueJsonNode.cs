@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using Defter.StarCitizen.ConfigDB.Collection;
 using Newtonsoft.Json;
 
@@ -25,7 +26,7 @@ namespace Defter.StarCitizen.ConfigDB.Json
 
         public int IntegerValue() => int.Parse(Value);
 
-        public float FloatValue() => float.Parse(Value);
+        public float FloatValue() => float.Parse(Value, CultureInfo.InvariantCulture);
 
         public static IReadOnlyDictionary<T, string> LoadValues<T>(ValueJsonNode[]? valuesList, Func<ValueJsonNode, T> valueParser)
         {
