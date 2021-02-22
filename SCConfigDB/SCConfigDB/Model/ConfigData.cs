@@ -15,6 +15,7 @@ namespace Defter.StarCitizen.ConfigDB.Model
         {
             CommandCategories = builder.CommandCategoryBuilders.ToDictionary(entry => entry.Key, entry => entry.Value.Build());
             SettingCategories = builder.SettingCategoryBuilders.ToDictionary(entry => entry.Key, entry => entry.Value.Build());
+            VerifySettings();
         }
 
         public BaseCommand? GetCommand(string commandKey)
@@ -40,6 +41,21 @@ namespace Defter.StarCitizen.ConfigDB.Model
             }
             return null;
         }
+
+        private void VerifySettings()
+        {
+            HashSet<string> settingNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            foreach (var category in SettingCategories.Values)
+            {
+                foreach (var settingName in category.Settings.Keys)
+                {
+                    if (!settingNames.Add(settingName))
+                    {
+                        throw new InvalidDataException($"Duplicate setting key is not allowed: {settingName}");
+                    }
+                }
+            }
+        } 
 
         public sealed class Builder
         {
