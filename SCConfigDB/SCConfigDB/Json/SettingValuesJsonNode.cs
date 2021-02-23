@@ -13,7 +13,9 @@ namespace Defter.StarCitizen.ConfigDB.Json
         public ValueJsonType Type { get; }
         [JsonProperty("default", Order = 1)]
         public string? DefaultValue { get; private set; }
-        [JsonProperty("list", Order = 2)]
+        [JsonProperty("step", Order = 2)]
+        public string? Step { get; private set; }
+        [JsonProperty("list", Order = 3)]
         public ValueJsonNode[]? List { get; private set; }
 
         [JsonConstructor]
@@ -25,6 +27,7 @@ namespace Defter.StarCitizen.ConfigDB.Json
         private SettingValuesJsonNode(Builder builder) : this(builder.Type)
         {
             DefaultValue = builder.DefaultValue;
+            Step = builder.Step;
             if (builder.ValueList.Count != 0)
             {
                 List = builder.ValueList.ToArray();
@@ -35,6 +38,7 @@ namespace Defter.StarCitizen.ConfigDB.Json
         {
             Type = node.Type;
             DefaultValue = node.DefaultValue;
+            Step = node.Step;
             if (node.List != null)
             {
                 List = ArrayHelper.Clone(node.List);
@@ -79,10 +83,25 @@ namespace Defter.StarCitizen.ConfigDB.Json
             return null;
         }
 
+        public int? IntegerStep()
+        {
+            if (Step != null)
+                return int.Parse(Step);
+            return null;
+        }
+
+        public float? FloatStep()
+        {
+            if (Step != null)
+                return float.Parse(Step, CultureInfo.InvariantCulture);
+            return null;
+        }
+
         public sealed class Builder
         {
             public ValueJsonType Type { get; }
             public string? DefaultValue { get; set; }
+            public string? Step { get; set; }
             public List<ValueJsonNode> ValueList { get; } = new List<ValueJsonNode>();
 
             public Builder(ValueJsonType type)

@@ -239,6 +239,10 @@
 												"type": "string",
 												"pattern": "^[+-]?\\d+$"
 											},
+											"step": {
+												"type": "string",
+												"pattern": "^[+-]?\\d+$"
+											},
 											"list": {
 												"type": "array",
 												"uniqueItems": true,
@@ -269,6 +273,10 @@
 												"enum": [ "float", "range_float" ]
 											},
 											"default": {
+												"type": "string",
+												"pattern": "^[+-]?([0-9]+[.])?[0-9]+$"
+											},
+											"step": {
 												"type": "string",
 												"pattern": "^[+-]?([0-9]+[.])?[0-9]+$"
 											},

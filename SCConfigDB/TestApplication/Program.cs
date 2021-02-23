@@ -313,6 +313,10 @@ namespace Defter.StarCitizen.TestApplication
                         Console.WriteLine($"{ident}  Range: {integerSetting.Range}");
                         Console.WriteLine($"{ident}  Min: {integerSetting.MinValue}");
                         Console.WriteLine($"{ident}  Max: {integerSetting.MaxValue}");
+                        if (integerSetting.Step.HasValue)
+                        {
+                            Console.WriteLine($"{ident}  Step: {integerSetting.Step}");
+                        }
                     }
                 }
                 else if (setting is FloatSetting floatSetting && floatSetting.DefaultValue.HasValue)
@@ -324,6 +328,10 @@ namespace Defter.StarCitizen.TestApplication
                         Console.WriteLine($"{ident}  Range: {floatSetting.Range}");
                         Console.WriteLine($"{ident}  Min: {floatSetting.MinValue}");
                         Console.WriteLine($"{ident}  Max: {floatSetting.MaxValue}");
+                        if (floatSetting.Step.HasValue)
+                        {
+                            Console.WriteLine($"{ident}  Step: {floatSetting.Step}");
+                        }
                     }
                 }
                 else
