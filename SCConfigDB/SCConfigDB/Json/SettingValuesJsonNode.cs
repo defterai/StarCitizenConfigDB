@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using Newtonsoft.Json;
 using Defter.StarCitizen.ConfigDB.Collection;
 using System.Collections.Generic;
@@ -58,9 +57,17 @@ namespace Defter.StarCitizen.ConfigDB.Json
 
         public SettingValuesJsonNode TranslateWith(ValueJsonNode[]? translateNodes) => new SettingValuesJsonNode(this, translateNodes);
 
-        public ValueJsonNode? GetValueNode(string value) => List.FirstOrDefault(v => string.Equals(v.Value, value));
+        public ValueJsonNode? GetValueNode(string value)
+        {
+            if (List != null)
+            {
+                int index = GetValueIndex(Type, List, value);
+                return index != -1 ? List[index] : null;
+            }
+            return null;
+        }
 
-        public int GetValueIndex(string value) => Array.FindIndex(List, v => string.Equals(v.Value, value));
+        public int GetValueIndex(string value) => List != null ? GetValueIndex(Type, List, value) : -1;
 
         public bool? BooleanDefault()
         {
@@ -95,6 +102,26 @@ namespace Defter.StarCitizen.ConfigDB.Json
             if (Step != null)
                 return float.Parse(Step, CultureInfo.InvariantCulture);
             return null;
+        }
+
+        private static int GetValueIndex(ValueJsonType type, ValueJsonNode[] valuesNodes, string value)
+        {
+            switch (type)
+            {
+                case ValueJsonType.Bool:
+                    return -1;
+                case ValueJsonType.Int:
+                case ValueJsonType.RangeInt:
+                    int searchIntValue = int.Parse(value);
+                    return Array.FindIndex(valuesNodes, n => n.IntegerValue() == searchIntValue);
+                case ValueJsonType.Float:
+                case ValueJsonType.RangeFloat:
+                    float searchFloatValue = float.Parse(value, CultureInfo.InvariantCulture);
+                    return Array.FindIndex(valuesNodes, n => n.FloatValue() == searchFloatValue);
+                case ValueJsonType.String:
+                default:
+                    return Array.FindIndex(valuesNodes, n => string.Equals(n.Value, value));
+            }
         }
 
         public sealed class Builder

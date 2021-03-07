@@ -1,4 +1,4 @@
-{
+﻿{
 	"$schema": "https://raw.githubusercontent.com/defterai/StarCitizenConfigDB/master/schema_translate.json",
 	"commands": {
 		"categories": [
@@ -138,8 +138,7 @@
 						"name": "необмежений"
 					},
 					{
-						"value": "120",
-						"name": "120"
+						"value": "250"
 					}
 				]
 			},
@@ -152,8 +151,7 @@
 						"name": "необмежений"
 					},
 					{
-						"value": "120",
-						"name": "120"
+						"value": "250"
 					}
 				]
 			},
