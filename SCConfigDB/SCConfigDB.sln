@@ -23,6 +23,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "schemas", "schemas", "{630E
 		..\schema_translate.json = ..\schema_translate.json
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ru-RU", "ru-RU", "{1311D6D4-8F6D-49A5-B7E0-0B8A0FAC3DBF}"
+	ProjectSection(SolutionItems) = preProject
+		..\database\ru-RU\config.json = ..\database\ru-RU\config.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +48,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B7216E2A-6158-4D34-BAE2-B7926DB1E5F6} = {9CDA4433-1379-4583-AB6C-C9B8C3466D99}
+		{1311D6D4-8F6D-49A5-B7E0-0B8A0FAC3DBF} = {9CDA4433-1379-4583-AB6C-C9B8C3466D99}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2E86E540-1B8C-4D28-813F-E1650F9249B0}

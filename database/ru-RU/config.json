@@ -4,32 +4,32 @@
 		"categories": [
 			{
 				"key": "console",
-				"name": "Консоль"
+				"name": "Console"
 			}
 		],
 		"items": [
 			{
 				"key": "r_DisplayInfo",
-				"name": "Показувати інформацію налагодження",
+				"name": "Display Debug Info",
 				"params": [
 					{
-						"name": "режим",
+						"name": "mode",
 						"values": [
 							{
 								"value": "0",
-								"name": "вимкнено"
+								"name": "disabled"
 							},
 							{
 								"value": "1",
-								"name": "фпс"
+								"name": "fps"
 							},
 							{
 								"value": "2",
-								"name": "базові"
+								"name": "basic"
 							},
 							{
 								"value": "3",
-								"name": "розширені"
+								"name": "enhanced"
 							}
 						]
 					}
@@ -45,11 +45,11 @@
 			},
 			{
 				"key": "system",
-				"name": "Системні"
+				"name": "System"
 			},
 			{
 				"key": "render",
-				"name": "Рендер"
+				"name": "Render"
 			},
 			{
 				"key": "object_detail",
@@ -69,7 +69,7 @@
 			},
 			{
 				"key": "shader",
-				"name": "Шейдери"
+				"name": "Shader"
 			},
 			{
 				"key": "physics",
@@ -81,7 +81,7 @@
 			},
 			{
 				"key": "ui",
-				"name": "Інтерфейс"
+				"name": "UI"
 			}
 		],
 		"items": [
@@ -131,39 +131,37 @@
 			},
 			{
 				"key": "sys_maxFPS",
-				"name": "Максимальний ФПС",
+				"name": "Maximum FPS",
 				"values": [
 					{
 						"value": "0",
-						"name": "необмежений"
+						"name": "unlimited"
 					},
 					{
-						"value": "120",
-						"name": "120"
+						"value": "120"
 					}
 				]
 			},
 			{
 				"key": "sys_maxIdleFPS",
-				"name": "Максимальний ФПС у спокої",
+				"name": "Maximum Idle FPS",
 				"values": [
 					{
 						"value": "0",
-						"name": "необмежений"
+						"name": "unlimited"
 					},
 					{
-						"value": "120",
-						"name": "120"
+						"value": "120"
 					}
 				]
 			},
 			{
 				"key": "sys_audio_disable",
-				"name": "Вимкнути аудіо"
+				"name": "Disable Audio"
 			},
 			{
 				"key": "sys_social_disable",
-				"name": "Вимкнути CIGSocial (FOIP)"
+				"name": "Disable CIGSocial (FOIP)"
 			},
 			{
 				"key": "sys_no_crash_dialog",
@@ -175,79 +173,75 @@
 				"values": [
 					{
 						"value": "0",
-						"name": "віконний"
+						"name": "windowed"
 					},
 					{
 						"value": "1",
-						"name": "повноекраний"
+						"name": "fullscreen"
 					},
 					{
 						"value": "2",
-						"name": "безрамковий"
+						"name": "borderless"
 					}
 				]
 			},
 			{
 				"key": "r_VSync",
-				"name": "Вертикальна синхронізація"
+				"name": "Vertical Sync"
 			},
 			{
 				"key": "r_Width",
-				"name": "Ширина дисплея (у пікселях)",
+				"name": "Display Width (in pixels)",
 				"values": [
 					{
-						"value": "1024",
-						"name": "1024"
+						"value": "1024"
 					},
 					{
-						"value": "7680",
-						"name": "7680"
+						"value": "7680"
 					}
 				]
 			},
 			{
 				"key": "r_Height",
-				"name": "Висота дисплея (у пікселях)",
+				"name": "Display Height (in pixels)",
 				"values": [
 					{
-						"value": "768",
-						"name": "768"
+						"value": "768"
 					},
 					{
-						"value": "4320",
-						"name": "4320"
+						"value": "4320"
 					}
 				]
 			},
 			{
 				"key": "r_DisplayInfo",
-				"name": "Показувати інформацію налагодження",
+				"name": "Display Debug Info",
 				"values": [
 					{
 						"value": "0",
-						"name": "вимкнено"
+						"name": "disabled"
 					},
 					{
 						"value": "1",
-						"name": "фпс"
+						"name": "fps"
 					},
 					{
 						"value": "2",
-						"name": "базова"
+						"name": "basic"
 					},
 					{
 						"value": "3",
-						"name": "розширена"
+						"name": "enhanced"
 					}
 				]
 			},
 			{
 				"key": "r_DisplaySessionInfo",
-				"name": "Відображення QR-коду сесії"
+				"name": "Display Session Info QR code"
 			},
 			{
 				"key": "r_AntialiasingMode",
-				"name": "Режим згладжування",
+				"name": "Antialiasing Mode",
 				"values": [
 					{
 						"value": "5",
@@ -255,29 +249,29 @@
 					},
 					{
 						"value": "6",
-						"name": "TXAA середній (2xMSAAx1T)"
+						"name": "TXAA medium (2xMSAAx1T)"
 					},
 					{
 						"value": "7",
-						"name": "TXAA високий (4xMSAAx1T)"
+						"name": "TXAA high (4xMSAAx1T)"
 					},
 					{
 						"value": "8",
-						"name": "MSAA низький (2xMSAA)"
+						"name": "MSAA low (2xMSAA)"
 					},
 					{
 						"value": "9",
-						"name": "MSAA середній (4xMSAA)"
+						"name": "MSAA medium (4xMSAA)"
 					},
 					{
 						"value": "10",
-						"name": "MSAA високий (8xMSAA)"
+						"name": "MSAA high (8xMSAA)"
 					}
 				]
 			},
 			{
 				"key": "r_MotionBlur",
-				"name": "Розмиття руху камери"
+				"name": "Camera Motion Blur"
 			},
 			{
 				"key": "r_Gamma",
@@ -1069,199 +1063,199 @@
 			},
 			{
 				"key": "q_ShaderGeneral",
-				"name": "Загальна якість",
+				"name": "General Quality",
 				"values": [
 					{
 						"value": "0",
-						"name": "низька"
+						"name": "low"
 					},
 					{
 						"value": "1",
-						"name": "середня"
+						"name": "medium"
 					},
 					{
 						"value": "2",
-						"name": "висока"
+						"name": "high"
 					},
 					{
 						"value": "3",
-						"name": "дуже висока"
+						"name": "very high"
 					}
 				]
 			},
 			{
 				"key": "q_ShaderDecal",
-				"name": "Якість декалей",
+				"name": "Decal Quality",
 				"values": [
 					{
 						"value": "0",
-						"name": "низька"
+						"name": "low"
 					},
 					{
 						"value": "1",
-						"name": "середня"
+						"name": "medium"
 					},
 					{
 						"value": "2",
-						"name": "висока"
+						"name": "high"
 					},
 					{
 						"value": "3",
-						"name": "дуже висока"
+						"name": "very high"
 					}
 				]
 			},
 			{
 				"key": "q_ShaderShadow",
-				"name": "Якість тіней",
+				"name": "Shadow Quality",
 				"values": [
 					{
 						"value": "0",
-						"name": "низька"
+						"name": "low"
 					},
 					{
 						"value": "1",
-						"name": "середня"
+						"name": "medium"
 					},
 					{
 						"value": "2",
-						"name": "висока"
+						"name": "high"
 					},
 					{
 						"value": "3",
-						"name": "дуже висока"
+						"name": "very high"
 					}
 				]
 			},
 			{
 				"key": "q_ShaderWater",
-				"name": "Якість води",
+				"name": "Water Quality",
 				"values": [
 					{
 						"value": "0",
-						"name": "низька"
+						"name": "low"
 					},
 					{
 						"value": "1",
-						"name": "середня"
+						"name": "medium"
 					},
 					{
 						"value": "2",
-						"name": "висока"
+						"name": "high"
 					},
 					{
 						"value": "3",
-						"name": "дуже висока"
+						"name": "very high"
 					}
 				]
 			},
 			{
 				"key": "q_ShaderFX",
-				"name": "Якість візуальних ефектів (FX)",
+				"name": "FX Quality",
 				"values": [
 					{
 						"value": "0",
-						"name": "низька"
+						"name": "low"
 					},
 					{
 						"value": "1",
-						"name": "середня"
+						"name": "medium"
 					},
 					{
 						"value": "2",
-						"name": "висока"
+						"name": "high"
 					},
 					{
 						"value": "3",
-						"name": "дуже висока"
+						"name": "very high"
 					}
 				]
 			},
 			{
 				"key": "q_ShaderPostProcess",
-				"name": "Якість пост обробки",
+				"name": "Post Process Quality",
 				"values": [
 					{
 						"value": "0",
-						"name": "низька"
+						"name": "low"
 					},
 					{
 						"value": "1",
-						"name": "середня"
+						"name": "medium"
 					},
 					{
 						"value": "2",
-						"name": "висока"
+						"name": "high"
 					},
 					{
 						"value": "3",
-						"name": "дуже висока"
+						"name": "very high"
 					}
 				]
 			},
 			{
 				"key": "q_ShaderHDR",
-				"name": "Якість HDR",
+				"name": "HDR Quality",
 				"values": [
 					{
 						"value": "0",
-						"name": "низька"
+						"name": "low"
 					},
 					{
 						"value": "1",
-						"name": "середня"
+						"name": "medium"
 					},
 					{
 						"value": "2",
-						"name": "висока"
+						"name": "high"
 					},
 					{
 						"value": "3",
-						"name": "дуже висока"
+						"name": "very high"
 					}
 				]
 			},
 			{
 				"key": "q_ShaderSky",
-				"name": "Якість хмар",
+				"name": "Sky Quality",
 				"values": [
 					{
 						"value": "0",
-						"name": "низька"
+						"name": "low"
 					},
 					{
 						"value": "1",
-						"name": "середня"
+						"name": "medium"
 					},
 					{
 						"value": "2",
-						"name": "висока"
+						"name": "high"
 					},
 					{
 						"value": "3",
-						"name": "дуже висока"
+						"name": "very high"
 					}
 				]
 			},
 			{
 				"key": "q_ShaderParticle",
-				"name": "Якість часточок",
+				"name": "Particle Quality",
 				"values": [
 					{
 						"value": "0",
-						"name": "низька"
+						"name": "low"
 					},
 					{
 						"value": "1",
-						"name": "середня"
+						"name": "medium"
 					},
 					{
 						"value": "2",
-						"name": "висока"
+						"name": "high"
 					},
 					{
 						"value": "3",
-						"name": "дуже висока"
+						"name": "very high"
 					}
 				]
 			},
@@ -1593,7 +1587,7 @@
 			},
 			{
 				"key": "ui_disableScreenFade",
-				"name": "Вимкнути згасання екрану під час відродження"
+				"name": "Disable Screen Fade"
 			}
 		]
 	}
