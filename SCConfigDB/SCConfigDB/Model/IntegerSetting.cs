@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Defter.StarCitizen.ConfigDB.Collection;
 using Defter.StarCitizen.ConfigDB.Json;
 
 namespace Defter.StarCitizen.ConfigDB.Model
@@ -12,6 +13,7 @@ namespace Defter.StarCitizen.ConfigDB.Model
         public bool Range { get; }
         public int MinValue => Values.Keys.Min();
         public int MaxValue => Values.Keys.Max();
+        public IEnumerable<KeyValuePair<int, string>> LabeledValues => Values.ToNonNullableKeyValues();
 
         private IntegerSetting(SettingJsonNode node) : base(node)
         {

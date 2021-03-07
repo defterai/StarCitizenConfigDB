@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using Defter.StarCitizen.ConfigDB.Json;
+using Defter.StarCitizen.ConfigDB.Collection;
 
 namespace Defter.StarCitizen.ConfigDB.Model
 {
@@ -13,6 +14,7 @@ namespace Defter.StarCitizen.ConfigDB.Model
         public bool Range { get; }
         public float MinValue => Values.Keys.Min();
         public float MaxValue => Values.Keys.Max();
+        public IEnumerable<KeyValuePair<float, string>> LabeledValues => Values.ToNonNullableKeyValues();
 
         private FloatSetting(SettingJsonNode node) : base(node)
         {
