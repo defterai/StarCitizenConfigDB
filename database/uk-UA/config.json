@@ -1,4 +1,4 @@
-﻿{
+{
 	"$schema": "https://raw.githubusercontent.com/defterai/StarCitizenConfigDB/master/schema_translate.json",
 	"commands": {
 		"categories": [
@@ -41,7 +41,7 @@
 		"categories": [
 			{
 				"key": "client",
-				"name": "Client"
+				"name": "Клієнт"
 			},
 			{
 				"key": "system",
@@ -53,19 +53,19 @@
 			},
 			{
 				"key": "object_detail",
-				"name": "Objct Detail"
+				"name": "Деталізація"
 			},
 			{
 				"key": "particles",
-				"name": "Particles"
+				"name": "Часточки"
 			},
 			{
 				"key": "texture",
-				"name": "Texture"
+				"name": "Текстури"
 			},
 			{
 				"key": "shadows",
-				"name": "Shadows"
+				"name": "Тіні"
 			},
 			{
 				"key": "shader",
@@ -73,11 +73,11 @@
 			},
 			{
 				"key": "physics",
-				"name": "Physics"
+				"name": "Фізика"
 			},
 			{
 				"key": "light",
-				"name": "Light"
+				"name": "Освітлення"
 			},
 			{
 				"key": "ui",
@@ -87,7 +87,7 @@
 		"items": [
 			{
 				"key": "cl_fov",
-				"name": "Camera Fov",
+				"name": "Поле зору камери (у градусах)",
 				"values": [
 					{
 						"value": "30"
@@ -99,11 +99,11 @@
 			},
 			{
 				"key": "cl_invertMouse",
-				"name": "Invert Mouse"
+				"name": "Інверсія миші"
 			},
 			{
 				"key": "cl_invertController",
-				"name": "Invert Controller"
+				"name": "Інверсія контролеру"
 			},
 			{
 				"key": "cl_zoomToggle",
@@ -167,11 +167,11 @@
 			},
 			{
 				"key": "sys_no_crash_dialog",
-				"name": "Disable Game Crash Dialog"
+				"name": "Вимкнути діалоги відправки репортів падінь"
 			},
 			{
 				"key": "r_WindowMode",
-				"name": "Window mode",
+				"name": "Режим вікна",
 				"values": [
 					{
 						"value": "0",
@@ -281,7 +281,7 @@
 			},
 			{
 				"key": "r_Gamma",
-				"name": "Gamma Correction",
+				"name": "Гамма-корекція",
 				"values": [
 					{
 						"value": "0.8"
@@ -293,7 +293,7 @@
 			},
 			{
 				"key": "r_Brightness",
-				"name": "Brightness Correction",
+				"name": "Корекція яскравості",
 				"values": [
 					{
 						"value": "0"
@@ -305,7 +305,7 @@
 			},
 			{
 				"key": "r_Contrast",
-				"name": "Contrast Correction",
+				"name": "Корекція контрасту",
 				"values": [
 					{
 						"value": "0"
@@ -322,107 +322,108 @@
 				"values": [
 					{
 						"value": "0",
-						"name": "off"
+						"name": "вимкнено"
 					},
 					{
 						"value": "1",
-						"name": "low"
+						"name": "низька"
 					},
 					{
 						"value": "2",
-						"name": "medium"
+						"name": "середня"
 					},
 					{
 						"value": "3",
-						"name": "high"
+						"name": "висока"
 					}
 				]
 			},
 			{
 				"key": "r_OpticsQuality",
-				"name": "Optics Quality",
+				"name": "Якість оптики",
 				"values": [
 					{
 						"value": "1",
-						"name": "low"
+						"name": "низька"
 					},
 					{
 						"value": "2",
-						"name": "medium"
+						"name": "середня"
 					},
 					{
 						"value": "3",
-						"name": "high"
+						"name": "висока"
 					},
 					{
 						"value": "4",
-						"name": "very high"
+						"name": "дуже висока"
 					}
 				]
 			},
 			{
 				"key": "r_ssdoColorBleeding",
-				"name": "SSDO Color Blending"
+				"name": "Змішування кольорів SSDO"
 			},
 			{
 				"key": "r_PostProcessHUD3DCache",
-				"name": "3D HUD Caching Overframes",
+				"name": "Кешування кадрів 3D інтрфейсу",
 				"values": [
 					{
 						"value": "0",
-						"name": "disabled"
+						"name": "вимкнено"
 					},
 					{
 						"value": "1",
-						"name": "every frame"
+						"name": "кожен кадр"
 					},
 					{
 						"value": "2",
-						"name": "every 2 frames"
+						"name": "кожні 2 кадри"
 					},
 					{
 						"value": "3",
-						"name": "every 3 frames"
+						"name": "кожні 3 кадри"
 					}
 				]
 			},
 			{
 				"key": "r_ColorGrading",
-				"name": "Color Grading",
+				"name": "Градація кольорів",
+				"desc": "Color grading",
 				"values": [
 					{
 						"value": "1",
-						"name": "low"
+						"name": "низька"
 					},
 					{
 						"value": "2",
-						"name": "medium"
+						"name": "середня"
 					},
 					{
 						"value": "3",
-						"name": "high"
+						"name": "висока"
 					},
 					{
 						"value": "4",
-						"name": "very high"
+						"name": "дуже висока"
 					}
 				]
 			},
 			{
 				"key": "r_DepthOfField",
-				"name": "Depth Of Field",
+				"name": "Глибина різкості",
 				"values": [
 					{
 						"value": "0",
-						"name": "disabled"
+						"name": "вимкнена"
 					},
 					{
 						"value": "1",
-						"name": "ordinal dof"
+						"name": "звичайна"
 					},
 					{
 						"value": "2",
-						"name": "hdr time of day dof"
+						"name": "hdr час доби"
 					}
 				]
 			},
@@ -433,69 +434,69 @@
 				"values": [
 					{
 						"value": "20",
-						"name": "very low"
+						"name": "дуже низька"
 					},
 					{
 						"value": "40",
-						"name": "low"
+						"name": "низька"
 					},
 					{
 						"value": "100",
-						"name": "medium"
+						"name": "середня"
 					},
 					{
 						"value": "150",
-						"name": "high"
+						"name": "висока"
 					},
 					{
 						"value": "200",
-						"name": "very high"
+						"name": "дуже висока"
 					}
 				]
 			},
 			{
 				"key": "r_MotionBlurQuality",
-				"name": "Motion Blur Quality",
+				"name": "Якість розмиття в русі",
 				"values": [
 					{
 						"value": "0",
-						"name": "low"
+						"name": "низька"
 					},
 					{
 						"value": "1",
-						"name": "medium"
+						"name": "середня"
 					},
 					{
 						"value": "2",
-						"name": "high"
+						"name": "висока"
 					},
 					{
 						"value": "3",
-						"name": "very high"
+						"name": "дуже висока"
 					}
 				]
 			},
 			{
 				"key": "r_ChromaticAberrationQuality",
-				"name": "Chromatic Aberration Quality",
+				"name": "Якість хроматичних аберацій",
 				"values": [
 					{
 						"value": "0",
-						"name": "low"
+						"name": "низька"
 					},
 					{
 						"value": "1",
-						"name": "standard"
+						"name": "стандартна"
 					},
 					{
 						"value": "2",
-						"name": "high"
+						"name": "висока"
 					}
 				]
 			},
 			{
 				"key": "r_UserChromaticAberration",
-				"name": "Chromatic Aberration",
+				"name": "Хроматичні аберації",
 				"values": [
 					{
 						"value": "0"
@@ -507,7 +508,7 @@
 			},
 			{
 				"key": "r_UserSharpening",
-				"name": "User Sharpening",
+				"name": "Різкість",
 				"values": [
 					{
 						"value": "0"
@@ -519,27 +520,27 @@
 			},
 			{
 				"key": "r_Beams",
-				"name": "Volumetric light beams"
+				"name": "Об'ємні світлові промені"
 			},
 			{
 				"key": "e_ObjQuality",
-				"name": "Object Detail Quality",
+				"name": "Якість деталей об’єктів",
 				"values": [
 					{
 						"value": "1",
-						"name": "low"
+						"name": "низька"
 					},
 					{
 						"value": "2",
-						"name": "medium"
+						"name": "середня"
 					},
 					{
 						"value": "3",
-						"name": "high"
+						"name": "висока"
 					},
 					{
 						"value": "4",
-						"name": "very high"
+						"name": "дуже висока"
 					}
 				]
 			},
@@ -549,23 +550,23 @@
 				"values": [
 					{
 						"value": "2",
-						"name": "very low"
+						"name": "дуже низька"
 					},
 					{
 						"value": "5",
-						"name": "low"
+						"name": "низька"
 					},
 					{
 						"value": "10",
-						"name": "medium"
+						"name": "середня"
 					},
 					{
 						"value": "20",
-						"name": "high"
+						"name": "висока"
 					},
 					{
 						"value": "50",
-						"name": "very high"
+						"name": "дуже висока"
 					}
 				]
 			},
@@ -576,23 +577,23 @@
 				"values": [
 					{
 						"value": "1",
-						"name": "very high"
+						"name": "дуже висока"
 					},
 					{
 						"value": "2",
-						"name": "high"
+						"name": "висока"
 					},
 					{
 						"value": "2.5",
-						"name": "medium"
+						"name": "середня"
 					},
 					{
 						"value": "3",
-						"name": "low"
+						"name": "низька"
 					},
 					{
 						"value": "5",
-						"name": "very low"
+						"name": "дуже низька"
 					}
 				]
 			},
@@ -602,19 +603,19 @@
 				"values": [
 					{
 						"value": "0.25",
-						"name": "very high"
+						"name": "дуже висока"
 					},
 					{
 						"value": "0.5",
-						"name": "high"
+						"name": "висока"
 					},
 					{
 						"value": "1",
-						"name": "medium"
+						"name": "середня"
 					},
 					{
 						"value": "2",
-						"name": "low"
+						"name": "низька"
 					}
 				]
 			},
@@ -624,23 +625,23 @@
 				"values": [
 					{
 						"value": "50",
-						"name": "very low"
+						"name": "дуже низька"
 					},
 					{
 						"value": "75",
-						"name": "low"
+						"name": "низька"
 					},
 					{
 						"value": "100",
-						"name": "medium"
+						"name": "середня"
 					},
 					{
 						"value": "125",
-						"name": "high"
+						"name": "висока"
 					},
 					{
 						"value": "150",
-						"name": "very high"
+						"name": "дуже висока"
 					}
 				]
 			},
@@ -650,23 +651,23 @@
 				"values": [
 					{
 						"value": "10",
-						"name": "very low"
+						"name": "дуже низька"
 					},
 					{
 						"value": "25",
-						"name": "low"
+						"name": "низька"
 					},
 					{
 						"value": "50",
-						"name": "medium"
+						"name": "середня"
 					},
 					{
 						"value": "100",
-						"name": "high"
+						"name": "висока"
 					},
 					{
 						"value": "150",
-						"name": "very high"
+						"name": "дуже висока"
 					}
 				]
 			},
@@ -676,23 +677,23 @@
 				"values": [
 					{
 						"value": "10",
-						"name": "very low"
+						"name": "дуже низька"
 					},
 					{
 						"value": "25",
-						"name": "low"
+						"name": "низька"
 					},
 					{
 						"value": "50",
-						"name": "medium"
+						"name": "середня"
 					},
 					{
 						"value": "75",
-						"name": "high"
+						"name": "висока"
 					},
 					{
 						"value": "100",
-						"name": "very high"
+						"name": "дуже висока"
 					}
 				]
 			},
@@ -703,29 +704,29 @@
 				"values": [
 					{
 						"value": "0.5",
-						"name": "very low"
+						"name": "дуже низька"
 					},
 					{
 						"value": "0.75",
-						"name": "low"
+						"name": "низька"
 					},
 					{
 						"value": "1",
-						"name": "medium"
+						"name": "середня"
 					},
 					{
 						"value": "2",
-						"name": "high"
+						"name": "висока"
 					},
 					{
 						"value": "4",
-						"name": "very high"
+						"name": "дуже висока"
 					}
 				]
 			},
 			{
 				"key": "e_MergedMeshesPool",
-				"name": "Merged Meshes Pool Size",
+				"name": "Розмір пулу об’єднаних моделей",
 				"values": [
 					{
 						"value": "8192",
@@ -743,258 +744,258 @@
 			},
 			{
 				"key": "e_Tessellation",
-				"name": "Hardware Geometry Tessellation"
+				"name": "Апаратна тесселяція геометрії"
 			},
 			{
 				"key": "e_ParticlesQuality",
-				"name": "Detail Quality",
+				"name": "Якість деталей",
 				"values": [
 					{
 						"value": "2",
-						"name": "low"
+						"name": "низька"
 					},
 					{
 						"value": "3",
-						"name": "medium"
+						"name": "середня"
 					},
 					{
 						"value": "4",
-						"name": "high"
+						"name": "висока"
 					}
 				]
 			},
 			{
 				"key": "e_ParticleMaxActiveCount",
-				"name": "Max Active Count",
+				"name": "Максимальна активна кількість",
 				"values": [
 					{
 						"value": "100000",
-						"name": "very low"
+						"name": "дуже низька"
 					},
 					{
 						"value": "250000",
-						"name": "low"
+						"name": "низька"
 					},
 					{
 						"value": "500000",
-						"name": "medium"
+						"name": "середня"
 					},
 					{
 						"value": "1000000",
-						"name": "high"
+						"name": "висока"
 					},
 					{
 						"value": "2000000",
-						"name": "very high"
+						"name": "дуже висока"
 					}
 				]
 			},
 			{
 				"key": "e_ParticlesObjectCollisions",
-				"name": "Collisions With Objects",
-				"desc": "Particle and object collisions",
+				"name": "Зіткнення з предметами",
+				"desc": "Зіткнення частинок та предметів",
 				"values": [
 					{
 						"value": "0",
-						"name": "off"
+						"name": "вимкнено"
 					},
 					{
 						"value": "1",
-						"name": "static only"
+						"name": "статичні тільки"
 					},
 					{
 						"value": "2",
-						"name": "static & dynamic"
+						"name": "статичні і динамічні"
 					}
 				]
 			},
 			{
 				"key": "e_ParticlesMaxScreenFill",
-				"name": "Max Screen Fill",
+				"name": "Макс. заповнення екрана",
 				"values": [
 					{
 						"value": "32",
-						"name": "low"
+						"name": "низьке"
 					},
 					{
 						"value": "64",
-						"name": "medium"
+						"name": "середнє"
 					},
 					{
 						"value": "128",
-						"name": "high"
+						"name": "високе"
 					},
 					{
 						"value": "160",
-						"name": "very high"
+						"name": "дуже високе"
 					}
 				]
 			},
 			{
 				"key": "e_ParticlesMotionBlur",
-				"name": "Motion Blur",
-				"desc": "Motion blur for particles",
+				"name": "Розмиття",
+				"desc": "Розмиття в русі для частинок",
 				"values": [
 					{
 						"value": "0",
-						"name": "off"
+						"name": "вимкнено"
 					},
 					{
 						"value": "1",
-						"name": "on"
+						"name": "увімкнено"
 					},
 					{
 						"value": "2",
-						"name": "force"
+						"name": "увімкнено завжди"
 					}
 				]
 			},
 			{
 				"key": "r_ParticlesTessellation",
-				"name": "Tessellation",
-				"desc": "Enables particle tessellation for higher quality lighting (DX11 only)"
+				"name": "Тесселяція",
+				"desc": "Дозволяє тесселяцію частинок для отримання більш якісного освітлення (лише DX11)"
 			},
 			{
 				"key": "e_ParticlesMinDrawPixels",
-				"name": "Pixel size min per particle",
-				"desc": "Pixel size min per particle - fade out earlier",
+				"name": "Мінімальний розмір частинки (у пікселях)",
+				"desc": "Мінімальний розмір частинки у пікселях. Частинки меншого розміру зникають раніше",
 				"values": [
 					{
 						"value": "0.75",
-						"name": "very high"
+						"name": "дуже високий"
 					},
 					{
 						"value": "1",
-						"name": "high"
+						"name": "високий"
 					},
 					{
 						"value": "1.5",
-						"name": "medium"
+						"name": "середній"
 					},
 					{
 						"value": "2",
-						"name": "low"
+						"name": "низький"
 					}
 				]
 			},
 			{
 				"key": "r_DynTexMaxSize",
-				"name": "Dynamic Texture Pool Size",
+				"name": "Розмір пулу динамічних текстур",
 				"values": [
 					{
 						"value": "50",
-						"name": "low"
+						"name": "низький"
 					},
 					{
 						"value": "60",
-						"name": "medium"
+						"name": "середній"
 					},
 					{
 						"value": "80",
-						"name": "high"
+						"name": "високий"
 					},
 					{
 						"value": "120",
-						"name": "very high"
+						"name": "дуже високий"
 					}
 				]
 			},
 			{
 				"key": "r_TexAtlasSize",
-				"name": "Texture Atlas Size",
+				"name": "Розмір атласу текстур",
 				"values": [
 					{
 						"value": "512",
-						"name": "low"
+						"name": "низький"
 					},
 					{
 						"value": "1024",
-						"name": "medium"
+						"name": "середній"
 					},
 					{
 						"value": "2048",
-						"name": "high"
+						"name": "високий"
 					},
 					{
 						"value": "4096",
-						"name": "very high"
+						"name": "дуже високий"
 					}
 				]
 			},
 			{
 				"key": "r_ShadowsPoolSize",
-				"name": "Shadows Pool Size",
+				"name": "Розмір пулу тіней",
 				"values": [
 					{
 						"value": "4096",
-						"name": "medium"
+						"name": "середній"
 					},
 					{
 						"value": "8192",
-						"name": "high"
+						"name": "високий"
 					}
 				]
 			},
 			{
 				"key": "r_FogShadows",
-				"name": "Deferred Volumetric Fog Shadows",
+				"name": "Відкладені об'ємні туманні тіні",
 				"values": [
 					{
 						"value": "0",
-						"name": "off"
+						"name": "вимкнені"
 					},
 					{
 						"value": "1",
-						"name": "standard resolution"
+						"name": "стандартного розширення"
 					},
 					{
 						"value": "2",
-						"name": "reduced resolution"
+						"name": "зменшеного розширення"
 					}
 				]
 			},
 			{
 				"key": "r_FogShadowsWater",
-				"name": "Volumetric Fog Shadows For Watervolumes"
+				"name": "Об'ємні туманні тіні для води"
 			},
 			{
 				"key": "e_ShadowTexelWidthInPixels",
-				"name": "Shadow Texelss Width (in pixels)",
-				"desc": "Width of shadow texels measured in pixels",
+				"name": "Ширина текселів тіней (у пікселях)",
+				"desc": "Ширина текселів тіней у пікселях",
 				"values": [
 					{
 						"value": "3",
-						"name": "high"
+						"name": "висока"
 					},
 					{
 						"value": "6",
-						"name": "low"
+						"name": "низька"
 					}
 				]
 			},
 			{
 				"key": "r_ShadowJitteringProjectionLight",
-				"name": "Shadow Jittering Projection Light",
-				"desc": "Shadow map jittering radius for projection light",
+				"name": "Тіньове тремтіння направленого світла",
+				"desc": "Радіус тіньової карти тремтіння для направленого світла",
 				"values": [
 					{
 						"value": "0",
-						"name": "off"
+						"name": "вимкнено"
 					},
 					{
 						"value": "1",
-						"name": "low"
+						"name": "низьке"
 					},
 					{
 						"value": "1.5",
-						"name": "high"
+						"name": "високе"
 					}
 				]
 			},
 			{
 				"key": "r_ShadowJitteringOmniDirectionalLight",
-				"name": "Shadow Jittering Omni Directional Light",
-				"desc": "Shadow map jittering radius for omnidirectional light",
+				"name": "Тіньове тремтіння всенаправленого світла",
+				"desc": "Радіус тіньової карти тремтіння для всенаправленого світла",
 				"values": [
 					{
 						"value": "0",
@@ -1002,11 +1003,11 @@
 					},
 					{
 						"value": "1",
-						"name": "low"
+						"name": "низьке"
 					},
 					{
 						"value": "2.5",
-						"name": "high"
+						"name": "високе"
 					}
 				]
 			},
@@ -1017,19 +1018,19 @@
 				"values": [
 					{
 						"value": "1",
-						"name": "low"
+						"name": "низька"
 					},
 					{
 						"value": "2",
-						"name": "medium"
+						"name": "середня"
 					},
 					{
 						"value": "3",
-						"name": "high"
+						"name": "висока"
 					},
 					{
 						"value": "4",
-						"name": "very high"
+						"name": "дуже висока"
 					}
 				]
 			},
@@ -1040,11 +1041,11 @@
 				"values": [
 					{
 						"value": "0.8",
-						"name": "low"
+						"name": "низька"
 					},
 					{
 						"value": "1",
-						"name": "high"
+						"name": "висока"
 					}
 				]
 			},
@@ -1065,7 +1066,7 @@
 			},
 			{
 				"key": "e_ShadowsBlendCascades",
-				"name": "Blend Between Shadow Cascades"
+				"name": "Змішування між каскадами тіней"
 			},
 			{
 				"key": "q_ShaderGeneral",
@@ -1267,112 +1268,112 @@
 			},
 			{
 				"key": "es_MaxPhysDist",
-				"name": "Max Physics Distance",
-				"desc": "Physical entities farther from the camera than this are forcefully deactivated",
+				"name": "Максимальна відстань роботи фізики",
+				"desc": "Фізичні обєкти які знаходяться далі цієї відстані від камери примусово деактивуються",
 				"values": [
 					{
 						"value": "15",
-						"name": "very low"
+						"name": "дуже низька"
 					},
 					{
 						"value": "25",
-						"name": "low"
+						"name": "низька"
 					},
 					{
 						"value": "50",
-						"name": "medium"
+						"name": "середня"
 					},
 					{
 						"value": "100",
-						"name": "high"
+						"name": "висока"
 					},
 					{
 						"value": "200",
-						"name": "very high"
+						"name": "дуже висока"
 					}
 				]
 			},
 			{
 				"key": "es_MaxPhysDistInvisible",
-				"name": "Max Invisible Physics Distance",
-				"desc": "Invisible physical entities farther from the camera than this are forcefully deactivated",
+				"name": "Максимальна відстань роботи фізики (невидимі обєкти)",
+				"desc": "Невидимі фізичні обєкти які знаходяться далі цієї відстані від камери примусово деактивуються",
 				"values": [
 					{
 						"value": "10",
-						"name": "low"
+						"name": "низька"
 					},
 					{
 						"value": "15",
-						"name": "medium"
+						"name": "середня"
 					},
 					{
 						"value": "20",
-						"name": "high"
+						"name": "висока"
 					},
 					{
 						"value": "25",
-						"name": "very high"
+						"name": "дуже висока"
 					}
 				]
 			},
 			{
 				"key": "e_FoliageWindActivationDist",
-				"name": "Foliage Wind Activation Distance",
-				"desc": "If the wind is sufficiently strong, visible foliage in this view distance will be forcefully activated",
+				"name": "Відстань активації \"листя\" вітру",
+				"desc": "Якщо вітер достатньо сильний, видиме \"листя\" вітру буде примусово активовано",
 				"values": [
 					{
 						"value": "10",
-						"name": "low"
+						"name": "низька"
 					},
 					{
 						"value": "20",
-						"name": "medium"
+						"name": "середня"
 					},
 					{
 						"value": "25",
-						"name": "high"
+						"name": "висока"
 					},
 					{
 						"value": "50",
-						"name": "very high"
+						"name": "дуже висока"
 					}
 				]
 			},
 			{
 				"key": "e_CullVegActivation",
-				"name": "Vegetation Activation Distance Limit",
-				"desc": "Vegetation activation distance limit; 0 disables visibility-based culling (= unconditional activation)",
+				"name": "Відстань активації рослинності",
+				"desc": "Обмеження відстані активації рослинності; 0 вимикає відсічення на основі видимості (безумовна активація)",
 				"values": [
 					{
 						"value": "0",
-						"name": "disable culling"
+						"name": "вимкнено"
 					},
 					{
 						"value": "10",
-						"name": "very low"
+						"name": "дуже низька"
 					},
 					{
 						"value": "15",
-						"name": "low"
+						"name": "низька"
 					},
 					{
 						"value": "30",
-						"name": "medium"
+						"name": "середня"
 					},
 					{
 						"value": "50",
-						"name": "high"
+						"name": "висока"
 					},
 					{
 						"value": "75",
-						"name": "very high"
+						"name": "дуже висока"
 					}
 				]
 			},
 			{
 				"key": "e_PhysProxyTriLimit",
-				"name": "Phys Proxy Triangles Limit",
-				"desc": "Maximum allowed triangle count for phys proxies",
+				"name": "Макс. к-сть вершин у проксі",
+				"desc": "Максимально дозволена к-сть вершин для фізичних проксі",
 				"values": [
 					{
 						"value": "100000"
@@ -1388,23 +1389,23 @@
 				"values": [
 					{
 						"value": "40",
-						"name": "very low"
+						"name": "дуже низька"
 					},
 					{
 						"value": "80",
-						"name": "low"
+						"name": "низька"
 					},
 					{
 						"value": "120",
-						"name": "medium"
+						"name": "середня"
 					},
 					{
 						"value": "160",
-						"name": "high"
+						"name": "висока"
 					},
 					{
 						"value": "320",
-						"name": "very high"
+						"name": "дуже висока"
 					}
 				]
 			},
@@ -1415,19 +1416,19 @@
 				"values": [
 					{
 						"value": "2000",
-						"name": "very low"
+						"name": "дуже низька"
 					},
 					{
 						"value": "4000",
-						"name": "low"
+						"name": "низька"
 					},
 					{
 						"value": "6000",
-						"name": "high"
+						"name": "висока"
 					},
 					{
 						"value": "8000",
-						"name": "very high"
+						"name": "дуже висока"
 					}
 				]
 			},
@@ -1537,63 +1538,63 @@
 			},
 			{
 				"key": "v_vehicle_quality",
-				"name": "Vehicle Quality",
+				"name": "Якість техніки",
 				"values": [
 					{
 						"value": "1",
-						"name": "low"
+						"name": "низька"
 					},
 					{
 						"value": "2",
-						"name": "medium"
+						"name": "середня"
 					},
 					{
 						"value": "3",
-						"name": "high"
+						"name": "висока"
 					},
 					{
 						"value": "4",
-						"name": "very high"
+						"name": "дуже висока"
 					}
 				]
 			},
 			{
 				"key": "g_ProjectileLightLimit",
-				"name": "Projectile Lights Limit",
+				"name": "Максимальна к-сть джерел осітлення",
 				"values": [
 					{
 						"value": "-1",
-						"name": "disabled"
+						"name": "вимкнено"
 					},
 					{
 						"value": "0",
-						"name": "no limit"
+						"name": "без обмежень"
 					},
 					{
 						"value": "1",
-						"name": "minimal"
+						"name": "мінімальна"
 					},
 					{
 						"value": "5",
-						"name": "low"
+						"name": "низька"
 					},
 					{
 						"value": "20",
-						"name": "medium"
+						"name": "середня"
 					},
 					{
 						"value": "30",
-						"name": "high"
+						"name": "висока"
 					},
 					{
 						"value": "50",
-						"name": "very high"
+						"name": "дуже висока"
 					}
 				]
 			},
 			{
 				"key": "ui_disableScreenFade",
-				"name": "Вимкнути згасання екрану під час відродження"
+				"name": "Вимкнути згасання екрану"
 			}
 		]
 	}
