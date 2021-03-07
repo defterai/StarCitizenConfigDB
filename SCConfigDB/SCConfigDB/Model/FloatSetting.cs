@@ -9,7 +9,7 @@ namespace Defter.StarCitizen.ConfigDB.Model
     {
         public float? DefaultValue { get; }
         public float? Step { get; }
-        public IReadOnlyDictionary<float, string> Values { get; }
+        public IReadOnlyDictionary<float, string?> Values { get; }
         public bool Range { get; }
         public float MinValue => Values.Keys.Min();
         public float MaxValue => Values.Keys.Max();
@@ -64,7 +64,7 @@ namespace Defter.StarCitizen.ConfigDB.Model
         {
             public float? DefaultValue { get; set; }
             public float? Step { get; set; }
-            public Dictionary<float, string> Values { get; } = new Dictionary<float, string>();
+            public Dictionary<float, string?> Values { get; } = new Dictionary<float, string?>();
             public bool Range { get; set; }
 
             public Builder(string key, string name) : base(key, name) { }

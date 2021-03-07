@@ -1,4 +1,4 @@
-{
+﻿{
 	"$schema": "https://raw.githubusercontent.com/defterai/StarCitizenConfigDB/master/schema.json",
 	"languages": [
 		"uk-UA"
@@ -517,7 +517,6 @@
 					]
 				}
 			},
-
 			{
 				"key": "r_ColorGrading",
 				"name": "Color Grading",
@@ -569,8 +568,8 @@
 			{
 				"key": "r_RainMaxViewDist_Deferred",
 				"name": "Rain Reflection Maximum View Distance",
-				"desc": "Sets maximum view distance (in meters) for deferred rain reflection layer",
 				"category": "render",
+				"desc": "Sets maximum view distance (in meters) for deferred rain reflection layer",
 				"values": {
 					"type": "range_int",
 					"list": [
@@ -623,7 +622,6 @@
 					]
 				}
 			},
-
 			{
 				"key": "r_ChromaticAberrationQuality",
 				"name": "Chromatic Aberration Quality",
@@ -747,8 +745,8 @@
 			{
 				"key": "e_LodFaceAreaTargetSize",
 				"name": "Computation Threshold of LOD",
-				"desc": "Threshold used for LOD computation",
 				"category": "object_detail",
+				"desc": "Threshold used for LOD computation",
 				"values": {
 					"type": "float",
 					"list": [
@@ -888,15 +886,14 @@
 							"value": "100",
 							"name": "very high"
 						}
-
 					]
 				}
 			},
 			{
 				"key": "e_MergedMeshesInstanceDist",
 				"name": "Merged Meshes Turn Off Animation Distance",
-				"desc": "Distance fudge factor at which merged meshes turn off animation",
 				"category": "object_detail",
+				"desc": "Distance fudge factor at which merged meshes turn off animation",
 				"values": {
 					"type": "float",
 					"list": [
@@ -1009,8 +1006,8 @@
 			{
 				"key": "e_ParticlesObjectCollisions",
 				"name": "Collisions With Objects",
-				"desc": "Particle and object collisions",
 				"category": "particles",
+				"desc": "Particle and object collisions",
 				"values": {
 					"type": "int",
 					"list": [
@@ -1058,8 +1055,8 @@
 			{
 				"key": "e_ParticlesMotionBlur",
 				"name": "Motion Blur",
-				"desc": "Motion blur for particles",
 				"category": "particles",
+				"desc": "Motion blur for particles",
 				"values": {
 					"type": "int",
 					"list": [
@@ -1081,8 +1078,8 @@
 			{
 				"key": "r_ParticlesTessellation",
 				"name": "Tessellation",
-				"desc": "Enables particle tessellation for higher quality lighting (DX11 only)",
 				"category": "particles",
+				"desc": "Enables particle tessellation for higher quality lighting (DX11 only)",
 				"values": {
 					"type": "bool"
 				}
@@ -1090,8 +1087,8 @@
 			{
 				"key": "e_ParticlesMinDrawPixels",
 				"name": "Pixel size min per particle",
-				"desc": "Pixel size min per particle - fade out earlier",
 				"category": "particles",
+				"desc": "Pixel size min per particle - fade out earlier",
 				"values": {
 					"type": "range_float",
 					"list": [
@@ -1217,8 +1214,8 @@
 			{
 				"key": "e_ShadowTexelWidthInPixels",
 				"name": "Shadow Texelss Width (in pixels)",
-				"desc": "Width of shadow texels measured in pixels",
 				"category": "shadows",
+				"desc": "Width of shadow texels measured in pixels",
 				"values": {
 					"type": "range_float",
 					"list": [
@@ -1236,8 +1233,8 @@
 			{
 				"key": "r_ShadowJitteringProjectionLight",
 				"name": "Shadow Jittering Projection Light",
-				"desc": "Shadow map jittering radius for projection light",
 				"category": "shadows",
+				"desc": "Shadow map jittering radius for projection light",
 				"values": {
 					"type": "float",
 					"list": [
@@ -1259,8 +1256,8 @@
 			{
 				"key": "r_ShadowJitteringOmniDirectionalLight",
 				"name": "Shadow Jittering Omni Directional Light",
-				"desc": "Shadow map jittering radius for omnidirectional light",
 				"category": "shadows",
+				"desc": "Shadow map jittering radius for omnidirectional light",
 				"values": {
 					"type": "float",
 					"list": [
@@ -1282,8 +1279,8 @@
 			{
 				"key": "e_ObjShadowCastSpec",
 				"name": "Object Shadow Cast Specification",
-				"desc": "Only objects with Shadow Cast Specification less or equal selected value setting here will cast shadows",
 				"category": "shadows",
+				"desc": "Only objects with Shadow Cast Specification less or equal selected value setting here will cast shadows",
 				"values": {
 					"type": "int",
 					"list": [
@@ -1309,8 +1306,8 @@
 			{
 				"key": "e_ShadowsCastViewDistRatio",
 				"name": "Shadows Cast View Distance Ratio",
-				"desc": "View distance ratio for shadow maps casting from objects",
 				"category": "shadows",
+				"desc": "View distance ratio for shadow maps casting from objects",
 				"values": {
 					"type": "range_float",
 					"list": [
@@ -1328,8 +1325,8 @@
 			{
 				"key": "e_ShadowsTessellateCascades",
 				"name": "Shadows Tessellate Cascades",
-				"desc": "Maximum cascade number to render tessellated shadows\n(0 - no tessellation for sun shadows)",
 				"category": "shadows",
+				"desc": "Maximum cascade number to render tessellated shadows\n(0 - no tessellation for sun shadows)",
 				"values": {
 					"type": "range_int",
 					"default": "1",
@@ -1394,8 +1391,8 @@
 			{
 				"key": "es_MaxPhysDist",
 				"name": "Max Physics Distance",
-				"desc": "Physical entities farther from the camera than this are forcefully deactivated",
 				"category": "physics",
+				"desc": "Physical entities farther from the camera than this are forcefully deactivated",
 				"values": {
 					"type": "range_int",
 					"list": [
@@ -1425,8 +1422,8 @@
 			{
 				"key": "es_MaxPhysDistInvisible",
 				"name": "Max Invisible Physics Distance",
-				"desc": "Invisible physical entities farther from the camera than this are forcefully deactivated",
 				"category": "physics",
+				"desc": "Invisible physical entities farther from the camera than this are forcefully deactivated",
 				"values": {
 					"type": "range_int",
 					"list": [
@@ -1452,8 +1449,8 @@
 			{
 				"key": "e_FoliageWindActivationDist",
 				"name": "Foliage Wind Activation Distance",
-				"desc": "If the wind is sufficiently strong, visible foliage in this view distance will be forcefully activated",
 				"category": "physics",
+				"desc": "If the wind is sufficiently strong, visible foliage in this view distance will be forcefully activated",
 				"values": {
 					"type": "range_int",
 					"list": [
@@ -1479,8 +1476,8 @@
 			{
 				"key": "e_CullVegActivation",
 				"name": "Vegetation Activation Distance Limit",
-				"desc": "Vegetation activation distance limit; 0 disables visibility-based culling (= unconditional activation)",
 				"category": "physics",
+				"desc": "Vegetation activation distance limit; 0 disables visibility-based culling (= unconditional activation)",
 				"values": {
 					"type": "int",
 					"list": [
@@ -1514,8 +1511,8 @@
 			{
 				"key": "e_PhysProxyTriLimit",
 				"name": "Phys Proxy Triangles Limit",
-				"desc": "Maximum allowed triangle count for phys proxies",
 				"category": "physics",
+				"desc": "Maximum allowed triangle count for phys proxies",
 				"values": {
 					"type": "range_int",
 					"default": "100000",
@@ -1562,8 +1559,8 @@
 			{
 				"key": "p_max_MC_iters",
 				"name": "Max Collision Contact Iterations",
-				"desc": "Specifies the maximum number of microcontact solver iterations (per contact)",
 				"category": "physics",
+				"desc": "Specifies the maximum number of microcontact solver iterations (per contact)",
 				"values": {
 					"type": "range_int",
 					"list": [
@@ -1589,8 +1586,8 @@
 			{
 				"key": "p_max_object_splashes",
 				"name": "Max Object Splashes",
-				"desc": "Specifies how many splash events one entity is allowed to generate",
 				"category": "physics",
+				"desc": "Specifies how many splash events one entity is allowed to generate",
 				"values": {
 					"type": "range_int",
 					"default": "3",
@@ -1607,8 +1604,8 @@
 			{
 				"key": "p_max_substeps_large_group",
 				"name": "Max Substeps Large Groups",
-				"desc": "Limits the number of substeps large groups of objects can make",
 				"category": "physics",
+				"desc": "Limits the number of substeps large groups of objects can make",
 				"values": {
 					"type": "range_int",
 					"default": "5",
@@ -1625,8 +1622,8 @@
 			{
 				"key": "p_splash_dist0",
 				"name": "Start Splash Culling Distance",
-				"desc": "Range start for splash event distance culling",
 				"category": "physics",
+				"desc": "Range start for splash event distance culling",
 				"values": {
 					"type": "range_int",
 					"default": "7",
@@ -1643,8 +1640,8 @@
 			{
 				"key": "p_splash_force0",
 				"name": "Splash Generate Min Force at start culling distance",
-				"desc": "Minimum water hit force to generate splash events at start splash culling distance",
 				"category": "physics",
+				"desc": "Minimum water hit force to generate splash events at start splash culling distance",
 				"values": {
 					"type": "range_int",
 					"default": "10",
@@ -1661,8 +1658,8 @@
 			{
 				"key": "p_splash_vel0",
 				"name": "Splash Generate Min Velocitty at start culling distance",
-				"desc": "Minimum water hit velocity to generate splash events at start splash culling distance",
 				"category": "physics",
+				"desc": "Minimum water hit velocity to generate splash events at start splash culling distance",
 				"values": {
 					"type": "range_float",
 					"default": "4.5",
@@ -1679,8 +1676,8 @@
 			{
 				"key": "p_splash_dist1",
 				"name": "End Splash Culling Distance",
-				"desc": "Range end for splash event distance culling",
 				"category": "physics",
+				"desc": "Range end for splash event distance culling",
 				"values": {
 					"type": "range_int",
 					"default": "30",
@@ -1697,8 +1694,8 @@
 			{
 				"key": "p_splash_force1",
 				"name": "Splash Generate Min Force at end culling distance",
-				"desc": "Minimum water hit force to generate splash events at end splash culling distance",
 				"category": "physics",
+				"desc": "Minimum water hit force to generate splash events at end splash culling distance",
 				"values": {
 					"type": "range_int",
 					"list": [
@@ -1714,8 +1711,8 @@
 			{
 				"key": "p_splash_vel1",
 				"name": "Splash Generate Min Velocitty at end culling distance",
-				"desc": "Minimum water hit velocity to generate splash events at end splash culling distance",
 				"category": "physics",
+				"desc": "Minimum water hit velocity to generate splash events at end splash culling distance",
 				"values": {
 					"type": "range_float",
 					"default": "10",

@@ -6,7 +6,7 @@ namespace Defter.StarCitizen.ConfigDB.Model
     public sealed class IntegerParameter : BaseParameter
     {
         public int DefaultValue { get; }
-        public IReadOnlyDictionary<int, string> Values { get; }
+        public IReadOnlyDictionary<int, string?> Values { get; }
 
         private IntegerParameter(ParamJsonNode node) : base(node)
         {
@@ -38,7 +38,7 @@ namespace Defter.StarCitizen.ConfigDB.Model
         public new sealed class Builder : BaseParameter.Builder
         {
             public int DefaultValue { get; set; }
-            public Dictionary<int, string> Values { get; } = new Dictionary<int, string>();
+            public Dictionary<int, string?> Values { get; } = new Dictionary<int, string?>();
 
             public Builder(string name) : base(name) { }
 
