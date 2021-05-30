@@ -4,7 +4,7 @@
 		"categories": [
 			{
 				"key": "console",
-				"name": "Console"
+				"name": "Консоль"
 			}
 		],
 		"items": [
@@ -13,7 +13,7 @@
 				"name": "Показать информацию об отладке",
 				"params": [
 					{
-						"name": "mode",
+						"name": "Режим",
 						"values": [
 							{
 								"value": "0",
@@ -41,47 +41,47 @@
 		"categories": [
 			{
 				"key": "client",
-				"name": "Client"
+				"name": "Клиент"
 			},
 			{
 				"key": "system",
-				"name": "System"
+				"name": "Система"
 			},
 			{
 				"key": "render",
-				"name": "Render"
+				"name": "Визуализация"
 			},
 			{
 				"key": "object_detail",
-				"name": "Objct Detail"
+				"name": "Детали объекта"
 			},
 			{
 				"key": "particles",
-				"name": "Particles"
+				"name": "Частицы"
 			},
 			{
 				"key": "texture",
-				"name": "Texture"
+				"name": "Текстуры"
 			},
 			{
 				"key": "shadows",
-				"name": "Shadows"
+				"name": "Тени"
 			},
 			{
 				"key": "shader",
-				"name": "Shader"
+				"name": "Шейдеры"
 			},
 			{
 				"key": "physics",
-				"name": "Physics"
+				"name": "Физика"
 			},
 			{
 				"key": "light",
-				"name": "Light"
+				"name": "Освещение"
 			},
 			{
 				"key": "ui",
-				"name": "UI"
+				"name": "Пользовательский интерфейс"
 			}
 		],
 		"items": [
