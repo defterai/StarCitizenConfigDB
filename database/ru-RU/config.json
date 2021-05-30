@@ -10,7 +10,7 @@
 		"items": [
 			{
 				"key": "r_DisplayInfo",
-				"name": "Display Debug Info",
+				"name": "Показать информацию об отладке",
 				"params": [
 					{
 						"name": "mode",
@@ -87,47 +87,47 @@
 		"items": [
 			{
 				"key": "cl_fov",
-				"name": "Camera Fov",
+				"name": "Угол обзора камеры от первого лица",
 				"values": [
 					{
 						"value": "30"
 					},
 					{
-						"value": "180"
+						"value": "130"
 					}
 				]
 			},
 			{
 				"key": "cl_invertMouse",
-				"name": "Invert Mouse"
+				"name": "Инвертировать мышь"
 			},
 			{
 				"key": "cl_invertController",
-				"name": "Invert Controller"
+				"name": "Инвертировать контроллер"
 			},
 			{
 				"key": "cl_zoomToggle",
-				"name": "Zoom Toogle Mode"
+				"name": "Режим масштабирования по переключению кнопки"
 			},
 			{
 				"key": "cl_crouchToggle",
-				"name": "Crouch Toogle Mode"
+				"name": "Режим сидя по переключению кнопки"
 			},
 			{
 				"key": "cl_sprintToggle",
-				"name": "Sprint Toogle Mode"
+				"name": "Режим бегом по переключению кнопки"
 			},
 			{
 				"key": "cl_proneToggle",
-				"name": "Prone Toogle Mode"
+				"name": "Режим лёжа по переключению кнопки"
 			},
 			{
 				"key": "cl_interactionToggle",
-				"name": "Interaction Toogle Mode"
+				"name": "Режим взаимодействия по переключению кнопки"
 			},
 			{
 				"key": "cl_leanToggle",
-				"name": "Lean Toogle Mode"
+				"name": "Режим наклонов по переключению кнопки"
 			},
 			{
 				"key": "sys_maxFPS",
@@ -157,41 +157,41 @@
 			},
 			{
 				"key": "sys_audio_disable",
-				"name": "Disable Audio"
+				"name": "Выключить звук"
 			},
 			{
 				"key": "sys_social_disable",
-				"name": "Disable CIGSocial (FOIP)"
+				"name": "Выключить FOIP"
 			},
 			{
 				"key": "sys_no_crash_dialog",
-				"name": "Disable Game Crash Dialog"
+				"name": "Отключить диалог сбоя игры"
 			},
 			{
 				"key": "r_WindowMode",
-				"name": "Window mode",
+				"name": "Оконный режим",
 				"values": [
 					{
 						"value": "0",
-						"name": "windowed"
+						"name": "В окне"
 					},
 					{
 						"value": "1",
-						"name": "fullscreen"
+						"name": "Полноэкрнный"
 					},
 					{
 						"value": "2",
-						"name": "borderless"
+						"name": "В окне без рамок"
 					}
 				]
 			},
 			{
 				"key": "r_VSync",
-				"name": "Vertical Sync"
+				"name": "Верикальная синхронизация"
 			},
 			{
 				"key": "r_Width",
-				"name": "Display Width (in pixels)",
+				"name": "Ширина экрана",
 				"values": [
 					{
 						"value": "1024"
@@ -203,7 +203,7 @@
 			},
 			{
 				"key": "r_Height",
-				"name": "Display Height (in pixels)",
+				"name": "Высота экрана",
 				"values": [
 					{
 						"value": "768"
@@ -215,7 +215,7 @@
 			},
 			{
 				"key": "r_DisplayInfo",
-				"name": "Display Debug Info",
+				"name": "Показать информацию об отладке",
 				"values": [
 					{
 						"value": "0",
@@ -237,11 +237,11 @@
 			},
 			{
 				"key": "r_DisplaySessionInfo",
-				"name": "Display Session Info QR code"
+				"name": "Отображение информации о сеансе - QR-код"
 			},
 			{
 				"key": "r_AntialiasingMode",
-				"name": "Antialiasing Mode",
+				"name": "Режим сглаживания",
 				"values": [
 					{
 						"value": "5",
@@ -271,11 +271,11 @@
 			},
 			{
 				"key": "r_MotionBlur",
-				"name": "Camera Motion Blur"
+				"name": "Размытие при движении камеры"
 			},
 			{
 				"key": "r_Gamma",
-				"name": "Gamma Correction",
+				"name": "Гамма-коррекция",
 				"values": [
 					{
 						"value": "0.8"
@@ -287,7 +287,7 @@
 			},
 			{
 				"key": "r_Brightness",
-				"name": "Brightness Correction",
+				"name": "Коррекция яркости",
 				"values": [
 					{
 						"value": "0"
@@ -299,7 +299,7 @@
 			},
 			{
 				"key": "r_Contrast",
-				"name": "Contrast Correction",
+				"name": "Коррекция контрастности",
 				"values": [
 					{
 						"value": "0"
@@ -311,8 +311,8 @@
 			},
 			{
 				"key": "r_ssdo",
-				"name": "Screen Space Directional Occlusion (SSDO)",
-				"desc": "Lighting &post process that makes stuff look prettier and more realistic.\nIt can be set to off for Performance and up to high for Quality.",
+				"name": "Направленная окклюзия экранного пространства",
+				"desc": "Освещение и пост-обработка, благодаря которым материал выглядит красивее и реалистичнее.\nЕго можно отключить для параметра лучшей производительности или установить высокое значение для лучшего качества",
 				"values": [
 					{
 						"value": "0",
@@ -334,7 +334,7 @@
 			},
 			{
 				"key": "r_OpticsQuality",
-				"name": "Optics Quality",
+				"name": "Качество оптики",
 				"values": [
 					{
 						"value": "1",
@@ -356,11 +356,11 @@
 			},
 			{
 				"key": "r_ssdoColorBleeding",
-				"name": "SSDO Color Blending"
+				"name": "Смешение цветов SSDO"
 			},
 			{
 				"key": "r_PostProcessHUD3DCache",
-				"name": "3D HUD Caching Overframes",
+				"name": "Кеширование 3D HUD оверфреймов",
 				"values": [
 					{
 						"value": "0",
@@ -382,7 +382,7 @@
 			},
 			{
 				"key": "r_ColorGrading",
-				"name": "Color Grading",
+				"name": "Цветовая градация",
 				"values": [
 					{
 						"value": "1",
@@ -404,7 +404,7 @@
 			},
 			{
 				"key": "r_DepthOfField",
-				"name": "Depth Of Field",
+				"name": "Глубина резкости",
 				"values": [
 					{
 						"value": "0",
@@ -422,8 +422,8 @@
 			},
 			{
 				"key": "r_RainMaxViewDist_Deferred",
-				"name": "Rain Reflection Maximum View Distance",
-				"desc": "Sets maximum view distance (in meters) for deferred rain reflection layer",
+				"name": "Максимальное расстояние обзора при отражении от дождя",
+				"desc": "Устанавливает максимальное расстояние просмотра (в метрах) для отложенного слоя отражения дождя",
 				"values": [
 					{
 						"value": "20",
@@ -449,7 +449,7 @@
 			},
 			{
 				"key": "r_MotionBlurQuality",
-				"name": "Motion Blur Quality",
+				"name": "Качество размытия в движении",
 				"values": [
 					{
 						"value": "0",
@@ -471,7 +471,7 @@
 			},
 			{
 				"key": "r_ChromaticAberrationQuality",
-				"name": "Chromatic Aberration Quality",
+				"name": "Качество хроматической аберрации",
 				"values": [
 					{
 						"value": "0",
@@ -489,7 +489,7 @@
 			},
 			{
 				"key": "r_UserChromaticAberration",
-				"name": "Chromatic Aberration",
+				"name": "Хроматическая аберрация",
 				"values": [
 					{
 						"value": "0"
@@ -501,7 +501,7 @@
 			},
 			{
 				"key": "r_UserSharpening",
-				"name": "User Sharpening",
+				"name": "Повышение резкости пользователя",
 				"values": [
 					{
 						"value": "0"
@@ -513,11 +513,11 @@
 			},
 			{
 				"key": "r_Beams",
-				"name": "Volumetric light beams"
+				"name": "Объемные световые лучи"
 			},
 			{
 				"key": "e_ObjQuality",
-				"name": "Object Detail Quality",
+				"name": "Качество деталей объекта",
 				"values": [
 					{
 						"value": "1",
@@ -539,7 +539,7 @@
 			},
 			{
 				"key": "e_LodRatio",
-				"name": "Level of Details (LOD) ratio",
+				"name": "Коэффициент уровня детализации (LOD)",
 				"values": [
 					{
 						"value": "2",
@@ -565,8 +565,8 @@
 			},
 			{
 				"key": "e_LodFaceAreaTargetSize",
-				"name": "Computation Threshold of LOD",
-				"desc": "Threshold used for LOD computation",
+				"name": "Порог вычисления LOD",
+				"desc": "Порог, используемый для вычисления LOD",
 				"values": [
 					{
 						"value": "1",
@@ -592,7 +592,7 @@
 			},
 			{
 				"key": "e_TerrainLodRatio",
-				"name": "Terrain Heightmap LOD Ratio",
+				"name": "Коэффициент детализации карты высот ландшафта",
 				"values": [
 					{
 						"value": "0.25",
@@ -614,7 +614,7 @@
 			},
 			{
 				"key": "e_ViewDistRatio",
-				"name": "View Distance Ratio",
+				"name": "Просмотр соотношения расстояний",
 				"values": [
 					{
 						"value": "50",
@@ -640,7 +640,7 @@
 			},
 			{
 				"key": "e_ViewDistRatioDetail",
-				"name": "View Distance Ratio (detail objects)",
+				"name": "Просмотр соотношения расстояний (объекты детализации)",
 				"values": [
 					{
 						"value": "10",
@@ -666,7 +666,7 @@
 			},
 			{
 				"key": "e_ViewDistRatioLights",
-				"name": "View Distance Ratio (light sources)",
+				"name": "Коэффициент расстояния просмотра (источники света)",
 				"values": [
 					{
 						"value": "10",
@@ -692,8 +692,8 @@
 			},
 			{
 				"key": "e_MergedMeshesInstanceDist",
-				"name": "Merged Meshes Turn Off Animation Distance",
-				"desc": "Distance fudge factor at which merged meshes turn off animation",
+				"name": "Объединенные сетки отключения расстояния анимации",
+				"desc": "Коэффициент смещения расстояния, при котором объединенные сетки отключают анимацию",
 				"values": [
 					{
 						"value": "0.5",
@@ -719,7 +719,7 @@
 			},
 			{
 				"key": "e_MergedMeshesPool",
-				"name": "Merged Meshes Pool Size",
+				"name": "Размер пула объединенных сеток",
 				"values": [
 					{
 						"value": "8192",
@@ -737,11 +737,11 @@
 			},
 			{
 				"key": "e_Tessellation",
-				"name": "Hardware Geometry Tessellation"
+				"name": "Аппаратная тесселяция геометрии"
 			},
 			{
 				"key": "e_ParticlesQuality",
-				"name": "Detail Quality",
+				"name": "Качество деталей",
 				"values": [
 					{
 						"value": "2",
@@ -759,7 +759,7 @@
 			},
 			{
 				"key": "e_ParticleMaxActiveCount",
-				"name": "Max Active Count",
+				"name": "Максимальное количество активных операций",
 				"values": [
 					{
 						"value": "100000",
@@ -785,8 +785,8 @@
 			},
 			{
 				"key": "e_ParticlesObjectCollisions",
-				"name": "Collisions With Objects",
-				"desc": "Particle and object collisions",
+				"name": "Столкновения с объектами",
+				"desc": "Столкновения частиц и объектов",
 				"values": [
 					{
 						"value": "0",
@@ -804,7 +804,7 @@
 			},
 			{
 				"key": "e_ParticlesMaxScreenFill",
-				"name": "Max Screen Fill",
+				"name": "Максимальное заполнение экрана",
 				"values": [
 					{
 						"value": "32",
@@ -826,8 +826,8 @@
 			},
 			{
 				"key": "e_ParticlesMotionBlur",
-				"name": "Motion Blur",
-				"desc": "Motion blur for particles",
+				"name": "Размытость",
+				"desc": "Размытие в движении для частиц",
 				"values": [
 					{
 						"value": "0",
@@ -845,13 +845,13 @@
 			},
 			{
 				"key": "r_ParticlesTessellation",
-				"name": "Tessellation",
-				"desc": "Enables particle tessellation for higher quality lighting (DX11 only)"
+				"name": "Мозаика",
+				"desc": "Включает тесселяцию частиц для более качественного освещения (только DX11)"
 			},
 			{
 				"key": "e_ParticlesMinDrawPixels",
-				"name": "Pixel size min per particle",
-				"desc": "Pixel size min per particle - fade out earlier",
+				"name": "Минимальный размер пикселя на частицу",
+				"desc": "Минимальный размер пикселя на частицу - исчезновение раньше",
 				"values": [
 					{
 						"value": "0.75",
@@ -873,7 +873,7 @@
 			},
 			{
 				"key": "r_DynTexMaxSize",
-				"name": "Dynamic Texture Pool Size",
+				"name": "Размер пула динамических текстур",
 				"values": [
 					{
 						"value": "50",
@@ -895,7 +895,7 @@
 			},
 			{
 				"key": "r_TexAtlasSize",
-				"name": "Texture Atlas Size",
+				"name": "Размер текстурного атласа",
 				"values": [
 					{
 						"value": "512",
@@ -917,7 +917,7 @@
 			},
 			{
 				"key": "r_ShadowsPoolSize",
-				"name": "Shadows Pool Size",
+				"name": "Размер пула теней",
 				"values": [
 					{
 						"value": "4096",
@@ -931,7 +931,7 @@
 			},
 			{
 				"key": "r_FogShadows",
-				"name": "Deferred Volumetric Fog Shadows",
+				"name": "Отложенные объемные тени тумана",
 				"values": [
 					{
 						"value": "0",
@@ -949,12 +949,12 @@
 			},
 			{
 				"key": "r_FogShadowsWater",
-				"name": "Volumetric Fog Shadows For Watervolumes"
+				"name": "Объемные тени от тумана для водных объемов"
 			},
 			{
 				"key": "e_ShadowTexelWidthInPixels",
-				"name": "Shadow Texelss Width (in pixels)",
-				"desc": "Width of shadow texels measured in pixels",
+				"name": "Ширина теневых текселей (in pixels)",
+				"desc": "Ширина теневых текселей в пикселях",
 				"values": [
 					{
 						"value": "3",
@@ -968,8 +968,8 @@
 			},
 			{
 				"key": "r_ShadowJitteringProjectionLight",
-				"name": "Shadow Jittering Projection Light",
-				"desc": "Shadow map jittering radius for projection light",
+				"name": "Проекционный свет с дрожащими тенями",
+				"desc": "Радиус дрожания карты теней для проекционного света",
 				"values": [
 					{
 						"value": "0",
@@ -987,8 +987,8 @@
 			},
 			{
 				"key": "r_ShadowJitteringOmniDirectionalLight",
-				"name": "Shadow Jittering Omni Directional Light",
-				"desc": "Shadow map jittering radius for omnidirectional light",
+				"name": "Всенаправленный свет с дрожащими тенями",
+				"desc": "Радиус дрожания карты теней для всенаправленного света",
 				"values": [
 					{
 						"value": "0",
@@ -1006,8 +1006,8 @@
 			},
 			{
 				"key": "e_ObjShadowCastSpec",
-				"name": "Object Shadow Cast Specification",
-				"desc": "Only objects with Shadow Cast Specification less or equal selected value setting here will cast shadows",
+				"name": "Спецификация отбрасывания тени объекта",
+				"desc": "Только объекты с параметром Shadow Cast Specification меньше или равным выбранному здесь значению будут отбрасывать тени.",
 				"values": [
 					{
 						"value": "1",
@@ -1029,8 +1029,8 @@
 			},
 			{
 				"key": "e_ShadowsCastViewDistRatio",
-				"name": "Shadows Cast View Distance Ratio",
-				"desc": "View distance ratio for shadow maps casting from objects",
+				"name": "Отношение расстояния обзора для отбрасываемых теней",
+				"desc": "Соотношение расстояния просмотра для карт теней от объектов",
 				"values": [
 					{
 						"value": "0.8",
@@ -1044,8 +1044,8 @@
 			},
 			{
 				"key": "e_ShadowsTessellateCascades",
-				"name": "Shadows Tessellate Cascades",
-				"desc": "Maximum cascade number to render tessellated shadows\n(0 - no tessellation for sun shadows)",
+				"name": "Каскады мозаики теней",
+				"desc": "Максимальное количество каскадов для рендеринга тесселяционных теней\n(0 - тесселяция теней от солнца отсутствует)",
 				"values": [
 					{
 						"value": "0",
@@ -1059,11 +1059,11 @@
 			},
 			{
 				"key": "e_ShadowsBlendCascades",
-				"name": "Blend Between Shadow Cascades"
+				"name": "Смешивание каскадов теней"
 			},
 			{
 				"key": "q_ShaderGeneral",
-				"name": "General Quality",
+				"name": "Общее качество",
 				"values": [
 					{
 						"value": "0",
@@ -1085,7 +1085,7 @@
 			},
 			{
 				"key": "q_ShaderDecal",
-				"name": "Decal Quality",
+				"name": "Качество декалей",
 				"values": [
 					{
 						"value": "0",
@@ -1107,7 +1107,7 @@
 			},
 			{
 				"key": "q_ShaderShadow",
-				"name": "Shadow Quality",
+				"name": "Качество теней",
 				"values": [
 					{
 						"value": "0",
@@ -1129,7 +1129,7 @@
 			},
 			{
 				"key": "q_ShaderWater",
-				"name": "Water Quality",
+				"name": "Качество воды",
 				"values": [
 					{
 						"value": "0",
@@ -1151,7 +1151,7 @@
 			},
 			{
 				"key": "q_ShaderFX",
-				"name": "FX Quality",
+				"name": "Качество FX",
 				"values": [
 					{
 						"value": "0",
@@ -1173,7 +1173,7 @@
 			},
 			{
 				"key": "q_ShaderPostProcess",
-				"name": "Post Process Quality",
+				"name": "Качество постпроцесса",
 				"values": [
 					{
 						"value": "0",
@@ -1195,7 +1195,7 @@
 			},
 			{
 				"key": "q_ShaderHDR",
-				"name": "HDR Quality",
+				"name": "Качество HDR",
 				"values": [
 					{
 						"value": "0",
@@ -1217,7 +1217,7 @@
 			},
 			{
 				"key": "q_ShaderSky",
-				"name": "Sky Quality",
+				"name": "Качество неба",
 				"values": [
 					{
 						"value": "0",
@@ -1239,7 +1239,7 @@
 			},
 			{
 				"key": "q_ShaderParticle",
-				"name": "Particle Quality",
+				"name": "Качество частиц",
 				"values": [
 					{
 						"value": "0",
@@ -1261,8 +1261,8 @@
 			},
 			{
 				"key": "es_MaxPhysDist",
-				"name": "Max Physics Distance",
-				"desc": "Physical entities farther from the camera than this are forcefully deactivated",
+				"name": "Максимальное физическое расстояние",
+				"desc": "Физические объекты, находящиеся дальше от камеры, принудительно деактивируются",
 				"values": [
 					{
 						"value": "15",
@@ -1288,8 +1288,8 @@
 			},
 			{
 				"key": "es_MaxPhysDistInvisible",
-				"name": "Max Invisible Physics Distance",
-				"desc": "Invisible physical entities farther from the camera than this are forcefully deactivated",
+				"name": "Максимальное невидимое физическое расстояние",
+				"desc": "Невидимые физические объекты, находящиеся дальше от камеры, принудительно деактивируются",
 				"values": [
 					{
 						"value": "10",
@@ -1311,8 +1311,8 @@
 			},
 			{
 				"key": "e_FoliageWindActivationDist",
-				"name": "Foliage Wind Activation Distance",
-				"desc": "If the wind is sufficiently strong, visible foliage in this view distance will be forcefully activated",
+				"name": "Дистанция активации ветра листвы",
+				"desc": "Если ветер достаточно сильный, видимая листва на таком расстоянии будет принудительно активирована.",
 				"values": [
 					{
 						"value": "10",
@@ -1334,8 +1334,8 @@
 			},
 			{
 				"key": "e_CullVegActivation",
-				"name": "Vegetation Activation Distance Limit",
-				"desc": "Vegetation activation distance limit; 0 disables visibility-based culling (= unconditional activation)",
+				"name": "Предел расстояния активации растительности",
+				"desc": "Предел расстояния активации растительности; 0 отключает отбраковку на основе видимости (= безусловная активация)",
 				"values": [
 					{
 						"value": "0",
@@ -1365,8 +1365,8 @@
 			},
 			{
 				"key": "e_PhysProxyTriLimit",
-				"name": "Phys Proxy Triangles Limit",
-				"desc": "Maximum allowed triangle count for phys proxies",
+				"name": "Предел прокси-треугольников Phys",
+				"desc": "Максимально допустимое количество треугольников для физических прокси",
 				"values": [
 					{
 						"value": "100000"
@@ -1378,7 +1378,7 @@
 			},
 			{
 				"key": "g_breakage_particles_limit",
-				"name": "Breakage Particles Limit",
+				"name": "Предел разрушения частиц",
 				"values": [
 					{
 						"value": "40",
@@ -1404,8 +1404,8 @@
 			},
 			{
 				"key": "p_max_MC_iters",
-				"name": "Max Collision Contact Iterations",
-				"desc": "Specifies the maximum number of microcontact solver iterations (per contact)",
+				"name": "Максимальное количество итераций контактов при столкновении",
+				"desc": "Задает максимальное количество итераций микроконтактного решателя (на контакт)",
 				"values": [
 					{
 						"value": "2000",
@@ -1427,8 +1427,8 @@
 			},
 			{
 				"key": "p_max_object_splashes",
-				"name": "Max Object Splashes",
-				"desc": "Specifies how many splash events one entity is allowed to generate",
+				"name": "Максимальное количество брызг на объекте",
+				"desc": "Определяет, сколько всплывающих событий разрешено генерировать одной сущности",
 				"values": [
 					{
 						"value": "1"
@@ -1440,8 +1440,8 @@
 			},
 			{
 				"key": "p_max_substeps_large_group",
-				"name": "Max Substeps Large Groups",
-				"desc": "Limits the number of substeps large groups of objects can make",
+				"name": "Максимальное количество подшагов в больших группах",
+				"desc": "Ограничивает количество подшагов, которые могут сделать большие группы объектов",
 				"values": [
 					{
 						"value": "1"
@@ -1453,8 +1453,8 @@
 			},
 			{
 				"key": "p_splash_dist0",
-				"name": "Start Splash Culling Distance",
-				"desc": "Range start for splash event distance culling",
+				"name": "Начальная дистанция отбраковки брызг",
+				"desc": "Начало диапазона для отбраковки дистанции всплеска",
 				"values": [
 					{
 						"value": "5"
@@ -1466,8 +1466,8 @@
 			},
 			{
 				"key": "p_splash_force0",
-				"name": "Splash Generate Min Force at start culling distance",
-				"desc": "Minimum water hit force to generate splash events at start splash culling distance",
+				"name": "Всплеск генерирует минимальную силу на начальной дистанции отбраковки",
+				"desc": "Минимальная сила удара водой для создания событий всплеска на начальной дистанции удаления брызг",
 				"values": [
 					{
 						"value": "5"
@@ -1479,8 +1479,8 @@
 			},
 			{
 				"key": "p_splash_vel0",
-				"name": "Splash Generate Min Velocitty at start culling distance",
-				"desc": "Minimum water hit velocity to generate splash events at start splash culling distance",
+				"name": "Всплеск генерирует минимальную скорость на начальной дистанции отбраковки",
+				"desc": "Минимальная скорость попадания воды для создания событий всплеска на начальной дистанции отсечения брызг",
 				"values": [
 					{
 						"value": "2"
@@ -1492,8 +1492,8 @@
 			},
 			{
 				"key": "p_splash_dist1",
-				"name": "End Splash Culling Distance",
-				"desc": "Range end for splash event distance culling",
+				"name": "Дистанция отбраковки конечного всплеска",
+				"desc": "Конец диапазона для отбраковки расстояния от всплеска",
 				"values": [
 					{
 						"value": "15"
@@ -1505,8 +1505,8 @@
 			},
 			{
 				"key": "p_splash_force1",
-				"name": "Splash Generate Min Force at end culling distance",
-				"desc": "Minimum water hit force to generate splash events at end splash culling distance",
+				"name": "Всплеск генерирует минимальную силу на конечном расстоянии отбраковки",
+				"desc": "Минимальная сила удара водой для создания событий разбрызгивания на конечном расстоянии удаления брызг",
 				"values": [
 					{
 						"value": "20"
@@ -1518,8 +1518,8 @@
 			},
 			{
 				"key": "p_splash_vel1",
-				"name": "Splash Generate Min Velocitty at end culling distance",
-				"desc": "Minimum water hit velocity to generate splash events at end splash culling distance",
+				"name": "Всплеск генерирует минимальную скорость на конечной дистанции отбраковки",
+				"desc": "Минимальная скорость попадания воды для создания событий разбрызгивания на конечном расстоянии отвода брызг",
 				"values": [
 					{
 						"value": "10"
@@ -1531,7 +1531,7 @@
 			},
 			{
 				"key": "v_vehicle_quality",
-				"name": "Vehicle Quality",
+				"name": "Качество автомобиля",
 				"values": [
 					{
 						"value": "1",
@@ -1553,7 +1553,7 @@
 			},
 			{
 				"key": "g_ProjectileLightLimit",
-				"name": "Projectile Lights Limit",
+				"name": "Предел света снаряда",
 				"values": [
 					{
 						"value": "-1",
@@ -1587,7 +1587,7 @@
 			},
 			{
 				"key": "ui_disableScreenFade",
-				"name": "Disable Screen Fade"
+				"name": "Отключить затухание экрана"
 			}
 		]
 	}
