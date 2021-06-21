@@ -1,5 +1,8 @@
 using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using Defter.StarCitizen.ConfigDB;
 using Defter.StarCitizen.ConfigDB.Collection;
 using Defter.StarCitizen.ConfigDB.Model;
@@ -48,6 +51,9 @@ namespace Defter.StarCitizen.TestApplication
                     case "setting":
                         return CheckArgsCount(args, commandName, 1) &&
                            HandleSettingCommand(args[0], ArrayHelper.SubArray(args, 1));
+                    case "verify":
+                        return CheckArgsCount(args, commandName, 1) &&
+                            HandleVerifyCommand(args[0], ArrayHelper.SubArray(args, 1));
                     case "clear":
                         Console.Clear();
                         return false;
@@ -214,6 +220,101 @@ namespace Defter.StarCitizen.TestApplication
                 }
             }
 
+            public bool HandleVerifyCommand(string commandName, string[] args)
+            {
+                switch (commandName)
+                {
+                    case "settings":
+                        {
+                            var configData = _localDbManager.GetData();
+                            if (configData != null)
+                            {
+                                var settings = configData.SettingCategories.Values.SelectMany(c => c.Settings.Keys);
+                                return DoVerifyStringsExist(new HashSet<string>(settings, StringComparer.OrdinalIgnoreCase));
+                            }
+                            Console.WriteLine("Error: Database not loaded");
+                            return false;
+                        }
+                    case "commands":
+                        {
+                            var configData = _localDbManager.GetData();
+                            if (configData != null)
+                            {
+                                var commands = configData.CommandCategories.Values.SelectMany(c => c.Commands.Keys);
+                                return DoVerifyStringsExist(new HashSet<string>(commands, StringComparer.OrdinalIgnoreCase));
+                            }
+                            Console.WriteLine("Error: Database not loaded");
+                            return false;
+                        }
+                    case "exist":
+                        return DoVerifyStringsExist(new HashSet<string>(args, StringComparer.OrdinalIgnoreCase));
+                    case "help":
+                        Console.WriteLine("Available commands:");
+                        Console.WriteLine("verify settings");
+                        Console.WriteLine("verify commands");
+                        Console.WriteLine("verify exist <name> [name] ...");
+                        return false;
+                    default:
+                        Console.WriteLine("Error: Unknown verify command - " + commandName);
+                        return false;
+                }
+            }
+
+            private static byte[]? _verifyData;
+
+            private static bool DoVerifyStringsExist(ISet<string> strings)
+            {
+                if (strings.Count != 0)
+                {
+                    if (_verifyData == null)
+                    {
+                        try
+                        {
+                            _verifyData = File.ReadAllBytes(Environment.GetEnvironmentVariable("LOCAL_GAME_EXECUTABLE"));
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine("Error: " + e.ToString());
+                            return false;
+                        }
+                    }
+                    var accumulator = new StringBuilder(1024);
+                    foreach (sbyte ch in _verifyData)
+                    {
+                        if (ch != 0)
+                        {
+                            accumulator.Append((char)ch);
+                        }
+                        else if (accumulator.Length != 0)
+                        {
+                            if (strings.Remove(accumulator.ToString()))
+                            {
+                                Console.WriteLine("FOUND: " + accumulator.ToString());
+                                if (strings.Count == 0)
+                                {
+                                    return true;
+                                }
+                            }
+                            accumulator.Clear();
+                        }
+                    }
+                    if (accumulator.Length != 0 && strings.Remove(accumulator.ToString()))
+                    {
+                        Console.WriteLine("FOUND: " + accumulator.ToString());
+                    }
+                    if (strings.Count != 0)
+                    {
+                        foreach (var settingName in strings)
+                        {
+                            Console.WriteLine("MISSING: " + settingName);
+                        }
+                        Console.WriteLine("Error: missing strings found");
+                        return false;
+                    }
+                }
+                return true;
+            }
+
             private static bool CheckArgsCount(string[] args, string commandName, int count)
             {
                 if (args.Length < count)
@@ -350,7 +451,9 @@ namespace Defter.StarCitizen.TestApplication
         {
             var splitChars = new char[] { ' ' };
             var fileSourceSettings = new LocalFileSourceSettings(args.Length > 0 ? args[0] : Environment.CurrentDirectory);
-            var localDbManager = new LocalDatabaseManager(fileSourceSettings, new ConsoleErrorOutput());
+            var networkSourceSettings = new GitHubSourceSettings();
+            // var networkSourceSettings = new GiteeSourceSettings();
+            var localDbManager = new LocalDatabaseManager(networkSourceSettings, fileSourceSettings, new ConsoleErrorOutput());
             var commandHandler = new CommandHandler(localDbManager);
             while (true)
             {

@@ -18,7 +18,7 @@ namespace Defter.StarCitizen.TestApplication
 
     public sealed class LocalDatabaseManager
     {
-        private readonly INetworkSourceSettings _networkSourceSettings = new GitHubSourceSettings();
+        private readonly INetworkSourceSettings _networkSourceSettings;
         private readonly IFileSourceSettings _fileSourceSettings;
         private readonly IErrorOutput _errorOutput;
         private readonly HttpClient _httpClient;
@@ -28,8 +28,9 @@ namespace Defter.StarCitizen.TestApplication
         private ConfigData? _configData;
 
 
-        public LocalDatabaseManager(IFileSourceSettings fileSourceSettings, IErrorOutput errorOutput)
+        public LocalDatabaseManager(INetworkSourceSettings networkSourceSettings, IFileSourceSettings fileSourceSettings, IErrorOutput errorOutput)
         {
+            _networkSourceSettings = networkSourceSettings;
             _fileSourceSettings = fileSourceSettings;
             _errorOutput = errorOutput;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls |
