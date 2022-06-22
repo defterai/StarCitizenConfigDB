@@ -1,4 +1,4 @@
-﻿{
+{
 	"$schema": "https://raw.githubusercontent.com/defterai/StarCitizenConfigDB/master/schema_translate.json",
 	"commands": {
 		"categories": [
@@ -42,6 +42,10 @@
 			{
 				"key": "client",
 				"name": "Клієнт"
+			},
+			{
+				"key": "subtitles",
+				"name": "Субтитри"
 			},
 			{
 				"key": "system",
@@ -128,6 +132,18 @@
 			{
 				"key": "cl_leanToggle",
 				"name": "Lean Toogle Mode"
+			},
+			{
+				"key": "dlg_enableSubtitles",
+				"name": "Enable Subtitles"
+			},
+			{
+				"key": "hud_contextualDialogSubtitles",
+				"name": "Contextual Dialog Subtitles"
+			},
+			{
+				"key": "hud_cockpitAudioSubtitles",
+				"name": "Cockpit Audio Subtitles"
 			},
 			{
 				"key": "sys_maxFPS",

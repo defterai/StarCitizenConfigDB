@@ -53,6 +53,10 @@
 				"name": "Client"
 			},
 			{
+				"key": "subtitles",
+				"name": "Subtitles"
+			},
+			{
 				"key": "system",
 				"name": "System"
 			},
@@ -173,6 +177,33 @@
 				"category": "client",
 				"values": {
 					"type": "bool"
+				}
+			},
+			{
+				"key": "dlg_enableSubtitles",
+				"name": "Enable Subtitles",
+				"category": "subtitles",
+				"values": {
+					"type": "bool",
+					"default": "false"
+				}
+			},
+			{
+				"key": "hud_contextualDialogSubtitles",
+				"name": "Contextual Dialog Subtitles",
+				"category": "subtitles",
+				"values": {
+					"type": "bool",
+					"default": "false"
+				}
+			},
+			{
+				"key": "hud_cockpitAudioSubtitles",
+				"name": "Cockpit Audio Subtitles",
+				"category": "subtitles",
+				"values": {
+					"type": "bool",
+					"default": "false"
 				}
 			},
 			{

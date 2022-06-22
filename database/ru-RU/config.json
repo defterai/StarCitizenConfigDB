@@ -1,4 +1,4 @@
-﻿{
+{
 	"$schema": "https://raw.githubusercontent.com/defterai/StarCitizenConfigDB/master/schema_translate.json",
 	"commands": {
 		"categories": [
@@ -42,6 +42,10 @@
 			{
 				"key": "client",
 				"name": "Клиент"
+			},
+			{
+				"key": "subtitles",
+				"name": "Субтитры"
 			},
 			{
 				"key": "system",
@@ -128,6 +132,18 @@
 			{
 				"key": "cl_leanToggle",
 				"name": "Режим наклонов по переключению кнопки"
+			},
+			{
+				"key": "dlg_enableSubtitles",
+				"name": "Субтитры"
+			},
+			{
+				"key": "hud_contextualDialogSubtitles",
+				"name": "Субтитры контекстного диалога"
+			},
+			{
+				"key": "hud_cockpitAudioSubtitles",
+				"name": "Субтитры к звуку кабины"
 			},
 			{
 				"key": "sys_maxFPS",
