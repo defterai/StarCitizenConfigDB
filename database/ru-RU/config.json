@@ -1,4 +1,4 @@
-{
+﻿{
 	"$schema": "https://raw.githubusercontent.com/defterai/StarCitizenConfigDB/master/schema_translate.json",
 	"commands": {
 		"categories": [
@@ -1059,49 +1059,12 @@
 				]
 			},
 			{
-				"key": "e_ShadowsTessellateCascades",
-				"name": "Каскады мозаики теней",
-				"desc": "Максимальное количество каскадов для рендеринга тесселяционных теней\n(0 - тесселяция теней от солнца отсутствует)",
-				"values": [
-					{
-						"value": "0",
-						"name": "none"
-					},
-					{
-						"value": "1",
-						"name": "one"
-					}
-				]
-			},
-			{
 				"key": "e_ShadowsBlendCascades",
 				"name": "Смешивание каскадов теней"
 			},
 			{
 				"key": "q_ShaderGeneral",
 				"name": "Общее качество",
-				"values": [
-					{
-						"value": "0",
-						"name": "low"
-					},
-					{
-						"value": "1",
-						"name": "medium"
-					},
-					{
-						"value": "2",
-						"name": "high"
-					},
-					{
-						"value": "3",
-						"name": "very high"
-					}
-				]
-			},
-			{
-				"key": "q_ShaderDecal",
-				"name": "Качество декалей",
 				"values": [
 					{
 						"value": "0",
@@ -1190,28 +1153,6 @@
 			{
 				"key": "q_ShaderPostProcess",
 				"name": "Качество постпроцесса",
-				"values": [
-					{
-						"value": "0",
-						"name": "low"
-					},
-					{
-						"value": "1",
-						"name": "medium"
-					},
-					{
-						"value": "2",
-						"name": "high"
-					},
-					{
-						"value": "3",
-						"name": "very high"
-					}
-				]
-			},
-			{
-				"key": "q_ShaderHDR",
-				"name": "Качество HDR",
 				"values": [
 					{
 						"value": "0",

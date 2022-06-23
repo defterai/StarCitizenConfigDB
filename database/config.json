@@ -1355,26 +1355,6 @@
 				}
 			},
 			{
-				"key": "e_ShadowsTessellateCascades",
-				"name": "Shadows Tessellate Cascades",
-				"category": "shadows",
-				"desc": "Maximum cascade number to render tessellated shadows\n(0 - no tessellation for sun shadows)",
-				"values": {
-					"type": "range_int",
-					"default": "1",
-					"list": [
-						{
-							"value": "0",
-							"name": "none"
-						},
-						{
-							"value": "1",
-							"name": "one"
-						}
-					]
-				}
-			},
-			{
 				"key": "e_ShadowsBlendCascades",
 				"name": "Blend Between Shadow Cascades",
 				"category": "shadows",
@@ -1813,33 +1793,6 @@
 				}
 			},
 			{
-				"key": "q_ShaderDecal",
-				"name": "Decal Quality",
-				"category": "shader",
-				"values": {
-					"type": "int",
-					"default": "3",
-					"list": [
-						{
-							"value": "0",
-							"name": "low"
-						},
-						{
-							"value": "1",
-							"name": "medium"
-						},
-						{
-							"value": "2",
-							"name": "high"
-						},
-						{
-							"value": "3",
-							"name": "very high"
-						}
-					]
-				}
-			},
-			{
 				"key": "q_ShaderShadow",
 				"name": "Shadow Quality",
 				"category": "shader",
@@ -1923,33 +1876,6 @@
 			{
 				"key": "q_ShaderPostProcess",
 				"name": "Post Process Quality",
-				"category": "shader",
-				"values": {
-					"type": "int",
-					"default": "3",
-					"list": [
-						{
-							"value": "0",
-							"name": "low"
-						},
-						{
-							"value": "1",
-							"name": "medium"
-						},
-						{
-							"value": "2",
-							"name": "high"
-						},
-						{
-							"value": "3",
-							"name": "very high"
-						}
-					]
-				}
-			},
-			{
-				"key": "q_ShaderHDR",
-				"name": "HDR Quality",
 				"category": "shader",
 				"values": {
 					"type": "int",

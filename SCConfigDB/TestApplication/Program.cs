@@ -70,6 +70,7 @@ namespace Defter.StarCitizen.TestApplication
                         Console.WriteLine("lang <command>");
                         Console.WriteLine("command <command>");
                         Console.WriteLine("setting <command>");
+                        Console.WriteLine("verify <command>");
                         Console.WriteLine("clear");
                         Console.WriteLine("exit");
                         return false;
@@ -117,6 +118,7 @@ namespace Defter.StarCitizen.TestApplication
                         return CheckArgsCount(args, commandName, 1) &&
                             _localDbManager.RemoveLanguage(args[0], true);
                     case "update":
+                        if (args.Length == 0) return UpdateAllLanguages();
                         return CheckArgsCount(args, commandName, 1) &&
                             _localDbManager.UpdateLanguage(args[0]);
                     case "print":
@@ -144,7 +146,7 @@ namespace Defter.StarCitizen.TestApplication
                         Console.WriteLine("lang create <name>");
                         Console.WriteLine("lang remove <name>");
                         Console.WriteLine("lang delete <name>");
-                        Console.WriteLine("lang update <name>");
+                        Console.WriteLine("lang update [name]");
                         Console.WriteLine("lang print <name>");
                         Console.WriteLine("lang list");
                         return false;
@@ -181,6 +183,11 @@ namespace Defter.StarCitizen.TestApplication
                             Console.WriteLine("Error: Database not loaded");
                             return false;
                         }
+                    case "help":
+                        Console.WriteLine("Available commands:");
+                        Console.WriteLine("command categories");
+                        Console.WriteLine("command list");
+                        return false;
                     default:
                         Console.WriteLine("Error: Unknown command command - " + commandName);
                         return false;
@@ -214,6 +221,11 @@ namespace Defter.StarCitizen.TestApplication
                             Console.WriteLine("Error: Database not loaded");
                             return false;
                         }
+                    case "help":
+                        Console.WriteLine("Available commands:");
+                        Console.WriteLine("setting categories");
+                        Console.WriteLine("setting list");
+                        return false;
                     default:
                         Console.WriteLine("Error: Unknown setting command - " + commandName);
                         return false;
@@ -258,6 +270,25 @@ namespace Defter.StarCitizen.TestApplication
                         Console.WriteLine("Error: Unknown verify command - " + commandName);
                         return false;
                 }
+            }
+
+            private bool UpdateAllLanguages()
+            {
+                var languages = _localDbManager.GetSupportedLanguages();
+                if (languages != null)
+                {
+                    bool success = true;
+                    foreach (string languageName in languages)
+                    {
+                        Console.WriteLine("Update language: " + languageName);
+                        if (!_localDbManager.UpdateLanguage(languageName))
+                        {
+                            success = false;
+                        }
+                    }
+                    return success;
+                }
+                return false;
             }
 
             private static byte[]? _verifyData;
